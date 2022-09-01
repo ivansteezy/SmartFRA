@@ -1,0 +1,47 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+# Compiled output
+
+#Angular gitignore
+
+Web/Smart/dist
+Web/Smart/tmp
+Web/Smart/out-tsc
+Web/Smart/bazel-out
+
+# Node
+Web/Smart/node_modules
+Web/Smartnpm-debug.log
+Web/Smartyarn-error.log
+
+# IDEs and editors
+Web/Smart.idea/
+Web/Smart.project
+Web/Smart.classpath
+Web/Smart.c9/
+Web/Smart*.launch
+Web/Smart.settings/
+Web/Smart*.sublime-workspace
+
+# Visual Studio Code
+Web/Smart.vscode/*
+Web/Smart!.vscode/settings.json
+Web/Smart!.vscode/tasks.json
+Web/Smart!.vscode/launch.json
+Web/Smart!.vscode/extensions.json
+Web/Smart.history/*
+
+# Miscellaneous
+Web/Smart/.angular/cache
+Web/Smart.sass-cache/
+Web/Smart/connect.lock
+Web/Smart/coverage
+Web/Smart/libpeerconnection.log
+Web/Smarttestem.log
+Web/Smart/typings
+
+# System files
+Web/Smart.DS_Store
+Web/SmartThumbs.db
+
+
+#Embedded files
