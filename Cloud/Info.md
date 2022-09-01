@@ -1,0 +1,1 @@
+Module to add the cloud features of the application, for example all AWS related code.

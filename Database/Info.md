@@ -1,0 +1,1 @@
+Module to add the database features of the application, for example all sql scripts needed.

@@ -1,0 +1,1 @@
+Module to add the could features of the application, for example the whole Qt application and linux scripts needed.
