@@ -1,4 +1,4 @@
-# **Coding Standard Jarabesoft v1.2.0.**
+# **Coding Standard SmartFRA**
 
 ### ※ Archivos
 - Los archivos generados manualmente deben ser nombrados con [*Pascal Case ó Upper Camel Case*]("https://es.wikipedia.org/wiki/Camel_case") seguido de su respectiva extensión, los nombres deben ser claros y descriptivos, por ejemplo:
