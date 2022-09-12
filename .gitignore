@@ -45,8 +45,10 @@ Web/SmartThumbs.db
 
 
 #Embedded files
-
-
+Embedded/build/
+Embedded/SmartFRA/CMakeFiles/
+Embedded/SmartFRA/CMakeCache.txt
+Embedded/build-SmartFRA-Desktop_Qt_6_3_1_GCC_64bit-Debug/
 
 # Qt and C++ files
 # This file is used to ignore files which are generated
@@ -122,5 +124,3 @@ Thumbs.db
 *.dll
 *.exe
 
-
-Embedded/build-SmartFRA-Desktop_Qt_6_3_1_GCC_64bit-Debug
