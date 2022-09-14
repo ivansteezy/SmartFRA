@@ -7,7 +7,7 @@ Window {
     width: 640
     height: 480
     visible: true
-    title: qsTr("SmartFRA CLI build from console!")
+    title: qsTr("SmartFRA CLI build in Windows!")
 
     InputPanel {
         id: inputPanel
