@@ -13,31 +13,13 @@ namespace FRA
         class HttpRequestsManager
         {
         public:
-            HttpRequestsManager()
-            {
-
-            }
+            HttpRequestsManager();
 
         public:
-            bool Post(QString endpoint, QByteArray postData)
-            {
-                return false;
-            }
-
-            QByteArray Get(QString endpoint)
-            {
-                return QByteArray();
-            }
-
-            bool Update(QString endpoint, QByteArray updateData)
-            {
-                return false;
-            }
-
-            bool Delete(QString endpoint)
-            {
-                return false;
-            }
+            bool Post(QString endpoint, QByteArray postData);
+            QByteArray Get(QString endpoint);
+            bool Update(QString endpoint, QByteArray updateData);
+            bool Delete(QString endpoint);
 
         private:
             Logger logger;

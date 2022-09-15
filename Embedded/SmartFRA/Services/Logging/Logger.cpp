@@ -1,7 +1,5 @@
 #include "Logger.hpp"
-
 using namespace FRA::Logging;
-
 
 Logger::Logger()
 {
