@@ -15,8 +15,10 @@ find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core Quick)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Quick)
 
 set(PROJECT_SOURCES
-        main.cpp
-        qml.qrc
+        Services/Bootstraping/main.cpp
+        Services/Logging/Logging.Base.hpp
+        Services/Networking/Networking.Base.hpp
+        UI/Qml/qml.qrc
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
