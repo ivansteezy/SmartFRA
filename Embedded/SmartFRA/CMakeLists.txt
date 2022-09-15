@@ -8,7 +8,7 @@ set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core Quick)
@@ -17,7 +17,11 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Quick)
 set(PROJECT_SOURCES
         Services/Bootstraping/main.cpp
         Services/Logging/Logging.Base.hpp
+        Services/Logging/Logger.hpp
+        Services/Logging/Logger.cpp
         Services/Networking/Networking.Base.hpp
+        Services/Networking/HttpRequestsManager.hpp
+        Services/Networking/HttpRequestsManager.cpp
         UI/Qml/qml.qrc
 )
 
