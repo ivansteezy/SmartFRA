@@ -51,6 +51,7 @@ Embedded/SmartFRA/CMakeCache.txt
 Embedded/build-SmartFRA-Desktop_Qt_6_3_1_GCC_64bit-Debug/
 Embedded/build-SmartFRA-Desktop_Qt_6_1_1_MinGW_64_bit-Debug
 Embedded/SmartFRA/CMakeLists.txt.user.*
+Embedded/SmartFRA/CMakeLists.txt.user
 
 # Qt and C++ files
 # This file is used to ignore files which are generated

@@ -13,6 +13,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core Quick)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Quick)
+find_package(OpenCV REQUIRED)
+
+include_directories(${OpenCV_INCLUDE_DIRS})
 
 set(PROJECT_SOURCES
         Services/Bootstraping/main.cpp
@@ -49,7 +52,7 @@ else()
 endif()
 
 target_link_libraries(SmartFRA
-  PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick)
+  PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick ${OpenCV_LIBS})
 
 set_target_properties(SmartFRA PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
