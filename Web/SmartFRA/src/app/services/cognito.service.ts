@@ -10,12 +10,20 @@ interface AuthenticateInfo {
 export interface UserData {
   email: string;
   password: string;
-  verificationCode: string
+  verificationCode: string;
+};
+
+export interface SignUserData {
+  email: string;
+  password: string;
+  names: string;
+  lastNames: string;
+  phoneNumber: string;
 };
 
 export const PoolData = {
   UserPoolId: "us-west-1_ejNAMAv5c",
-  ClientId: "11rjcqg1uqjka7npnftmmmcrj1"
+  ClientId: "3ptbmci36d98ehuqu9ntpf3qti"
 };
 
 @Injectable({
@@ -24,11 +32,15 @@ export const PoolData = {
 export class CognitoService {
   constructor() { }
 
-  public SignUpUser(userData: UserData) {
+  public SignUpUser(userData: SignUserData) {
     return new Promise((resolved, rejected) => {
       const userPoolData = new AWSCognito.CognitoUserPool(PoolData);
       let userAttributes = new Array<AWSCognito.CognitoUserAttribute>();
+
       userAttributes.push(new AWSCognito.CognitoUserAttribute({Name: 'email', Value: userData.email}));
+      userAttributes.push(new AWSCognito.CognitoUserAttribute({Name: 'given_name', Value: userData.names}));
+      userAttributes.push(new AWSCognito.CognitoUserAttribute({Name: 'family_name', Value: userData.lastNames}));
+      userAttributes.push(new AWSCognito.CognitoUserAttribute({Name: 'phone_number', Value: userData.phoneNumber}));
 
       userPoolData.signUp(userData.email, userData.password, userAttributes, [], (err, res) => {
         if (err) {
