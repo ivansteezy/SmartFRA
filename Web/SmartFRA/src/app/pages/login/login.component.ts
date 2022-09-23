@@ -20,11 +20,6 @@ export class LoginComponent implements OnInit {
   }
 
   public NavigateToDashBoard() {
-    // this.navigationService.NavigateToRoute('dashboard');
-    this.residentManager.GetResidentById(3).subscribe(result => {
-      this.posts = result;
-    }, error => {
-      console.log('An error has ocurred!');
-    }); 
+    this.navigationService.NavigateToRoute('dashboard');
   }
 }

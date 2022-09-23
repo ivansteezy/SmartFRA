@@ -14,4 +14,6 @@ export class ResidentManagerService {
     // call http requests service for a GET for the resident by id endpoint
     return this.http.Get<Resident>(ResidentEndpoints.GetResidentById);
   }
+
+  // to do: expand this service functionality for all the data that we need in all the databases.
 }
