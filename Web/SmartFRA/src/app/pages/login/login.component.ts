@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { ResidentManagerService } from 'src/app/managers/resident-manager.service';
+import { Resident } from 'src/app/models/resident.model';
 import { NavigationService } from 'src/app/services/navigation.service';
 
 @Component({
@@ -8,8 +11,11 @@ import { NavigationService } from 'src/app/services/navigation.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private navigationService: NavigationService) { }
+  constructor(private navigationService: NavigationService,
+                     private residentManager: ResidentManagerService) { }
 
+  public posts: Array<Resident> = new Array<Resident>();
+  
   ngOnInit(): void {
   }
 
