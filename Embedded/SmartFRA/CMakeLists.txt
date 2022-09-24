@@ -25,8 +25,6 @@ set(PROJECT_SOURCES
         Services/Networking/Networking.Base.hpp
         Services/Networking/HttpRequestsManager.hpp
         Services/Networking/HttpRequestsManager.cpp
-        Services/Bootstraping/Bootstraping.base.hpp
-        Services/Bootstraping/SystemInitializer.cpp
         UI/Qml/qml.qrc
 )
 
