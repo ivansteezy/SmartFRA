@@ -21,6 +21,11 @@ export interface SignUserData {
   phoneNumber: string;
 };
 
+export interface VerifyUserData {
+  email: string;
+  verificationCode: string
+};
+
 export const PoolData = {
   UserPoolId: "us-west-1_ejNAMAv5c",
   ClientId: "3ptbmci36d98ehuqu9ntpf3qti"
@@ -55,7 +60,7 @@ export class CognitoService {
     });
   }
 
-  public VerifyUser(userData: UserData) {
+  public VerifyUser(userData: VerifyUserData) {
     return new Promise((resolved, rejected) => {
       const userPoolData = new AWSCognito.CognitoUserPool(PoolData);
 
