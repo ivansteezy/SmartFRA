@@ -7,10 +7,9 @@ interface AuthenticateInfo {
   cognitoUser:  AWSCognito.CognitoUser
 };
 
-export interface UserData {
+export interface UserCredentialsData {
   email: string;
   password: string;
-  verificationCode: string;
 };
 
 export interface SignUserData {
@@ -82,7 +81,7 @@ export class CognitoService {
     });
   }
 
-  public AuthenticateUser(userData: UserData) {
+  public AuthenticateUser(userData: UserCredentialsData) {
     return new Promise((resolved, rejected) => {
       const authenticateInfo = this.ConsolidateAuthenticateInfo(userData);
 
@@ -163,7 +162,7 @@ export class CognitoService {
     });
   }
 
-  private ConsolidateAuthenticateInfo(userData: UserData) {
+  private ConsolidateAuthenticateInfo(userData: UserCredentialsData) {
     const userPoolData = new AWSCognito.CognitoUserPool(PoolData);
 
     const authDetails = new AWSCognito.AuthenticationDetails({
