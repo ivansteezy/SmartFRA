@@ -7,8 +7,8 @@ const app = express();
 // Serve only the static files form the dist directory
 app.use(express.static('./dist/smart-fra'));
 
-app.get('/*', (req, res) =>
-    res.sendFile('index.html', {root: 'dist/smart-fra/login'}),
+app.get('/login', (req, res) =>
+    res.sendFile('index.html', {root: 'dist/smart-fra/'}),
 );
 
 // Start the app by listening on the default Heroku port
