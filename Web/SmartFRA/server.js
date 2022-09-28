@@ -8,7 +8,7 @@ const app = express();
 app.use(express.static('./dist/smart-fra'));
 
 app.get('/*', (req, res) =>
-    res.sendFile('index.html', {root: 'dist/smart-fra/'}),
+    res.sendFile('index.html', {root: 'dist/smart-fra/login'}),
 );
 
 // Start the app by listening on the default Heroku port
