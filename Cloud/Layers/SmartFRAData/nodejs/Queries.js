@@ -12,7 +12,9 @@ export const Queries = {
     },
 
     Houses: {
-
+        GetAllHouses: () => {
+            const query = `SELECT * FROM Houses`
+        }
     },
 
     ResidentAccess: {
@@ -44,6 +46,19 @@ export const Queries = {
     },
 
     Services: {
+        GetAllServices: () => {
+            const query = `SELECT * FROM Services'`;
+            return query;
+        },
 
+        InsertService: (serviceName) => {
+            const query = `INSERT INTO Services(serviceName) VALUES(${serviceName})'`;
+            return query;
+        },
+
+        DeleteService: (idService) => {
+            const query = `DELETE FROM Services WHERE id = ${idService}`;
+            return query;
+        }
     }
 }

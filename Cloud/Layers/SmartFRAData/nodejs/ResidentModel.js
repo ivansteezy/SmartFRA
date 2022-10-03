@@ -1,6 +1,7 @@
 
 export class ResidentModel {
-    constructor(name, lastName, motherLastName, age, idHouse, plates, telephone, facemodel) {
+    constructor(idResident, name, lastName, motherLastName, age, idHouse, plates, telephone, facemodel) {
+        this.idResident = idResident;
         this.name = name;
         this.lastName = lastName;
         this.motherLastName = motherLastName;
