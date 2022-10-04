@@ -64,4 +64,4 @@ const Queries = {
     }
 }
 
-exports.Queries = Queries;
+module.exports = Queries;
