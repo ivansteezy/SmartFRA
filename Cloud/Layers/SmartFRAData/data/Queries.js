@@ -1,4 +1,4 @@
-export const Queries = {
+const Queries = {
     GeneralServiceAccess: {
 
     },
@@ -14,6 +14,7 @@ export const Queries = {
     Houses: {
         GetAllHouses: () => {
             const query = `SELECT * FROM Houses`
+            return query;
         }
     },
 
@@ -62,3 +63,5 @@ export const Queries = {
         }
     }
 }
+
+exports.Queries = Queries;

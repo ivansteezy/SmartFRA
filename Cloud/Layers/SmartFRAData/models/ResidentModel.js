@@ -1,5 +1,5 @@
 
-export class ResidentModel {
+class ResidentModel {
     constructor(idResident, name, lastName, motherLastName, age, idHouse, plates, telephone, facemodel) {
         this.idResident = idResident;
         this.name = name;
@@ -12,3 +12,5 @@ export class ResidentModel {
         this.facemodel = facemodel;
     }
 }
+
+module.exports = ResidentModel;
