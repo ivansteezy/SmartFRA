@@ -7,7 +7,7 @@ Window {
     width: 640
     height: 480
     visible: true
-    title: qsTr("SmartFRA With new structure, C++20 and OpenCV!")
+    title: qsTr("SmartFRA With new structure, C++20 and OpenCV y Logger!")
 
     InputPanel {
         id: inputPanel

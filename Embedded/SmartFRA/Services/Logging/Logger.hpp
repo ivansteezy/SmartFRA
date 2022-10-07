@@ -2,6 +2,10 @@
 #define LOGGER_HPP
 
 #include <QString>
+#include <QFile>
+#include <QDateTime>
+#include <QDebug>
+#include <QTextStream>
 
 namespace FRA
 {
@@ -18,6 +22,9 @@ namespace FRA
             void LogErrorInConsole(QString message);
             void LogInfoInFile(QString message);
             void LogErrorInFile(QString message);
+
+        private:
+            inline static const QString LogFilePath = "../SmartFRA/Logs/logs.txt";
         };
     }
 }
