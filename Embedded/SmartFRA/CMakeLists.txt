@@ -21,6 +21,8 @@ set(PROJECT_SOURCES
         Services/Bootstraping/main.cpp
         Services/Bootstraping/SystemInitializer.Base.hpp
         Services/Bootstraping/SystemInitializer.Base.cpp
+        Services/Bootstraping/SystemInitializer.hpp
+        Services/Bootstraping/SystemInitializer.cpp
         Services/Core/FRACore.Macros.hpp
         Services/Core/FRACore.hpp
         Services/Core/FRACore.cpp
