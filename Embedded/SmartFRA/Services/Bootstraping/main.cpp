@@ -4,9 +4,7 @@
 
 #include <opencv2/opencv.hpp>
 
-#include "../Logging/Logger.hpp"
 #include "SystemInitializer.hpp"
-// #include "../Networking/HttpRequestsManager.hpp"
 
 int main(int argc, char *argv[])
 {
@@ -17,8 +15,8 @@ int main(int argc, char *argv[])
     systemInitializer->Initialize();
 
     // test
-    auto logger = FRA::Logging::Logger::CreateInstance();
-    logger->LogInfoInFile("TESTING new dependency system");
+    auto manager = FRA::Networking::HttpRequetsManager::CreateInstance();
+    manager->Get("https://httpbin.org/get");
 
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
@@ -35,6 +33,5 @@ int main(int argc, char *argv[])
     }, Qt::QueuedConnection);
     engine.load(url);
 
-    // delete logger;
     return app.exec();
 }

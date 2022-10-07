@@ -17,6 +17,9 @@ void SystemInitializerImpl::Initialize()
 {
     mLogger = FRA::Logging::Logger::CreateInstance();
     FRA::Logging::GlobalLogger::SetInstance(mLogger);
+
+    mHttpRequestManager = FRA::Networking::HttpRequetsManager::CreateInstance();
+    FRA::Networking::GlobalHttpRequetsManager::SetInstance(mHttpRequestManager);
 }
 
 QObject *SystemInitializerImpl::AsQtObject()

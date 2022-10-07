@@ -3,6 +3,7 @@
 
 #include "SystemInitializer.Base.hpp"
 #include "../Logging/Logging.Base.hpp"
+#include "../Networking/Networking.Base.hpp"
 
 namespace FRA
 {
@@ -23,6 +24,7 @@ namespace FRA
 
         private:
             FRA::Core::ComPtr<FRA::Logging::ILogger> mLogger;
+            FRA::Core::ComPtr<FRA::Networking::IHttpRequestManager> mHttpRequestManager;
         };
     }
 }

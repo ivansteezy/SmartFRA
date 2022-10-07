@@ -10,7 +10,7 @@ void GlobalLogger::SetInstance(FRA::Core::ComPtr<ILogger> logger)
     g_globalLogger = logger;
 }
 
-ILogger* GlobalLogger::Instace()
+ILogger* GlobalLogger::Instance()
 {
     return g_globalLogger;
 }

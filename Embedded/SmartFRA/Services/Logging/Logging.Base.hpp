@@ -23,7 +23,7 @@ namespace FRA
         struct GlobalLogger
         {
             static void SetInstance(FRA::Core::ComPtr<ILogger> logger);
-            static ILogger* Instace();
+            static ILogger* Instance();
         };
     }
 }
