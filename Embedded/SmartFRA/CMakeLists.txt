@@ -19,7 +19,13 @@ include_directories(${OpenCV_INCLUDE_DIRS})
 
 set(PROJECT_SOURCES
         Services/Bootstraping/main.cpp
+        Services/Bootstraping/SystemInitializer.Base.hpp
+        Services/Bootstraping/SystemInitializer.Base.cpp
+        Services/Core/FRACore.Macros.hpp
+        Services/Core/FRACore.hpp
+        Services/Core/FRACore.cpp
         Services/Logging/Logging.Base.hpp
+        Services/Logging/Logging.Base.cpp
         Services/Logging/Logger.hpp
         Services/Logging/Logger.cpp
         Services/Networking/Networking.Base.hpp

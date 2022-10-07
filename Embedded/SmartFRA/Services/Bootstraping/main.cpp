@@ -4,8 +4,8 @@
 
 #include <opencv2/opencv.hpp>
 
-#include "../Logging/Logger.hpp"
-#include "../Networking/HttpRequestsManager.hpp"
+// #include "../Logging/Logger.hpp"
+// #include "../Networking/HttpRequestsManager.hpp"
 
 int main(int argc, char *argv[])
 {
@@ -13,9 +13,9 @@ int main(int argc, char *argv[])
     qputenv("QT_IM_MODULE", QByteArray("qtvirtualkeyboard"));
 
     //FRA::Networking::HttpRequestsManager<FRA::Logging::Logger> gNetworkManager;
-    FRA::Logging::Logger* logger = new FRA::Logging::Logger();
-    FRA::Networking::HttpRequestsManager gNetworkManager;
-    gNetworkManager.Get("https://httpbin.org/get");
+    // FRA::Logging::Logger* logger = new FRA::Logging::Logger();
+    // FRA::Networking::HttpRequestsManager gNetworkManager;
+    // gNetworkManager.Get("https://httpbin.org/get");
     // gNetworkManager.Get("https://httpbin.org/get");
     // gNetworkManager.Post(QString(), QByteArray());
 
@@ -34,6 +34,6 @@ int main(int argc, char *argv[])
     }, Qt::QueuedConnection);
     engine.load(url);
 
-    delete logger;
+    // delete logger;
     return app.exec();
 }
