@@ -5,10 +5,10 @@ import QtQuick.Controls 2.15
 
 Window {
     id: window
-    width: 640
-    height: 480
+    width: 1024
+    height: 600
     visible: true
-    title: qsTr("SmartFRA With new structure, C++20 and OpenCV y Logger!")
+    title: qsTr("SmartFRA")
 
     InputPanel {
         id: inputPanel
