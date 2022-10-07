@@ -4,16 +4,25 @@
 #include "../Logging/Logging.Base.hpp"
 
 #include <QByteArray>
+#include <QNetworkAccessManager>
+#include <QNetworkReply>
+#include <QNetworkReply>
 
 namespace FRA
 {
     namespace Networking
     {
         template <FRA::Logging::ILogger Logger>
-        class HttpRequestsManager
+        class HttpRequestsManager : QObject
         {
+        Q_OBJECT
         public:
-            HttpRequestsManager(){}
+            HttpRequestsManager()
+            {
+                networkAcessManager = new QNetworkAccessManager(this);
+
+                QObject::connect(networkAcessManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(ManagerFinished(QNetworkReply*)));
+            }
 
         public:
             bool Post(QString endpoint, QByteArray postData)
@@ -22,9 +31,10 @@ namespace FRA
                 return true;
             }
 
-            QByteArray Get(QString endpoint)
+            void Get(QString endpoint)
             {
-                return QByteArray();
+                request.setUrl(endpoint);
+                networkAcessManager->get(request);
             }
 
             bool Update(QString endpoint, QByteArray updateData)
@@ -37,8 +47,40 @@ namespace FRA
                 return false;
             }
 
+        public:
+            ~HttpRequestsManager()
+            {
+                delete networkAcessManager;
+            }
+
+        signals:
+            void ResultChange();
+
+        private slots:
+            void ManagerFinished(QNetworkReply* reply)
+            {
+                if(reply->error())
+                {
+                    // logger.LogErrorInFile(QString("error trying to get HTTP requests: %1").arg(reply->errorString()));
+                    qDebug() << "Hubo un error: ";
+                    qDebug() << reply->errorString();
+                    return;
+                }
+                else
+                {
+                    resultAsString = reply->readAll();
+                    // logger.LogErrorInFile(QString("result is: %1").arg(resultAsString));
+                    qDebug() << "El resultado es: ";
+                    qDebug() << resultAsString;
+                    emit ResultChange();
+                }
+            }
+
         private:
             Logger logger;
+            QNetworkAccessManager* networkAcessManager;
+            QNetworkRequest request;
+            QString resultAsString;
         };
     }
 }
