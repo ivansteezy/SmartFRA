@@ -1,7 +1,6 @@
 
 export interface Resident {
-    idResident: number
-    fkIdHouse: number
+    idResidents: number
     resisdentName: string
     lastName: string
     motherLastName: string

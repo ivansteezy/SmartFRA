@@ -1,10 +1,9 @@
 
-export interface House {
+export interface Event {
     idEvent: number
-    fkIdResident: number
-    eventName: string
+    nameEvent: string
     startTime: Date
     endTime: Date
     state: number
-    accessNumber: number
+    numberAccess: number
 }
