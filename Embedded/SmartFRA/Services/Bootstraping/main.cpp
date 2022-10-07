@@ -4,7 +4,8 @@
 
 #include <opencv2/opencv.hpp>
 
-// #include "../Logging/Logger.hpp"
+#include "../Logging/Logger.hpp"
+#include "SystemInitializer.hpp"
 // #include "../Networking/HttpRequestsManager.hpp"
 
 int main(int argc, char *argv[])
@@ -12,12 +13,12 @@ int main(int argc, char *argv[])
     std::cout << "Hola desde la version: " << CV_VERSION << " de OpenCV y con logger\n";
     qputenv("QT_IM_MODULE", QByteArray("qtvirtualkeyboard"));
 
-    //FRA::Networking::HttpRequestsManager<FRA::Logging::Logger> gNetworkManager;
-    // FRA::Logging::Logger* logger = new FRA::Logging::Logger();
-    // FRA::Networking::HttpRequestsManager gNetworkManager;
-    // gNetworkManager.Get("https://httpbin.org/get");
-    // gNetworkManager.Get("https://httpbin.org/get");
-    // gNetworkManager.Post(QString(), QByteArray());
+    auto systemInitializer = FRA::Bootstraping::SystemInitializer::CreateInstance();
+    systemInitializer->Initialize();
+
+    // test
+    auto logger = FRA::Logging::Logger::CreateInstance();
+    logger->LogInfoInFile("TESTING new dependency system");
 
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
