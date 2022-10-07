@@ -7,21 +7,25 @@
 #include <QDebug>
 #include <QTextStream>
 
+#include "Logging.Base.hpp"
+
 namespace FRA
 {
     namespace Logging
     {
-        class Logger
+        class Logger : public ILogger
         {
         public:
             Logger();
 
-        // Interface methods
         public:
-            void LogInfoInConsole(QString message);
-            void LogErrorInConsole(QString message);
-            void LogInfoInFile(QString message);
-            void LogErrorInFile(QString message);
+            virtual void LogInfoInConsole(const QString& message) override;
+            virtual void LogErrorInConsole(const QString& message) override;
+            virtual void LogInfoInFile(const QString& message) override;
+            virtual void LogErrorInFile(const QString& message) override;
+
+        public:
+            ~Logger();
 
         private:
             inline static const QString LogFilePath = "../SmartFRA/Logs/logs.txt";

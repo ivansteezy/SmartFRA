@@ -8,13 +8,12 @@ namespace FRA
 {
     namespace Networking
     {
-        template <typename THttpRequestsManager>
-        concept IHttpRequestsManager = requires(THttpRequestsManager manager)
+        struct IHttpRequetsManager
         {
-            { manager.Post(QString(), QByteArray())   } -> std::same_as<bool>;
-            { manager.Get(QString())                  } -> std::same_as<void>;
-            { manager.Update(QString(), QByteArray()) } -> std::same_as<bool>;
-            { manager.Delete(QString())               } -> std::same_as<bool>;
+            virtual void Post(const QString& endpoint, const QByteArray& body) = 0;
+            virtual void Get(const QString& endpoint) = 0;
+            virtual void Update(const QString& endpoint, const QByteArray& body) = 0;
+            virtual void Delete(const QString& endpoint) = 0;
         };
     }
 }

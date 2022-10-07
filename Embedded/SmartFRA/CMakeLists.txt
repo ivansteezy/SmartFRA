@@ -24,6 +24,7 @@ set(PROJECT_SOURCES
         Services/Logging/Logger.cpp
         Services/Networking/Networking.Base.hpp
         Services/Networking/HttpRequestsManager.hpp
+        Services/Networking/HttpRequestsManager.cpp
         UI/Qml/qml.qrc
 )
 

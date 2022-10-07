@@ -6,20 +6,20 @@ Logger::Logger()
 
 }
 
-void Logger::LogInfoInConsole(QString message)
+void Logger::LogInfoInConsole(const QString& message)
 {
     auto dateTime = QDateTime::currentDateTime().toString("dd.MM.yyyy hh:mm:ss");
     qInfo() << QString("INFORMATION [%1]: %2").arg(dateTime).arg(message);
 }
 
-void Logger::LogErrorInConsole(QString message)
+void Logger::LogErrorInConsole(const QString& message)
 {
     auto dateTime = QDateTime::currentDateTime().toString("dd.MM.yyyy hh:mm:ss");
     qCritical() << QString("ERROR [%1]: %2").arg(dateTime).arg(message);
 
 }
 
-void Logger::LogInfoInFile(QString message)
+void Logger::LogInfoInFile(const QString& message)
 {
     QFile file(LogFilePath);
     auto dateTime = QDateTime::currentDateTime().toString("dd.MM.yyyy hh:mm:ss");
@@ -36,7 +36,7 @@ void Logger::LogInfoInFile(QString message)
     file.close();
 }
 
-void Logger::LogErrorInFile(QString message)
+void Logger::LogErrorInFile(const QString& message)
 {
     QFile file(LogFilePath);
     auto dateTime = QDateTime::currentDateTime().toString("dd.MM.yyyy hh:mm:ss");
@@ -51,4 +51,9 @@ void Logger::LogErrorInFile(QString message)
     {
         LogErrorInConsole("Error trying to open the logfile!");
     }
+}
+
+Logger::~Logger()
+{
+
 }

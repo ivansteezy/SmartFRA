@@ -8,79 +8,40 @@
 #include <QNetworkReply>
 #include <QNetworkReply>
 
+#include "Networking.Base.hpp"
+
 namespace FRA
 {
     namespace Networking
     {
-        template <FRA::Logging::ILogger Logger>
-        class HttpRequestsManager : QObject
+        class HttpRequestsManager : public QObject, public IHttpRequetsManager
         {
-        Q_OBJECT
-        public:
-            HttpRequestsManager()
-            {
-                networkAcessManager = new QNetworkAccessManager(this);
-
-                QObject::connect(networkAcessManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(ManagerFinished(QNetworkReply*)));
-            }
+            Q_OBJECT
 
         public:
-            bool Post(QString endpoint, QByteArray postData)
-            {
-                logger.LogInfoInFile("Making a post!");
-                return true;
-            }
-
-            void Get(QString endpoint)
-            {
-                request.setUrl(endpoint);
-                networkAcessManager->get(request);
-            }
-
-            bool Update(QString endpoint, QByteArray updateData)
-            {
-                return false;
-            }
-
-            bool Delete(QString endpoint)
-            {
-                return false;
-            }
+            Q_INVOKABLE explicit HttpRequestsManager(QObject* parent = nullptr);
+            HttpRequestsManager(FRA::Logging::ILogger* logger);
 
         public:
-            ~HttpRequestsManager()
-            {
-                delete networkAcessManager;
-            }
+            virtual void Post(const QString& endpoint, const QByteArray& postData) override;
+            virtual void Get(const QString& endpoint) override;
+            virtual void Update(const QString& endpoint, const QByteArray& updateData) override;
+            virtual void Delete(const QString& endpoint) override;
+
+        public:
+            ~HttpRequestsManager();
 
         signals:
             void ResultChange();
 
         private slots:
-            void ManagerFinished(QNetworkReply* reply)
-            {
-                if(reply->error())
-                {
-                    // logger.LogErrorInFile(QString("error trying to get HTTP requests: %1").arg(reply->errorString()));
-                    qDebug() << "Hubo un error: ";
-                    qDebug() << reply->errorString();
-                    return;
-                }
-                else
-                {
-                    resultAsString = reply->readAll();
-                    // logger.LogErrorInFile(QString("result is: %1").arg(resultAsString));
-                    qDebug() << "El resultado es: ";
-                    qDebug() << resultAsString;
-                    emit ResultChange();
-                }
-            }
+            void ManagerFinished(QNetworkReply* reply);
 
         private:
-            Logger logger;
-            QNetworkAccessManager* networkAcessManager;
-            QNetworkRequest request;
-            QString resultAsString;
+            FRA::Logging::ILogger* mLogger;
+            QNetworkAccessManager* mNetworkAcessManager;
+            QNetworkRequest mRequest;
+            QString mResultAsString;
         };
     }
 }
