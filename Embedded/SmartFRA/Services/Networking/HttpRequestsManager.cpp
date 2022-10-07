@@ -3,14 +3,8 @@ using namespace FRA::Networking;
 
 HttpRequestsManager::HttpRequestsManager(QObject *parent) : QObject(parent)
 {
-
-}
-
-HttpRequestsManager::HttpRequestsManager(FRA::Logging::ILogger* logger)
-{
-    mLogger = logger;
     mNetworkAcessManager = new QNetworkAccessManager(this);
-
+    qDebug() << "CONNECTING";
     QObject::connect(mNetworkAcessManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(ManagerFinished(QNetworkReply*)));
 }
 
@@ -37,6 +31,7 @@ void HttpRequestsManager::Delete(const QString& endpoint)
 
 void HttpRequestsManager::ManagerFinished(QNetworkReply* reply)
 {
+    qDebug() << "IT FINISHES";
     if(reply->error())
     {
         // logger.LogErrorInFile(QString("error trying to get HTTP requests: %1").arg(reply->errorString()));

@@ -14,8 +14,8 @@ int main(int argc, char *argv[])
 
     //FRA::Networking::HttpRequestsManager<FRA::Logging::Logger> gNetworkManager;
     FRA::Logging::Logger* logger = new FRA::Logging::Logger();
-    FRA::Networking::HttpRequestsManager gNetworkManager(logger);
-
+    FRA::Networking::HttpRequestsManager gNetworkManager;
+    gNetworkManager.Get("https://httpbin.org/get");
     // gNetworkManager.Get("https://httpbin.org/get");
     // gNetworkManager.Post(QString(), QByteArray());
 

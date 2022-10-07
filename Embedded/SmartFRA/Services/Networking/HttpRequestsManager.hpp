@@ -19,8 +19,7 @@ namespace FRA
             Q_OBJECT
 
         public:
-            Q_INVOKABLE explicit HttpRequestsManager(QObject* parent = nullptr);
-            HttpRequestsManager(FRA::Logging::ILogger* logger);
+            explicit HttpRequestsManager(QObject* parent = 0);
 
         public:
             virtual void Post(const QString& endpoint, const QByteArray& postData) override;
@@ -38,7 +37,7 @@ namespace FRA
             void ManagerFinished(QNetworkReply* reply);
 
         private:
-            FRA::Logging::ILogger* mLogger;
+            // FRA::Logging::ILogger* mLogger;
             QNetworkAccessManager* mNetworkAcessManager;
             QNetworkRequest mRequest;
             QString mResultAsString;
