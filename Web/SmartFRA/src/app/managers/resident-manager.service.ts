@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Resident } from '../models/resident.model';
-import { HttpRequestsService } from '../services/http-requests.service';
+import { HttpRequestsService } from '../services/common/http-requests.service';
 import { ResidentEndpoints } from '../data-access/resident.endpoints';
 
 @Injectable({
