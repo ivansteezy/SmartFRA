@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationService } from 'src/app/services/navigation.service';
+import { NavigationService } from 'src/app/services/common/navigation.service';
 
 @Component({
   selector: 'app-dashboard',
