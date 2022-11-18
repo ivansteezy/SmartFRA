@@ -1,11 +1,14 @@
 const express = require('express');
+const ResidentRepository = require('../Repository/ResidentRepository');
 const router = express.Router();
 
 router.get('/AllResidents', (request, response) => {
-    // const members = ['Alma', 'Churrus', 'Hector'];
-    // response.json({
-    //     members: members
-    // });
+    const repository = ResidentRepository;
+    const result = repository.GetAllResidents();
+
+    response.json({
+        members: result
+    });
 });
 
 router.get('/ResidentById/:id',  (request, response) => {
