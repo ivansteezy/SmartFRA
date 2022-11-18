@@ -4,17 +4,27 @@
 #include <QByteArray>
 #include <QString>
 
+#include "../Core/FRACore.hpp"
+
 namespace FRA
 {
     namespace Networking
     {
-        template <typename THttpRequestsManager>
-        concept IHttpRequestsManager = requires(THttpRequestsManager manager)
+        interface IHttpRequestManager : FRA::Core::IContract
         {
-            { manager.Post(QString(), QByteArray())   } -> std::same_as<bool>;
-            { manager.Get(QString())                  } -> std::same_as<QByteArray>;
-            { manager.Update(QString(), QByteArray()) } -> std::same_as<bool>;
-            { manager.Delete(QString())               } -> std::same_as<bool>;
+            FRA_DECLARE_INTERFACE(IHttpRequestManager, "ILogger");
+
+            virtual void Post(const QString& endpoint, const QByteArray& body) = 0;
+            virtual void Get(const QString& endpoint) = 0;
+            virtual void Update(const QString& endpoint, const QByteArray& body) = 0;
+            virtual void Delete(const QString& endpoint) = 0;
+        };
+        FRA_DECLARE_CLASSFACTORY(HttpRequetsManager, IHttpRequestManager);
+
+        struct GlobalHttpRequetsManager
+        {
+            static void SetInstance(FRA::Core::ComPtr<IHttpRequestManager> manager);
+            static IHttpRequestManager* Instance();
         };
     }
 }
