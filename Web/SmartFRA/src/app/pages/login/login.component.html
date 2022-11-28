@@ -1,46 +1,20 @@
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>TutsPlus TailwindCSS Form Demo</title>
-  <link rel="stylesheet" href="/build/tailwind.css">
-</head>
-<body>
-    <p>login works!</p>
+<div class="topContainer bg-gradient-to-r">
+  <p>INICIAR SESIÓN </p>
 
+  <div class="main">
+    <div class="login">
 
-    <div>
-        <form>
-          <div>
-            <div>
-              <div>
-                <label for="email-lbl">
-                  Email
-                </label>
-                <input id="user-name-input" type="text" placeholder="alma.hj0606@gmail.com">
-                <div>
-                  <span>
-                    Please fill out this field with your email.
-                  </span>
-                </div>
-              </div>
-              <div>
-                <label for="password-lbl">
-                  Password
-                </label>
-                <input id="password-input" type="password" placeholder="example">
-              </div>
-            </div>
-            <div>
-              <div>
-                <button>
-                  Button
-                </button>
-              </div>
-            </div>
-          </div>
-        </form>
-      </div>
-</body>
-</html>
+      <form [formGroup]="myForm" (ngSubmit)="submitFormulario()">
+        <label for="chk" aria-hidden="true"> Iniciar Sesion</label><br>
+        <input formControlName="email" type="email" class="forms-control" name="email" placeholder="Email" ><br>
+        <input formControlName="password" type="password" name="pswd" placeholder="Password" ><br><br>
+        
+        <button> Iniciar Sesion</button>
+      </form>
+
+      <label for="forgot-password">¿Has olvidado tu contraseña?</label>
+      ¿No tienes cuenta? <label for="forgot-password" (click)="navigateTo()">Registrate</label>
+    </div>
+
+  </div>
+</div>

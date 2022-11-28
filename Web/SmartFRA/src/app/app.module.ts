@@ -4,17 +4,21 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { routing } from './app.routing';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent
+
   ],
   imports: [
     BrowserModule,
     RouterModule,
     routing,
-    HttpClientModule
+    HttpClientModule,
+
+   
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
