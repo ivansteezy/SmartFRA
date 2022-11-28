@@ -30,11 +30,17 @@ export class LoginComponent implements OnInit {
     if(this.myForm.invalid){
       console.log("Formulario invalido");
       return;
+    }else{
+      alert("Se va a envioar el formulario");
+      console.log(this.myForm.valid);
     }
-    
-    alert("Se va a envioar el formulario");
-    console.log(this.myForm.valid);
 
+
+    
+  }
+
+  public get f(): any {
+      return this.myForm.controls;
   }
 
   public navigateTo(){
