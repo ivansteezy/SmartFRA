@@ -40,9 +40,7 @@ const Queries = {
                           `VALUES('${resident.residentName}', '${resident.lastName}', '${resident.motherLastName}', '${resident.age}', '${resident.idHouse}', '${resident.plates}', '${resident.telephone}', '${resident.faceModel}')`;
             return query;
         },
-        GetAllResidents: () => {
-            const query = `SELECT * FROM Resident`;
-        }
+        GetAllResidents: 'SELECT * FROM Residents'
     },
 
     ResidentServiceAccess: {
