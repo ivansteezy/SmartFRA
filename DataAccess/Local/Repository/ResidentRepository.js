@@ -1,8 +1,5 @@
-// const { connection } = require("../Access/DatabaseAdapter");
 const Queries = require("../Access/Queries");
 const Adapter = require('../Access/DatabaseAdapter');
-// const ResidentModel = require("../Models/ResidentModel");
-
 
 const ResidentRepository =
 {
@@ -12,8 +9,6 @@ const ResidentRepository =
 
         return data;
     }
-
-    // return [new ResidentModel('1', 'Churrus', '', '', '', '', '', ''), new ResidentModel('2', 'Alma', '', '', '', '', '', '')];
 }
 
 module.exports = ResidentRepository;
