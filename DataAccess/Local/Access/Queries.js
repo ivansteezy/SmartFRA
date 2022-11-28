@@ -39,6 +39,10 @@ const Queries = {
             const query = `INSERT INTO Resdient(residentName, lastName, motherLastName, age, idHouse, plates, telephone, faceModel) ` +
                           `VALUES('${resident.residentName}', '${resident.lastName}', '${resident.motherLastName}', '${resident.age}', '${resident.idHouse}', '${resident.plates}', '${resident.telephone}', '${resident.faceModel}')`;
             return query;
+        },
+        GetAllResidents: () => {
+            const query = `SELECT * FROM Residents`;
+            return query;
         }
     },
 
