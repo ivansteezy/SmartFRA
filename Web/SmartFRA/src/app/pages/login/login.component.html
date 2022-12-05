@@ -1,20 +1,8 @@
-<div class="topContainer bg-gradient-to-r">
-  <p>INICIAR SESIÓN </p>
-
-  <div class="main">
-    <div class="login">
-
-      <form [formGroup]="myForm" (ngSubmit)="submitFormulario()">
-        <label for="chk" aria-hidden="true"> Iniciar Sesion</label><br>
-        <input formControlName="email" [class.good]="f.email.errors && f.email.touched" type="email" class="forms-control" name="email" placeholder="Email" ><br>
-        <input formControlName="password" [class.good]="f.password.errors && f.password.touched" type="password" name="pswd" placeholder="Password" ><br><br>
-        
-        <button> Iniciar Sesion</button>
-      </form>
-
-      <label for="forgot-password">¿Has olvidado tu contraseña?</label><br>
-      ¿No tienes cuenta <label for="forgot-password" (click)="navigateTo()">Registrate</label>
-    </div>
-
+<div class="container">
+  <div class="grid grid-cols-2 sm:grid-cols-1 md:grid-cols-2 gap-5">
+    <div class="bg-blue-200 sm:col-span-1">TITULO</div>
+    <div class="bg-blue-500">FORMULARIO</div>
+    
   </div>
+  
 </div>
