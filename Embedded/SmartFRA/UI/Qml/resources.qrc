@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/qml">
+        <file>main.qml</file>
+    </qresource>
+    <qresource prefix="/images">
+        <file alias="background.png">resources/images/background-home.png</file>
+    </qresource>
+</RCC>

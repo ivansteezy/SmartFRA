@@ -4,18 +4,18 @@
 
 #include <opencv2/opencv.hpp>
 
-#include "SystemInitializer.Base.hpp"
-#include "SystemInitializer.hpp"
+// #include "SystemInitializer.Base.hpp"
+// #include "SystemInitializer.hpp"
 
 int main(int argc, char *argv[])
 {
     std::cout << "Hola desde la version: " << CV_VERSION << " de OpenCV y con logger\n";
     qputenv("QT_IM_MODULE", QByteArray("qtvirtualkeyboard"));
 
-    auto systemInitializer = FRA::Bootstraping::SystemInitializer::CreateInstance();
-    systemInitializer->Initialize();
+    // auto systemInitializer = FRA::Bootstraping::SystemInitializer::CreateInstance();
+    // systemInitializer->Initialize();
 
-    // test
+    // test/
     // auto manager = FRA::Networking::HttpRequetsManager::CreateInstance();
     // manager->Get("https://httpbin.org/get");
 
@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
 
     QQmlApplicationEngine engine;
 
-    const QUrl url(QStringLiteral("qrc:/main.qml"));
+    const QUrl url(QStringLiteral("qrc:/qml/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
                      &app, [url](QObject *obj, const QUrl &objUrl) {
         if (!obj && url == objUrl)
