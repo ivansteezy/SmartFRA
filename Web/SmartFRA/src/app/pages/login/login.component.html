@@ -1,1 +1,41 @@
-<p>login works!</p>
+<div class="container font-montse-serif h-screen bg-no-repeat  bg-cover" style="background-image: url('../../../assets/img/wallpapers/login-wall-1-03.png')">
+  <div class="grid grid-cols-2  sm:grid-cols-1 md:grid-cols-2 gap-5 h-screen content-center">
+    <div class=" sm:col-span-1 md:col-span-1"></div>
+    <div class="col-span-1">
+
+      <div class="w-full content-center">
+        <img src="../../../assets/img/wallpapers/SmartFRA-ORANGE-09.png" class="h-14 ml-12 mb-4">
+        
+        <form [formGroup]="myForm" class="w-full" (ngSubmit)="submitFormulario()">
+          <div class="content-center">
+            <div>
+              <label for="chk" class="ml-5 text-white"> Iniciar Sesion</label>
+            </div>
+            
+            <div>
+              <input formControlName="email" type="email" class="border rounded-sm w-3/5 ml-5 mr-56 mt-5 p-2 " name="email" placeholder="Email" >
+            </div>
+    
+            <div>
+              <input formControlName="password"  type="password" class="border rounded-sm w-3/5 ml-5 mr-5 mt-5 p-2" name="pswd" placeholder="Password" >
+            </div>
+
+          </div>
+        
+          <button class="bg-orange-400 text-white p-2 border rounded-md w-52 h-14 ml-60 mt-6 hover:bg-white hover:text-orange-400"> Iniciar Sesion</button>
+        </form>
+  
+        <label class="text-gray-300 hover:text-gray-500" for="forgot-password">¿Has olvidado tu contraseña?</label><br>
+        <div class="text-white">
+          ¿No tienes cuenta <label for="forgot-password" class="text-orange-400 font-bold hover:text-white" (click)="navigateTo()">Registrate</label>
+        </div>
+
+      </div>
+      
+      
+
+    </div>
+    
+  </div>
+  
+</div>
