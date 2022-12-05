@@ -5,4 +5,12 @@
     <qresource prefix="/images">
         <file alias="background.png">resources/images/background-home.png</file>
     </qresource>
+    <qresource prefix="/fonts">
+        <file>resources/fonts/Montserrat-Black.ttf</file>
+        <file alias="bold.ttf">resources/fonts/Montserrat-Bold.ttf</file>
+        <file>resources/fonts/Montserrat-ExtraBold.ttf</file>
+        <file>resources/fonts/Montserrat-Medium.ttf</file>
+        <file alias="regular.ttf">resources/fonts/Montserrat-Regular.ttf</file>
+        <file>resources/fonts/Montserrat-SemiBold.ttf</file>
+    </qresource>
 </RCC>
