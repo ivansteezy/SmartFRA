@@ -34,7 +34,7 @@ set(PROJECT_SOURCES
         Services/Networking/Networking.Base.cpp
         Services/Networking/HttpRequestManager.hpp
         Services/Networking/HttpRequestManager.cpp
-        UI/Qml/qml.qrc
+        UI/Qml/resources.qrc
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
