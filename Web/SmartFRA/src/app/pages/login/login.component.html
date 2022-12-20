@@ -1,41 +1,46 @@
-<div class="container font-montse-serif h-screen bg-no-repeat  bg-cover" style="background-image: url('../../../assets/img/wallpapers/login-wall-1-03.png')">
-  <div class="grid grid-cols-2  sm:grid-cols-1 md:grid-cols-2 gap-5 h-screen content-center">
-    <div class=" sm:col-span-1 md:col-span-1"></div>
-    <div class="col-span-1">
+<!-- <main class="flex items-stretch xsm:flex-col sm:flex-row md:flex lg:flex bg-purple-400 xsm:bg-pink-400 sm:bg-black  md:bg-slate-600 lg:bg-red-500 xsm:h-screen "> -->
+  <main class="flex items-stretch xsm:flex-col sm:flex-row md:flex lg:flex xsm:h-screen xsm:bg-background-login-small sm:bg-background-login-large bg-no-repeat bg-cover">
+  <div class=" flex bg-white m-2 xsm:h-2/5 sm:w-6/12  text-white sm:mt-20 items-center justify-center"> 
+   
+  </div>
 
-      <div class="w-full content-center">
-        <img src="../../../assets/img/wallpapers/SmartFRA-ORANGE-09.png" class="h-14 ml-12 mb-4">
-        
-        <form [formGroup]="myForm" class="w-full" (ngSubmit)="submitFormulario()">
-          <div class="content-center">
-            <div>
-              <label for="chk" class="ml-5 text-white"> Iniciar Sesion</label>
-            </div>
-            
-            <div>
-              <input formControlName="email" type="email" class="border rounded-sm w-3/5 ml-5 mr-56 mt-5 p-2 " name="email" placeholder="Email" >
-            </div>
-    
-            <div>
-              <input formControlName="password"  type="password" class="border rounded-sm w-3/5 ml-5 mr-5 mt-5 p-2" name="pswd" placeholder="Password" >
-            </div>
 
+  <div class="flex bg-blue-900 m-2 xsm:h-3/5 sm:w-6/12 sm:mt-20 justify-start items-start">
+    <div class="ml-20 mt-10 mr-20 space-y-4">
+      <img
+        src="../../../assets/img/wallpapers/SmartFRA-ORANGE-09.png"
+        class="w-fit h-auto"
+        alt=""
+      />
+
+      <h1 class="text-white-pure text-lg font-medium">Iniciar Sesión</h1>
+
+      <!-- FORMULARIO -->
+      <form [formGroup]="myForm" class="space-y-3" (ngSubmit)="submitFormulario()">
+        <div class="space-y-3 bg-blue-500 flex-col">
+          <div class="w-full">
+            <input class="w-full rounded-sm h-10"  formControlName="email" type="email" name="email" placeholder="Email" >
           </div>
-        
-          <button class="bg-orange-400 text-white p-2 border rounded-md w-52 h-14 ml-60 mt-6 hover:bg-white hover:text-orange-400"> Iniciar Sesion</button>
-        </form>
   
-        <label class="text-gray-300 hover:text-gray-500" for="forgot-password">¿Has olvidado tu contraseña?</label><br>
-        <div class="text-white">
-          ¿No tienes cuenta <label for="forgot-password" class="text-orange-400 font-bold hover:text-white" (click)="navigateTo()">Registrate</label>
+          <div class="w-full">
+            <input class="w-full rounded-sm h-10" formControlName="password"  type="password" name="pswd" placeholder="Password" >
+          </div>
+
         </div>
+      
+        <div class="flex justify-end xsm:justify-center xsm:mt-6 sm:justify-end">
+          <button class="bg-primary-orange-color text-white-pure pt-3 pb-3 pl-9 pr-9 rounded-md shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105  duration-300"> Iniciar Sesion</button>
+        </div>
+      </form>
 
+      <div class="flex flex-col ">
+      <label class="hover:cursor-pointer text-complementary-gray-light hover:text-primary-orange" (click)="navigateTo()" for="forgot-password">¿Has olvidado tu contraseña?</label>
+       <div class="flex">
+        <p class="text-white-pure mr-2">¿No tienes cuenta?  </p>
+        <label for="forgot-password" class="hover:cursor-pointer text-primary-orange hover:text-complementary-gray-light" (click)="navigateTo()">Registrate</label>
+       </div> 
       </div>
-      
-      
-
     </div>
-    
   </div>
   
-</div>
+</main>
