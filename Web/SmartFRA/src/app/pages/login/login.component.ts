@@ -26,10 +26,10 @@ export class LoginComponent implements OnInit {
   // metodo de envio de datos
   public SubmitForm(){
     if(this.myForm.invalid){
-      console.log("Formulario invalido");
+      console.log("Form invalid");
       return;
     }else{
-      alert("Se va a envioar el formulario");
+      alert("Form is going to be send");
       console.log(this.myForm.valid);
     }
     
