@@ -3,7 +3,6 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { NavigationService } from 'src/app/services/common/navigation.service';
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -21,12 +20,11 @@ export class LoginComponent implements OnInit {
       'password': new FormControl('', Validators.required)
     });
   }
-  
 
   ngOnInit(): void {}
 
   // metodo de envio de datos
-  public submitFormulario(){
+  public SubmitForm(){
     if(this.myForm.invalid){
       console.log("Formulario invalido");
       return;
@@ -34,8 +32,6 @@ export class LoginComponent implements OnInit {
       alert("Se va a envioar el formulario");
       console.log(this.myForm.valid);
     }
-
-
     
   }
 
@@ -43,7 +39,11 @@ export class LoginComponent implements OnInit {
       return this.myForm.controls;
   }
 
-  public navigateTo(){
+  public NavigateToRegister(){
+    this.navigation.NavigateToRoute("register");
+  }
+
+  public NavigateToResetPass(){
     this.navigation.NavigateToRoute("register");
   }
 

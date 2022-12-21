@@ -8,8 +8,8 @@ module.exports = {
         'montse-serif': 'Montserrat'
       },
       backgroundImage: theme => ({
-        'background-login-large': "url('src/assets/img/wallpapers/login-wall-1-03.png')",
-        'background-login-small': "url('src/assets/img/wallpapers/smart-fra-ui-small-login-04.png')",
+        'background-login-large': "url('src/assets/img/wallpapers/login-wall-lg.png')",
+        'background-login-small': "url('src/assets/img/wallpapers/login-wall-sm.png')",
       })
     },
     colors: {
@@ -24,10 +24,8 @@ module.exports = {
       // => @media (min-width: 200px) { ... }
       'sm': '576px',
       // => @media (min-width: 576px) { ... }
-
       'md': '960px',
       // => @media (min-width: 960px) { ... }
-
       'lg': '1440px',
       // => @media (min-width: 1440px) { ... }
     },

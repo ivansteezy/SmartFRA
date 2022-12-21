@@ -8,7 +8,7 @@
   <div class="flex bg-blue-900 m-2 xsm:h-3/5 sm:w-6/12 sm:mt-20 justify-start items-start">
     <div class="ml-20 mt-10 mr-20 space-y-4">
       <img
-        src="../../../assets/img/wallpapers/SmartFRA-ORANGE-09.png"
+        src="../../../assets/img/wallpapers/title-login-orange-lg.png"
         class="w-fit h-auto"
         alt=""
       />
@@ -16,14 +16,14 @@
       <h1 class="text-white-pure text-lg font-medium">Iniciar Sesión</h1>
 
       <!-- FORMULARIO -->
-      <form [formGroup]="myForm" class="space-y-3" (ngSubmit)="submitFormulario()">
+      <form [formGroup]="myForm" class="space-y-3" (ngSubmit)="SubmitForm()">
         <div class="space-y-3 bg-blue-500 flex-col">
           <div class="w-full">
-            <input class="w-full rounded-sm h-10"  formControlName="email" type="email" name="email" placeholder="Email" >
+            <input class="w-full rounded-sm h-10 p-2"  formControlName="email" type="email" name="email" placeholder="Email" >
           </div>
   
           <div class="w-full">
-            <input class="w-full rounded-sm h-10" formControlName="password"  type="password" name="pswd" placeholder="Password" >
+            <input class="w-full rounded-sm h-10 p-2" formControlName="password"  type="password" name="pswd" placeholder="Password" >
           </div>
 
         </div>
@@ -34,10 +34,10 @@
       </form>
 
       <div class="flex flex-col ">
-      <label class="hover:cursor-pointer text-complementary-gray-light hover:text-primary-orange" (click)="navigateTo()" for="forgot-password">¿Has olvidado tu contraseña?</label>
+      <label class="hover:cursor-pointer text-complementary-gray-light hover:text-primary-orange" (click)="NavigateToResetPass()" for="forgot-password">¿Has olvidado tu contraseña?</label>
        <div class="flex">
         <p class="text-white-pure mr-2">¿No tienes cuenta?  </p>
-        <label for="forgot-password" class="hover:cursor-pointer text-primary-orange hover:text-complementary-gray-light" (click)="navigateTo()">Registrate</label>
+        <label for="forgot-password" class="hover:cursor-pointer text-primary-orange hover:text-complementary-gray-light" (click)="NavigateToRegister()">Registrate</label>
        </div> 
       </div>
     </div>
