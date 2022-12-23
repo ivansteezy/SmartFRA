@@ -34,7 +34,8 @@ module.exports = {
       'secondary-blue': '#05364D',
       'complementary-white': '#EEE9E4',
       'complementary-gray-light': '#D9D9D9',
-      'white-pure': '#FFFFFF'
+      'white-pure': '#FFFFFF',
+      'red-alert': '#FF6363'
       }
   },
   plugins: [],

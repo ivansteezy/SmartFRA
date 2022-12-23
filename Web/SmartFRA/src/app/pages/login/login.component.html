@@ -19,18 +19,29 @@
       <form [formGroup]="myForm" class="space-y-3" (ngSubmit)="SubmitForm()">
         <div class="space-y-3 bg-blue-500 flex-col">
           <div class="w-full">
-            <input class="w-full rounded-sm h-10 p-2"  formControlName="email" type="email" name="email" placeholder="Email" >
+            <input 
+              class="w-full rounded-sm h-10 p-2" [class.is-danger]="myForm.get('email') && myForm.get('email')" formControlName="email"  id="email" type="email" name="email" placeholder="Email">
+              
           </div>
   
           <div class="w-full">
-            <input class="w-full rounded-sm h-10 p-2" formControlName="password"  type="password" name="pswd" placeholder="Password" >
+            <input class="w-full rounded-sm h-10 p-2" [class.is-danger]="myForm.get('password') && myForm.get('password')" formControlName="password"  type="password" name="pswd" placeholder="Password">
           </div>
 
         </div>
+        <div class="flex-col justify-center">
+          <p class="text-red-alert" *ngIf="f.email.errors?.required && f.email?.touched"> * Escribe tu correo </p>
+          <p class="text-red-alert" *ngIf="f.email.errors?.pattern && f.email?.touched"> * Escribe un correo valido </p>
+          <p class="text-red-alert" *ngIf="f.password.errors?.required && f.password?.touched"> * Escribe tu contraseña </p>
+        </div>
       
         <div class="flex justify-end xsm:justify-center xsm:mt-6 sm:justify-end">
-          <button class="bg-primary-orange-color text-white-pure pt-3 pb-3 pl-9 pr-9 rounded-md shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105  duration-300"> Iniciar Sesion</button>
+          <button type="submit" class="bg-primary-orange-color text-white-pure pt-3 pb-3 pl-9 pr-9 rounded-md shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105  duration-300"> Iniciar Sesion</button>
         </div>
+
+        
+
+        
       </form>
 
       <div class="flex flex-col ">
