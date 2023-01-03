@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
   public SubmitForm() {
     if (this.myForm.invalid) {
       console.log('Form invalid');
-      this.toast.error({detail:"Error de registro",summary:'Introduce tu informacion correctamente.',duration:5000});
+      this.toast.error({detail:"Error de Inicio de Sesión",summary:'Introduce tu informacion correctamente.',duration:5000});
       return;
     } else {
       alert('Form is going to be send');
