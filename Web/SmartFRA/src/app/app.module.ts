@@ -5,16 +5,22 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { routing } from './app.routing';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgToastModule } from 'ng-angular-popup';
+
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
     RouterModule,
     routing,
     HttpClientModule,
+    BrowserAnimationsModule, 
+    NgToastModule
   ],
   providers: [],
   bootstrap: [AppComponent]

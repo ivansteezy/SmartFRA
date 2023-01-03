@@ -1,7 +1,7 @@
 <!-- <main class="flex items-stretch xsm:flex-col sm:flex-row md:flex lg:flex bg-purple-400 xsm:bg-pink-400 sm:bg-black  md:bg-slate-600 lg:bg-red-500 xsm:h-screen "> -->
     <main class="flex items-stretch xsm:flex-col sm:flex-row md:flex lg:flex xsm:h-screen xsm:bg-background-login-small sm:bg-background-login-large bg-no-repeat bg-cover">
+
         <div class=" flex bg-white m-2 xsm:h-2/5 sm:w-6/12  text-white sm:mt-20 items-center justify-center"> 
-         
         </div>
       
       
@@ -51,7 +51,7 @@
               </div>
             
               <div class="flex justify-end xsm:justify-center xsm:mt-6 sm:justify-end">
-                <button type="submit" class="bg-primary-orange-color text-white-pure pt-3 pb-3 pl-9 pr-9 rounded-md shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105  duration-300"> Iniciar Sesion</button>
+                <button type="submit" class="bg-primary-orange-color text-white-pure pt-3 pb-3 pl-9 pr-9 rounded-md shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105  duration-300"> Registrate</button>
               </div>
             </form>
       
@@ -115,7 +115,7 @@
                       <div class="w-full">
                         <input class="w-full rounded-sm h-10 p-2" [class.is-danger]="myFormValidation.get('code')" formControlName="code"  id="code" type="text" name="code" placeholder="XXXX">
                         <p class="text-white-pure" *ngIf="fV.code.errors?.required && fV.code?.touched"> * Escribe el codigo de verificación </p>
-                        <p class="text-white-pure" *ngIf="fV.code.errors?.pattern && fV.code?.touched"> * Escribe un codigo valido </p>
+                        <p class="text-white-pure" *ngIf="fV.code.errors?.pattern && fV.code?.touched"> * Escribe un codigo valido - 6 digitos </p>
                       </div>
 
                     <div class="mt-3 flex">
@@ -136,3 +136,7 @@
           </div>
         </div>
       </div>
+
+
+
+     

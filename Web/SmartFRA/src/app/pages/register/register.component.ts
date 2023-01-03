@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { NavigationService } from 'src/app/services/common/navigation.service';
+import { NgToastService } from 'ng-angular-popup';
+
 
 @Component({
   selector: 'app-register',
@@ -18,7 +20,8 @@ export class RegisterComponent implements OnInit {
   constructor(
     private navigation: NavigationService,
     private fb: FormBuilder,
-    private fbV: FormBuilder
+    private fbV: FormBuilder,
+    private toast: NgToastService
   ) {
     this.myForm = this.fb.group({
       email: ['', [Validators.required, Validators.pattern(/^\S+@\S+\.\S+$/)]],
@@ -40,16 +43,19 @@ export class RegisterComponent implements OnInit {
     });
 
     this.myFormValidation = this.fbV.group({
-      code: ['', [Validators.required, Validators.pattern(/^[a-zA-Z\s]*$/)]],
+      code: ['', [Validators.required, Validators.pattern(/^[0-9]{5}$/)]],
     });
   }
 
-  ngOnInit(): void {}
+  async ngOnInit() {
+
+  }
 
   // submit method
   public SubmitForm() {
     if (this.myForm.invalid) {
       console.log('Form invalid');
+      this.toast.error({detail:"Error de registro",summary:'Introduce tu informacion correctamente.',duration:5000});      
       return;
     } else {
       // Get form values ​​as an object
@@ -65,11 +71,17 @@ export class RegisterComponent implements OnInit {
           console.log(
             'No has ingresado un codigo valido, asi que no te puedo registrar'
           );
+          
+          if(this.myFormValidation.dirty && (this.myForm.valid == true)){
+            this.toast.error({detail:"Codigo Incorrecto",summary:'No has ingresado un codigo valido.',duration:5000});  
+          }
+ 
         } else {
           const rawFormCodeValue = this.myFormValidation.getRawValue();
-          alert('Form is going to be send');
+          this.toast.success({detail:"Registro exitoso",summary:'Te has registrado con exito.',duration:5000});
           console.log(rawFormCodeValue);
           console.log(rawFormValues);
+          this.navigation.NavigateToRoute('login');
         }
       }
     }
@@ -111,6 +123,7 @@ export class RegisterComponent implements OnInit {
   // Resend a code
   public ResendCode(){
     const email_resend = this.myForm.getRawValue().email;
+    this.toast.info({detail:"Código Reenviado",summary:'Por favor revisa tu correo.',duration:5000});
     console.log("Resend code to " + email_resend);
   }
 
