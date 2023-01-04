@@ -11,11 +11,10 @@ import { CognitoService } from 'src/app/services/aws/cognito.service';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
-  // formGroups
   myForm: FormGroup;
   myFormValidation: FormGroup;
 
-  show = false; // initial state of modal
+  show = false;
 
   constructor(
     private navigation: NavigationService,
@@ -49,7 +48,6 @@ export class RegisterComponent implements OnInit {
   }
 
   async ngOnInit() {
-
   }
 
   public VerifyUser(){
@@ -62,7 +60,6 @@ export class RegisterComponent implements OnInit {
       this.toast.success({detail:"Usuario verificado.",summary:'Tu cuenta ha sido verificada exitosamente.',duration:5000});
       this.navigation.NavigateToRoute('login');
     }).catch(error => {
-      console.log(error);
       this.toast.error({detail:"Error de verificacion",summary:'Introduce un código válido.',duration:5000});
     })
   }
@@ -76,53 +73,34 @@ export class RegisterComponent implements OnInit {
       phoneNumber: this.myForm.getRawValue().phoneNumber
     }
 
-    console.log('Insertando: '+data);
-
-    this.cognitoService.SignUpUser(data).then(res => {
-      console.log(res) 
-      this.show = true; //Mandar la señal de abrir el modal
-    }).catch(error => {
-      console.log(error)
-    })
-
+      this.cognitoService.SignUpUser(data).then(res => {
+        this.show = true;
+      }).catch(error => {
+        this.toast.error({detail:"Error de registro",summary:'Algo salió mal, intente nuevamente más tarde.',duration:5000});  
+      })
   }
 
-    // submit method
     public SubmitForm() {
       if (this.myForm.invalid) {
-        console.log('Form invalid');
         this.toast.error({detail:"Error de registro",summary:'Introduce tu informacion correctamente.',duration:5000});      
         return;
-  
+
       } else {
-        // Get form values ​​as an object
-        // const formValues = this.myForm.value;
-        // Get form values ​​without converting them to an object
         const rawFormValues = this.myForm.getRawValue();
-  
-  
-        // function de registro
-        this.RegisterUser(); // activate modal
+        this.RegisterUser(); 
       }
     }
   
     public SubmitFormValidation() {
-      // Only if modal is active:
       if (this.show) {
         if (this.myFormValidation.invalid) {
-          console.log(
-            'No has ingresado un codigo valido, asi que no te puedo registrar'
-          );
-  
           this.toast.error({detail:"Codigo Incorrecto",summary:'No has ingresado un codigo valido.',duration:5000});       
-  
         } else {
           this.VerifyUser();
         }
       }
     }
 
-  // convenience getter for easy access to form fields
   get f(): any {
     return this.myForm.controls;
   }
@@ -154,15 +132,11 @@ export class RegisterComponent implements OnInit {
     return this.myFormValidation.get('code');
   }
 
-
-  // Resend a code
   public ResendCode(){
     const email_resend = this.myForm.getRawValue().email;
     this.toast.info({detail:"Código Reenviado",summary:'Por favor revisa tu correo.',duration:5000});
-    console.log("Resend code to " + email_resend);
   }
 
-  // Navigation Functions:
   public NavigateToRegister() {
     this.navigation.NavigateToRoute('register');
   }
