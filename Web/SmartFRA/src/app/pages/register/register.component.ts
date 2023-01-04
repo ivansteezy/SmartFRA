@@ -3,7 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { NavigationService } from 'src/app/services/common/navigation.service';
 import { NgToastService } from 'ng-angular-popup';
-
+import { CognitoService } from 'src/app/services/aws/cognito.service';
 
 @Component({
   selector: 'app-register',
@@ -21,7 +21,8 @@ export class RegisterComponent implements OnInit {
     private navigation: NavigationService,
     private fb: FormBuilder,
     private fbV: FormBuilder,
-    private toast: NgToastService
+    private toast: NgToastService,
+    private cognitoService: CognitoService
   ) {
     this.myForm = this.fb.group({
       email: ['', [Validators.required, Validators.pattern(/^\S+@\S+\.\S+$/)]],
@@ -43,7 +44,7 @@ export class RegisterComponent implements OnInit {
     });
 
     this.myFormValidation = this.fbV.group({
-      code: ['', [Validators.required, Validators.pattern(/^[0-9]{5}$/)]],
+      code: ['', [Validators.required, Validators.pattern(/^[0-9]{6}$/)]],
     });
   }
 
@@ -51,41 +52,75 @@ export class RegisterComponent implements OnInit {
 
   }
 
-  // submit method
-  public SubmitForm() {
-    if (this.myForm.invalid) {
-      console.log('Form invalid');
-      this.toast.error({detail:"Error de registro",summary:'Introduce tu informacion correctamente.',duration:5000});      
-      return;
-    } else {
-      // Get form values ​​as an object
-      // const formValues = this.myForm.value;
-      // Get form values ​​without converting them to an object
-      const rawFormValues = this.myForm.getRawValue();
+  public VerifyUser(){
+    let data = {
+      email: this.myForm.getRawValue().email,
+      verificationCode: this.myFormValidation.getRawValue().code
+    }
 
-      this.show = true; // activate modal
+    this.cognitoService.VerifyUser(data).then(res => {
+      this.toast.success({detail:"Usuario verificado.",summary:'Tu cuenta ha sido verificada exitosamente.',duration:5000});
+      this.navigation.NavigateToRoute('login');
+    }).catch(error => {
+      console.log(error);
+      this.toast.error({detail:"Error de verificacion",summary:'Introduce un código válido.',duration:5000});
+    })
+  }
 
+  public RegisterUser(){
+    let data = {
+      email: this.myForm.getRawValue().email,
+      password: this.myForm.getRawValue().password,
+      names: this.myForm.getRawValue().name,
+      lastNames: this.myForm.getRawValue().lastName,
+      phoneNumber: this.myForm.getRawValue().phoneNumber
+    }
+
+    console.log('Insertando: '+data);
+
+    this.cognitoService.SignUpUser(data).then(res => {
+      console.log(res) 
+      this.show = true; //Mandar la señal de abrir el modal
+    }).catch(error => {
+      console.log(error)
+    })
+
+  }
+
+    // submit method
+    public SubmitForm() {
+      if (this.myForm.invalid) {
+        console.log('Form invalid');
+        this.toast.error({detail:"Error de registro",summary:'Introduce tu informacion correctamente.',duration:5000});      
+        return;
+  
+      } else {
+        // Get form values ​​as an object
+        // const formValues = this.myForm.value;
+        // Get form values ​​without converting them to an object
+        const rawFormValues = this.myForm.getRawValue();
+  
+  
+        // function de registro
+        this.RegisterUser(); // activate modal
+      }
+    }
+  
+    public SubmitFormValidation() {
       // Only if modal is active:
       if (this.show) {
         if (this.myFormValidation.invalid) {
           console.log(
             'No has ingresado un codigo valido, asi que no te puedo registrar'
           );
-          
-          if(this.myFormValidation.dirty && (this.myForm.valid == true)){
-            this.toast.error({detail:"Codigo Incorrecto",summary:'No has ingresado un codigo valido.',duration:5000});  
-          }
- 
+  
+          this.toast.error({detail:"Codigo Incorrecto",summary:'No has ingresado un codigo valido.',duration:5000});       
+  
         } else {
-          const rawFormCodeValue = this.myFormValidation.getRawValue();
-          this.toast.success({detail:"Registro exitoso",summary:'Te has registrado con exito.',duration:5000});
-          console.log(rawFormCodeValue);
-          console.log(rawFormValues);
-          this.navigation.NavigateToRoute('login');
+          this.VerifyUser();
         }
       }
     }
-  }
 
   // convenience getter for easy access to form fields
   get f(): any {
