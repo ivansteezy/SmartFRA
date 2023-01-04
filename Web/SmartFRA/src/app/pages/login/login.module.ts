@@ -19,7 +19,7 @@ const MODULE_ROUTES = [
     RouterModule.forChild(MODULE_ROUTES),
     
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ]
 })
 
