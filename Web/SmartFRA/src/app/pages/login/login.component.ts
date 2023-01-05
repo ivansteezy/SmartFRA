@@ -66,6 +66,6 @@ export class LoginComponent implements OnInit {
   }
 
   public NavigateToResetPass() {
-    this.navigation.NavigateToRoute('register');
+    this.navigation.NavigateToRoute('forgot-password');
   }
 }

@@ -9,10 +9,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgToastModule } from 'ng-angular-popup';
 
 import { ToastrModule } from 'ngx-toastr';
+import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
+import { LoginUserComponent } from './pages/user/login-user/login-user.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    LoginUserComponent,
   ],
   imports: [
     BrowserModule,
