@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { NavigationService } from 'src/app/services/common/navigation.service';
 import { NgToastService } from 'ng-angular-popup';
+import { CognitoService } from 'src/app/services/aws/cognito.service';
 
 @Component({
   selector: 'app-login',
@@ -12,29 +13,43 @@ import { NgToastService } from 'ng-angular-popup';
 export class LoginComponent implements OnInit {
   myForm: FormGroup;
 
-  constructor(private navigation: NavigationService, private fb: FormBuilder, private toast: NgToastService) {
+  constructor(private navigation: NavigationService, 
+    private fb: FormBuilder, 
+    private toast: NgToastService,
+    private cognitoService: CognitoService) {
     this.myForm = this.fb.group({
       email: ['', [Validators.required, Validators.pattern(/^\S+@\S+\.\S+$/)]],
       password: ['', [Validators.required]],
     });
+    
   }
 
   ngOnInit(): void {}
 
-  // metodo de envio de datos
+  public AuthenticateUser() {
+    let data = {
+      email: this.myForm.getRawValue().email,
+      password: this.myForm.getRawValue().password
+    }
+
+    this.cognitoService.AuthenticateUser(data).then(res => {
+      this.toast.success({detail:"Ingreso correcto",summary:'Bienvenido a SmartFRA',duration:5000});
+      this.navigation.NavigateToRoute('dashboard');
+    }).catch(error => {
+      this.toast.error({detail:"Error de Inicio de Sesión",summary:'Usuario o contraseña incorrectos.',duration:5000});
+    })
+  }
+
+
   public SubmitForm() {
     if (this.myForm.invalid) {
-      console.log('Form invalid');
       this.toast.error({detail:"Error de Inicio de Sesión",summary:'Introduce tu informacion correctamente.',duration:5000});
       return;
     } else {
-      alert('Form is going to be send');
-      this.toast.success({detail:"Ingreso correcto",summary:'Bienvenido a SmartFRA',duration:5000}); // Este mensajito realmente es solo de momento, la intención aqui es un redireccionamiento a Dashboard. 
-      console.log(this.myForm.valid);
+      this.AuthenticateUser();
     }
   }
 
-  // convenience getter for easy access to form fields
   get f(): any {
     return this.myForm.controls;
   }
@@ -46,7 +61,6 @@ export class LoginComponent implements OnInit {
     return this.myForm.get('password');
   }
 
-  // Navigation Functions:
   public NavigateToRegister() {
     this.navigation.NavigateToRoute('register');
   }
