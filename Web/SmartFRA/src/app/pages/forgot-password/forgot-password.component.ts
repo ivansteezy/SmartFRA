@@ -12,6 +12,9 @@ import { CognitoService } from 'src/app/services/aws/cognito.service';
 })
 export class ForgotPasswordComponent implements OnInit {
   myFormResetPass: FormGroup;
+  myFormResetPassValidation: FormGroup;
+
+  showPass = true;
 
   constructor(
     private navigation: NavigationService,
@@ -23,6 +26,12 @@ export class ForgotPasswordComponent implements OnInit {
     this.myFormResetPass = this.fb.group({
       email: ['', [Validators.required, Validators.pattern(/^\S+@\S+\.\S+$/)]]
     });
+
+    this.myFormResetPassValidation = this.fbV.group({
+      code: ['', [Validators.required, Validators.pattern(/^[0-9]{6}$/)]],
+    });
+    
+
   }
 
   ngOnInit(): void {
@@ -40,8 +49,14 @@ export class ForgotPasswordComponent implements OnInit {
     }
   }
 
+  public SubmitFormValidation() {}
+
   get f(): any {
     return this.myFormResetPass.controls;
+  }
+
+  get fV(): any {
+    return this.myFormResetPassValidation.controls;
   }
 
   public NavigateToRegister() {

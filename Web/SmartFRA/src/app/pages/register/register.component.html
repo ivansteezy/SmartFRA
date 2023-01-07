@@ -33,8 +33,8 @@
 
                 <div class="w-full">
                   <input class="w-full rounded-sm h-10 p-2" [class.is-danger]="myForm.get('password')" formControlName="password"  type="password" name="pswd" placeholder="Contraseña">
-                  <p class="text-white-pure" *ngIf="f.password.errors?.required && f.password?.touched"> * Escribe tu contraseña </p>
-                  <p class="text-white-pure" *ngIf="f.password.errors?.min && f.password?.touched"> * Escribe tu contraseña </p>
+                  <p class="text-white-pure justify-center text-sm" *ngIf="f.password.errors?.required && f.password?.touched"> * Escribe tu contraseña </p>
+                  <p class="text-white-pure justify-center text-xs" *ngIf="f.password.errors?.pattern && f.password?.touched"> * Contraseña Invalida (Min. 8 caracteres, un numero, una minuscula, una mayuscula y un signo especial.) </p>
                 </div>
 
                 <div class="w-full">
