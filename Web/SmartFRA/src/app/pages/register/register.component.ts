@@ -25,7 +25,7 @@ export class RegisterComponent implements OnInit {
   ) {
     this.myForm = this.fb.group({
       email: ['', [Validators.required, Validators.pattern(/^\S+@\S+\.\S+$/)]],
-      password: ['', [Validators.required, Validators.min(6)]],
+      password: ['', [Validators.required, Validators.pattern(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/)]],
       name: ['', [Validators.required, Validators.pattern(/^[a-zA-Z\s]*$/)]],
       lastName: [
         '',
@@ -142,7 +142,7 @@ export class RegisterComponent implements OnInit {
   }
 
   public NavigateToResetPass() {
-    this.navigation.NavigateToRoute('register');
+    this.navigation.NavigateToRoute('forgot-password');
   }
 
   public NavigateToLogin() {
