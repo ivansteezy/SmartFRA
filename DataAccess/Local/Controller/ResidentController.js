@@ -22,4 +22,20 @@ router.get('/ResidentById/:id',  (request, response) => {
     });
 });
 
+router.post('/', async function (request,response) {
+    const repository = ResidentRepository;
+
+    try{
+        console.log('Post a resident at /');
+        const result = await repository.InsertResident(request.body);
+        response.json(result);
+        console.log('Post the resident succesfully');
+    }
+    catch(error){
+        console.error('Error while trying to post the resident', error.message);
+        next(error);
+    }
+    
+})
+
 module.exports = router;
