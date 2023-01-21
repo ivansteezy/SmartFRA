@@ -8,7 +8,16 @@ const ResidentRepository =
         const data = Adapter.EmptyOrRows(result);
 
         return data;
+    },
+
+    InsertResident: async function( resident ){
+        const result= await Adapter.Execute(Queries.Residents.InsertResident(resident));
+        const data = Adapter.EmptyOrRows(result);
+
+        return data;
+
     }
 }
+
 
 module.exports = ResidentRepository;
