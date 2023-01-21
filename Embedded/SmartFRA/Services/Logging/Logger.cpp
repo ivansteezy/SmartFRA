@@ -1,25 +1,33 @@
 #include "Logger.hpp"
 using namespace FRA::Logging;
 
-Logger::Logger()
+FRA_IMPLEMENT_CLASSFACTORY(Logger, LoggerImpl, ILogger);
+
+LoggerImpl::LoggerImpl()
 {
 
 }
 
-void Logger::LogInfoInConsole(QString message)
+LoggerImpl::~LoggerImpl()
+{
+
+}
+
+
+void LoggerImpl::LogInfoInConsole(const QString& message)
 {
     auto dateTime = QDateTime::currentDateTime().toString("dd.MM.yyyy hh:mm:ss");
     qInfo() << QString("INFORMATION [%1]: %2").arg(dateTime).arg(message);
 }
 
-void Logger::LogErrorInConsole(QString message)
+void LoggerImpl::LogErrorInConsole(const QString& message)
 {
     auto dateTime = QDateTime::currentDateTime().toString("dd.MM.yyyy hh:mm:ss");
     qCritical() << QString("ERROR [%1]: %2").arg(dateTime).arg(message);
 
 }
 
-void Logger::LogInfoInFile(QString message)
+void LoggerImpl::LogInfoInFile(const QString& message)
 {
     QFile file(LogFilePath);
     auto dateTime = QDateTime::currentDateTime().toString("dd.MM.yyyy hh:mm:ss");
@@ -36,7 +44,7 @@ void Logger::LogInfoInFile(QString message)
     file.close();
 }
 
-void Logger::LogErrorInFile(QString message)
+void LoggerImpl::LogErrorInFile(const QString& message)
 {
     QFile file(LogFilePath);
     auto dateTime = QDateTime::currentDateTime().toString("dd.MM.yyyy hh:mm:ss");
@@ -51,4 +59,14 @@ void Logger::LogErrorInFile(QString message)
     {
         LogErrorInConsole("Error trying to open the logfile!");
     }
+}
+
+QObject *LoggerImpl::AsQtObject()
+{
+    return static_cast<QObject*>(this);
+}
+
+const QMetaObject *LoggerImpl::MetaObject()
+{
+    return this->metaObject();
 }

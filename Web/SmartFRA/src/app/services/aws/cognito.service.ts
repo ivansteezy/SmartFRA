@@ -25,6 +25,13 @@ export interface VerifyUserData {
   verificationCode: string
 };
 
+export interface RestorePasswordData {
+  email: string;
+  verificationCode: string,
+  password: string
+};
+
+
 export const PoolData = {
   UserPoolId: "us-west-1_ejNAMAv5c",
   ClientId: "3ptbmci36d98ehuqu9ntpf3qti"
