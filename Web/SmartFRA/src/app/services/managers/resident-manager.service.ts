@@ -1,28 +1,17 @@
 import { Injectable } from '@angular/core';
-import { HttpRequestsService } from '../common/http-requests.service';
+import { Observable } from 'rxjs';
 import { Resident } from '../../models/resident.model';
-import { ResidentEndpoints } from '../../data-access/resident.endpoints'
+import { HttpRequestsService } from '../common/http-requests.service';
+import { ResidentEndpoints } from '../../data-access/resident.endpoints';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ResidentManagerService {
-
   constructor(private http: HttpRequestsService) { }
 
-  InsertResident(residentToInsert: Resident) {
-    return this.http.Post(ResidentEndpoints.InsertResident, residentToInsert);
-  }
-
-  ModifyResident(name: string) {
-
-  }
-
-  GetResident(name: string) {
-
-  }
-
-  DeleteResident(name: string) {
-
+  public GetResidentByName(name: string) : Observable<Array<Resident>> {
+    // call http requests service for a GET for the resident by id endpoint
+    return this.http.Get<Resident>(ResidentEndpoints.GetResidentByName);
   }
 }
