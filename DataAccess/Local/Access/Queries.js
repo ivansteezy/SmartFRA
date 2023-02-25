@@ -19,6 +19,10 @@ const Queries = {
     },
 
     ResidentAccess: {
+        GetAllResidentAccess: () => {
+            const query = `SELECT  r.residentName, a.acessTime, a.exitTime FROM residentAccess a, Residents r WHERE a.idResident = r.idResidents`;
+            return query;
+        }
 
     },
 

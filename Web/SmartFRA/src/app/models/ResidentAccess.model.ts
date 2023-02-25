@@ -1,6 +1,6 @@
 
 export interface ResidentAccess {
-    idResidentAccess: number
+    residentName: string
     accessTime: Date
     exitTime: Date
 }
