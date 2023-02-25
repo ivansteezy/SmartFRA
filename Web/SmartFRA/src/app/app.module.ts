@@ -11,6 +11,8 @@ import { NgToastModule } from 'ng-angular-popup';
 import { ToastrModule } from 'ngx-toastr';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { LoginUserComponent } from './pages/user/login-user/login-user.component';
+import { QRCodeModule } from 'angularx-qrcode';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +24,8 @@ import { LoginUserComponent } from './pages/user/login-user/login-user.component
     routing,
     HttpClientModule,
     BrowserAnimationsModule, 
-    NgToastModule
+    NgToastModule,
+    QRCodeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
