@@ -10,13 +10,12 @@ import { NgToastModule } from 'ng-angular-popup';
 
 import { ToastrModule } from 'ngx-toastr';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
-import { LoginUserComponent } from './pages/user/login-user/login-user.component';
+import { LoginResidentComponent } from './pages/user/login-resident/login-resident.component';
 import { QRCodeModule } from 'angularx-qrcode';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginUserComponent,
   ],
   imports: [
     BrowserModule,

@@ -10,6 +10,8 @@ module.exports = {
       backgroundImage: theme => ({
         'background-login-large': "url('src/assets/img/wallpapers/login-wall-lg.png')",
         'background-login-small': "url('src/assets/img/wallpapers/login-wall-sm.png')",
+        'background-login-resident-large': "url('src/assets/img/wallpapers/login-register-wall-lg-06.svg')",
+        'background-login-resident-small': "url('src/assets/img/wallpapers/login-wall-sm.png')",
       })
     },
     colors: {
