@@ -22,11 +22,11 @@ router.get('/ResidentById/:id',  (request, response) => {
     });
 });
 
-router.post('/', async function (request,response) {
+router.post('/ResidentRegistry', async function (request,response) {
     const repository = ResidentRepository;
 
     try{
-        console.log('Post a resident at /');
+        console.log('Post a resident at /ResidentRegistry');
         const result = await repository.InsertResident(request.body);
         response.json(result);
         console.log('Post the resident succesfully');
