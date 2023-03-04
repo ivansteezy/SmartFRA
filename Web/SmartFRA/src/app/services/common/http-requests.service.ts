@@ -13,19 +13,19 @@ export class HttpRequestsService {
   }
 
   public Post<T>(endpoint: string, body: T, params: string = "" ) : Observable<T> {
-    return this.http.post<T>(endpoint + '/posts', body, { headers: this.GetHTTPHeaders() });
+    return this.http.post<T>(endpoint, body, { headers: this.GetHTTPHeaders() });
   }
 
   public Put<T>(endpoint: string, body: T, params: string = "" ) : Observable<T> {
-    return this.http.put<T>(endpoint + '/posts', body, { headers: this.GetHTTPHeaders() });
+    return this.http.put<T>(endpoint, body, { headers: this.GetHTTPHeaders() });
   }
 
   public Patch<T>(endpoint: string, body: T, params: string = "" ) : Observable<T> {
-    return this.http.patch<T>(endpoint + '/posts', body, { headers: this.GetHTTPHeaders() });
+    return this.http.patch<T>(endpoint, body, { headers: this.GetHTTPHeaders() });
   }
 
   public Delete<T>(endpoint: string, body: T, params: string = "" ) : Observable<T> {
-    return this.http.post<T>(endpoint + '/posts', { headers: this.GetHTTPHeaders() });
+    return this.http.post<T>(endpoint, { headers: this.GetHTTPHeaders() });
   }
 
   private GetHTTPHeaders() {
