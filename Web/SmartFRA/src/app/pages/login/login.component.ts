@@ -4,8 +4,6 @@ import { FormBuilder } from '@angular/forms';
 import { NavigationService } from 'src/app/services/common/navigation.service';
 import { NgToastService } from 'ng-angular-popup';
 import { CognitoService } from 'src/app/services/aws/cognito.service';
-import { ResidentManagerService } from 'src/app/services/managers/resident-manager.service'; 
-import { ResidentEndpoints } from 'src/app/data-access/resident.endpoints';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +16,6 @@ export class LoginComponent implements OnInit {
   constructor(private navigation: NavigationService, 
     private fb: FormBuilder, 
     private toast: NgToastService,
-    private resident: ResidentManagerService,
     private cognitoService: CognitoService) {
     this.myForm = this.fb.group({
       email: ['', [Validators.required, Validators.pattern(/^\S+@\S+\.\S+$/)]],
@@ -27,20 +24,7 @@ export class LoginComponent implements OnInit {
     
   }
 
-  ngOnInit(): void {
-    this.resident.InsertResident(ResidentEndpoints.InsertResident, {
-      residentName: "hector",
-      lastName: "de",
-      motherLastName: "ne",
-      age: 21,
-      idHouse: 1,
-      plates: "fdsa231",
-      telephone: 321321321,
-      faceModel: "fdsafdsa.xml"}).subscribe({
-        next: (result) => { console.log(result)},     // nextHandler)
-        error: (error) => { console.log(error) },    // errorHandler
-      });
-  }
+  ngOnInit(): void {}
 
   public AuthenticateUser() {
     let data = {
