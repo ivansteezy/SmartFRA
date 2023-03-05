@@ -5,7 +5,7 @@ import QtQuick.Controls 2.15
 import QtQuick.Layouts
 
 Window {
-    id: window
+    id: mainWindow
     width: 1024
     height: 600
     visible: true
@@ -86,6 +86,14 @@ Window {
                     color: driverResidentConductor.down ? "#084f70" : "#05364D"
                     radius: 5
                 }
+
+                onClicked: {
+                    var residentDriverHomePage = Qt.createComponent("ResidentDriverHomePage.qml")
+                    var residentWindow = residentDriverHomePage.createObject(residentDriverHomePage)
+
+                    residentWindow.show()
+                    mainWindow.close()
+                }
             }
 
             Item { height: 20 }
@@ -161,4 +169,12 @@ Window {
         source: "qrc:/images/background.png"
         z: -1
     }
+
+//    Shortcut: {
+//        sequence: "Esc"
+//        onActivated: {
+//            console.log("exiting..")
+//            mainWindow.close()
+//        }
+//    }
 }

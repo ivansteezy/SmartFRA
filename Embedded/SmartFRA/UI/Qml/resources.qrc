@@ -1,6 +1,7 @@
 <RCC>
     <qresource prefix="/qml">
         <file>main.qml</file>
+        <file>ResidentDriverHomePage.qml</file>
     </qresource>
     <qresource prefix="/images">
         <file alias="background.png">resources/images/background-home.png</file>
@@ -12,5 +13,7 @@
         <file>resources/fonts/Montserrat-Medium.ttf</file>
         <file alias="regular.ttf">resources/fonts/Montserrat-Regular.ttf</file>
         <file>resources/fonts/Montserrat-SemiBold.ttf</file>
+    </qresource>
+    <qresource prefix="/">
     </qresource>
 </RCC>
