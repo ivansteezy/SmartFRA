@@ -8,6 +8,7 @@ const ROUTES: Routes = [
     { path: 'forgot-password', loadChildren: () => import('./pages/forgot-password/forgot-password.module').then(m => m.ForgotPasswordModule) },
     { path: 'login-resident', loadChildren: () => import('./pages/user/login-resident/login-resident.module').then(m => m.LoginResidentModule) },
     { path: 'forgot-password-resident', loadChildren: () => import('./pages/user/forgot-pass-resident/forgot-pass-resident.module').then(m => m.ForgotPassResidentModule) },
+    { path: 'resident-new-registry', loadChildren: () => import('./pages/user/dashboard-resident/dashboard-resident.module').then(m => m.DashboardResidentModule) },
 ];
 
 export const routing = RouterModule.forRoot(ROUTES);
