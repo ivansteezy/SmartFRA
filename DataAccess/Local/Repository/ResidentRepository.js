@@ -16,6 +16,14 @@ const ResidentRepository =
 
         return data;
 
+    },
+
+    GetResidentById: async function( id ){
+        const result= await Adapter.Execute(Queries.Residents.GetResidentById(id));
+        const data = Adapter.EmptyOrRows(result);
+
+        return data;
+
     }
 }
 

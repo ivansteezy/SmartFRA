@@ -16,10 +16,18 @@ router.get('/AllResidents', async function (request, response, next) {
     }
 });
 
-router.get('/ResidentById/:id',  (request, response) => {
-    response.json({
-        id: request.params.id
-    });
+router.get('/ResidentById/:id', async function (request, response, next) {
+    const repository = ResidentRepository;
+    try {
+        console.log('Get residents by id at /ResidentById/:id endpoint...');
+        const result = await repository.GetResidentById(request.params.id);
+        response.json(result);
+        console.log('Got resident successfully');
+    }
+    catch(error) {
+        console.error('Error while trying to get resident', error.message);
+        next(error);
+    }
 });
 
 router.post('/ResidentRegistry', async function (request,response) {
