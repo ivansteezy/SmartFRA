@@ -1,6 +1,8 @@
 .fade-in {
     opacity: 0;
     animation: fade-in 0.2s ease-in forwards;
+    visibility: hidden;
+    
   }
 
   .fade-out {
@@ -16,6 +18,7 @@
   @keyframes fade-in {
     100% {
       opacity: 1;
+      visibility: visible;
     }
   }
 
@@ -23,10 +26,12 @@
   @keyframes fade-out {
     0% {
       opacity: 1;
+      visibility: visible;
     }
     
     100% {
       
         opacity: 0;
+        visibility: hidden;
     }
   }
