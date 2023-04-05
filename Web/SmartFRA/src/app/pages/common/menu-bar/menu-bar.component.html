@@ -1,0 +1,21 @@
+
+<div [ngClass]="{'hidden':!setShowMenu, 'fade-in':setShowMenu}" class="bg-complementary-gray-light-color/50 min-h-screen w-full absolute z-10 backdrop-blur-sm">
+</div>
+<div [ngClass]="{'hidden':!setShowMenu, 'fade-in':setShowMenu}" class="bg-secondary-blue-color absolute z-20 h-screen w-1/5 xsm:w-52 ">
+    <div>
+    
+        <div class="flex justify-start items-center pl-2 pr-2 pt-8" *ngFor="let data of navData">
+           <a class="flex justify-start items-center" [routerLink]="[data.routerLink]">
+            <img class="w-10 pr-3 min-h-fit " [src]="[data.icon]" alt="">
+            <span class="font-normal text-sm mb-1 text-white-pure transition ease-in-out hover:scale-110 hover:bg-indigo-500 duration-150" (click)="printMenuState()">{{data.label}}</span>
+           </a>
+        </div>
+
+        <div class="flex justify-start  pl-2 pr-2 pt-8">
+            <a class="flex justify-start items-center" routerLink="/">
+             <img class="w-10 pr-3 min-h-fit " src="../../../../assets/icons/bars.svg" alt="">
+             <span class="font-normal text-sm mb-1 text-white-pure transition ease-in-out hover:scale-110 hover:bg-indigo-500 duration-150" (click)="printMenuState()">Cerrar sesión</span>
+            </a>
+         </div>
+    </div>
+</div>
