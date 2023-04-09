@@ -1,1 +1,10 @@
-<p (click)="NavigateToLogin()">dashboard works!</p>
+<main class="flex min-h-screen xsm:flex-col sm:flex-col md:flex lg:flex xsm:bg-background-dashboard-large sm:bg-background-dashboard-large bg-no-repeat xsm:bg-cover md:bg-contain bg-opacity-10 bg-fixed">
+   
+    <app-navbar></app-navbar>
+
+    <!-- Esto es un componente -->
+    <div class="dashboard-container">
+        <app-register-resident></app-register-resident>
+    </div>
+    
+</main>
