@@ -10,6 +10,11 @@ import { ResidentEndpoints } from '../../data-access/resident.endpoints';
 export class ResidentManagerService {
   constructor(private http: HttpRequestsService) { }
 
+  public GetAllResidents(name: string) : Observable<Array<Resident>> {
+    // call http requests service for a GET for the resident by id endpoint
+    return this.http.Get<Resident>(ResidentEndpoints.GetAllResidents);
+  }
+
   public GetResidentByName(name: string) : Observable<Array<Resident>> {
     // call http requests service for a GET for the resident by id endpoint
     return this.http.Get<Resident>(ResidentEndpoints.GetResidentByName);
