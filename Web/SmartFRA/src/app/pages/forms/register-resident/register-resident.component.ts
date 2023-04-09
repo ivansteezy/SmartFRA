@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {FormBuilder, FormGroup } from '@angular/forms';
+
 
 @Component({
   selector: 'app-register-resident',
@@ -7,7 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterResidentComponent implements OnInit {
 
-  constructor() { }
+  formRegister!:FormGroup;
+
+  constructor(private fb:FormBuilder) {}
+
+  crearFormulario(){
+    this.formRegister = this.fb.group({
+      
+    })
+  }
+
 
   ngOnInit(): void {
   }
