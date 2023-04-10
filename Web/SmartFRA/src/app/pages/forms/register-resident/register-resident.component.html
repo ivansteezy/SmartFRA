@@ -2,32 +2,30 @@
     <div>
         <p class="text-2xl font-normal text-secondary-blue mb-6 xsm:text-sm sm:text-xl ">Registrar Nuevo Residente</p>
 
-        <form class="" role="form" [target]="'_blank'" >
-            <input class="" formControlName="name"  id="name" type="text" name="name" placeholder="Nombre"><br>
-            <span>* Introduce un nombre valido</span><br>
-            <span>* No puedes dejar este campo vacío.</span><br>
-            <input class="" formControlName="lastName1" id="lastName1" type="text" name="lastName1" placeholder="Apellido Paterno"><br>
-            <span>* Introduce un nombre valido</span><br>
-            <span>* No puedes dejar este campo vacío.</span><br>
-            <input class="" formControlName="lastName2" id="lastName2" type="text" name="lastName2" placeholder="Apellido Materno"><br>
-            <span>* Introduce un nombre valido</span><br>
-            <span>* No puedes dejar este campo vacío.</span><br>
+        <form [formGroup]="formRegister" class=""  id="RegisterResidentForm" role="form" (ngSubmit)="guardar()" >
+            <input class="" formControlName="residentName" [class.is-invalid]="nameResidentNoValid" id="residentName" type="text" name="name" placeholder="Nombre"><br>
+            <small *ngIf="nameResidentNoValid">* Introduce un nombre valido</small><br>
+            <small>* No puedes dejar este campo vacío.</small><br>
+            <input class="" formControlName="lastName" id="lastName" type="text" name="lastName1" placeholder="Apellido Paterno"><br>
+            <small>* Introduce un nombre valido</small><br>
+            <small>* No puedes dejar este campo vacío.</small><br>
+            <input class="" formControlName="motherLastName" id="motherLastName" type="text" name="lastName2" placeholder="Apellido Materno"><br>
+            <small>* Introduce un nombre valido</small><br>
+            <small>* No puedes dejar este campo vacío.</small><br>
             <div class="">
                 <input class="" formControlName="age" id="age" type="number" name="age" placeholder="0"><br>
-                <input class="" formControlName="houseNumber" id="houseNumber" type="text" name="houseNumber" placeholder="Numero de Casa"><br>
+                <input class="" formControlName="idHouse" id="idHouse" type="text" name="houseNumber" placeholder="Numero de Casa"><br>
             </div>
-            <span>* Introduce un nombre valido</span><br>
-            <span>* No puedes dejar este campo vacío.</span><br>
+            <small>* Introduce un nombre valido</small><br>
+            <small>* No puedes dejar este campo vacío.</small><br>
             <input class="" formControlName="plates" id="plates" type="text" name="plates" placeholder="Placas"><br>
-            <span>* Introduce un nombre valido</span><br>
-            <span>* No puedes dejar este campo vacío.</span><br>
-            <input class="" formControlName="lastName2" id="telephone" type="tel" name="telephone" placeholder="Telefono de Contacto"><br>
-            <span>* Introduce un nombre valido</span><br>
-            <span>* No puedes dejar este campo vacío.</span><br>
-        </form>
-    </div>
-
-    <div class="">
+            <small>* Introduce un nombre valido</small><br>
+            <small>* No puedes dejar este campo vacío.</small><br>
+            <input class="" formControlName="telephone" id=" telephone" type="tel" name="telephone" placeholder="Telefono de Contacto"><br>
+            <small>* Introduce un nombre valido</small><br>
+            <small>* No puedes dejar este campo vacío.</small><br>
+        
+    
         <img src="../../../../assets/icons/bars.svg" class="rounded-full bg-secondary-blue-color p-5 w-44 h-44" alt=""><br>
         <h2>Model Recognition</h2>
 
@@ -36,9 +34,17 @@
             <button class=" ">Grabar Modelo</button><br>
            </div>
 
-            <button class="">Limpiar</button><br>
-            <button class=" ">Registrar</button>
+            <button type="button" (click)="limpiar()" class="">Limpiar</button><br>
+            
 
-    </div>
+        </form>
+
+        <button type="submit" form="RegisterResidentForm" class="text-red-alert">Registrar</button>
+
+        
+
+</div>
+
+
 
 </div>

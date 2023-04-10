@@ -40,7 +40,6 @@ export class LoginComponent implements OnInit {
     })
   }
 
-
   public SubmitForm() {
     if (this.myForm.invalid) {
       this.toast.error({detail:"Error de Inicio de Sesión",summary:'Introduce tu informacion correctamente.',duration:5000});

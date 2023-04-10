@@ -14,14 +14,17 @@ import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password
 import { LoginResidentComponent } from './pages/user/login-resident/login-resident.component';
 import { QRCodeModule } from 'angularx-qrcode';
 import { DashboardResidentComponent } from './pages/user/dashboard-resident/dashboard-resident.component';
-import { RegisterResidentComponent } from './pages/forms/register-resident/register-resident.component';
+// import { RegisterResidentComponent } from './pages/forms/register-resident/register-resident.component';
 import { NavbarComponent } from './pages/common/NavBar/navbar.component';
 import { MenuBarComponent } from './pages/common/menu-bar/menu-bar.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,9 @@ import { MenuBarComponent } from './pages/common/menu-bar/menu-bar.component';
     BrowserAnimationsModule, 
     NgToastModule,
     QRCodeModule,
-    
+    ReactiveFormsModule,
+    FormsModule,
+
     
   ],
   schemas:[ CUSTOM_ELEMENTS_SCHEMA ],
