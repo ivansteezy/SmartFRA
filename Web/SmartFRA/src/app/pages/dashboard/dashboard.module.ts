@@ -3,8 +3,10 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import { DashboardComponent } from './dashboard.component';
-import { RegisterResidentComponent } from '../forms/register-resident/register-resident.component';
 
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { RegisterResidentComponent } from '../register-resident/register-resident.component';
 
 const MODULE_ROUTES = [
   { path: '', component: DashboardComponent }
@@ -14,11 +16,12 @@ const MODULE_ROUTES = [
   declarations: [
     DashboardComponent,
     RegisterResidentComponent
-    
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(MODULE_ROUTES)
+    RouterModule.forChild(MODULE_ROUTES),
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class DashboardModule { }

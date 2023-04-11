@@ -19,7 +19,7 @@ export class RegisterResidentComponent implements OnInit {
   }
 
   get nameResidentNoValid(){
-    return                                                            this.formRegister.get('residentName')?.invalid && this.formRegister.get('residentName')?.touched;
+    return this.formRegister.get('residentName')?.invalid && this.formRegister.get('residentName')?.touched;
   }
 
   get lastNameNoValid(){
@@ -64,7 +64,10 @@ export class RegisterResidentComponent implements OnInit {
     })
   }
 
-  guardar(){
+ngOnInit(): void {
+}
+
+guardar(){
     console.log(this.formRegister);
 }
 
@@ -73,7 +76,5 @@ limpiar(){
 }
 
 
-  ngOnInit(): void {
-  }
 
 }
