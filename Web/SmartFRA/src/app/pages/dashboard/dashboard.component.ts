@@ -9,16 +9,15 @@ import { menuBarData } from './menu-bar-data';
 })
 export class DashboardComponent implements OnInit {
 
+  iconUserState = "../../../../assets/icons/user.svg";
+  iconMenuState = "../../../../assets/icons/bars.svg";
+  setShowMenu = true;
+  navData = menuBarData;
+  currentContent : string = "";
+
   constructor(private navigationService: NavigationService) {
 
    }
-
-   iconUserState = "../../../../assets/icons/user.svg";
-    iconMenuState = "../../../../assets/icons/bars.svg";
-    setShowMenu = true;
-
-    
-  navData = menuBarData;
 
   ngOnInit(): void {
   }
@@ -32,4 +31,9 @@ export class DashboardComponent implements OnInit {
     this.setShowMenu = !this.setShowMenu;
     console.log(this.setShowMenu);
   }
+
+  public contentChange(contentPage:string) {
+    this.currentContent = contentPage;
+  }
+  
 }
