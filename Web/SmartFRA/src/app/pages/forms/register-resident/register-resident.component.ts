@@ -19,7 +19,35 @@ export class RegisterResidentComponent implements OnInit {
   }
 
   get nameResidentNoValid(){
-    return this.formRegister.get('residentName')?.invalid && this.formRegister.get('residentName')?.touched;
+    return                                                            this.formRegister.get('residentName')?.invalid && this.formRegister.get('residentName')?.touched;
+  }
+
+  get lastNameNoValid(){
+    return this.formRegister.get('lastName')?.invalid && this.formRegister.get('lastName')?.touched;
+  }
+
+  get motherLastNameNoValid(){
+    return this.formRegister.get('motherLastName')?.invalid && this.formRegister.get('motherLastName')?.touched;
+  }
+
+  get ageNoValid(){
+    return this.formRegister.get('age')?.invalid && this.formRegister.get('age')?.touched;
+  }
+
+  get idHouseNoValid(){
+    return this.formRegister.get('idHouse')?.invalid && this.formRegister.get('idHouse')?.touched;
+  }
+
+  get platesNoValid(){
+    return this.formRegister.get('plates')?.invalid && this.formRegister.get('plates')?.touched;
+  }
+
+  get telephoneNoValid(){
+    return this.formRegister.get('telephone')?.invalid && this.formRegister.get('telephone')?.touched;
+  }
+
+  get faceIdNoValid(){
+    return this.formRegister.get('faceId')?.invalid && this.formRegister.get('faceId')?.touched;
   }
 
   crearFormulario(){

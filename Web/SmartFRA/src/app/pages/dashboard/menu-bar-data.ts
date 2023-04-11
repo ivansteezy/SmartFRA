@@ -1,8 +1,8 @@
 export const menuBarData = [
     {
-        routerLink: 'dashboard',
+        routerLink: 'register-resident',
         icon: '../../../../assets/icons/bars.svg',
-        label: 'Registro de Usuarios'
+        label: 'Registro de Residente'
     },
 
     {
