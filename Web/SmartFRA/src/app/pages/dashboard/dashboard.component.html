@@ -1,6 +1,5 @@
 <main
-    class="flex min-h-screen xsm:flex-col sm:flex-col md:flex lg:flex xsm:bg-background-dashboard-large sm:bg-background-dashboard-large bg-no-repeat xsm:bg-cover md:bg-contain bg-opacity-10 bg-fixed">
-
+    class="flex min-h-screen xsm:flex-col sm:flex-col md:flex lg:flex xsm:bg-background-dashboard-large sm:bg-background-dashboard-large bg-no-repeat xsm:bg-cover md:bg-cover bg-opacity-10 bg-fixed">
 
     <nav>
         <div class="bg-secondary-blue-color p-2 flex content-end">
@@ -20,11 +19,8 @@
                 <img [src]="iconUserState" (mouseover)="iconUserState = '../../../../assets/icons/user-test.svg'"
                     (mouseout)="iconUserState = '../../../../assets/icons/user.svg'"
                     class="xsm:w-10 xsm:h-min sm:w-14 sm:h-min mr-3" alt="user-profile-icon" />
-
             </div>
-
         </div>
-
     </nav>
 
     <div>
@@ -35,7 +31,6 @@
     <div [ngClass]="{'fade-out':!setShowMenu, 'fade-in':setShowMenu}"
         class=" bg-secondary-blue-color absolute z-20 h-screen w-1/5 xsm:w-52 ">
         <div>
-
             <div class="flex justify-start items-center pl-2 pr-2 pt-8" *ngFor="let data of navData">
                 <a class="flex justify-start items-center" (click)="contentChange(data.routerLink)">
                     <img class="w-10 pr-3 min-h-fit " [src]="[data.icon]" alt="">
@@ -43,9 +38,7 @@
                         class="font-normal text-sm mb-1 text-white-pure transition ease-in-out hover:scale-110 hover:bg-indigo-500 duration-150">{{data.label}}</span>
                 </a>
             </div>
-
         </div>
-
         <hr class="mt-8">
         <div class="absolute justify-start  pl-2 pr-2 pt-5">
             <a class="flex justify-start items-center" routerLink="/">
@@ -60,4 +53,5 @@
 
     <!-- DYNAMIC CONTAINER -->
     <app-register-resident *ngIf="currentContent == 'register-resident'"></app-register-resident>
+
 </main>

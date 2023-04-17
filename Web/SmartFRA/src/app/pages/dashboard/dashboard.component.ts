@@ -11,7 +11,7 @@ export class DashboardComponent implements OnInit {
 
   iconUserState = "../../../../assets/icons/user.svg";
   iconMenuState = "../../../../assets/icons/bars.svg";
-  setShowMenu = true;
+  setShowMenu = false;
   navData = menuBarData;
   currentContent : string = "";
 
@@ -34,6 +34,7 @@ export class DashboardComponent implements OnInit {
 
   public contentChange(contentPage:string) {
     this.currentContent = contentPage;
+    this.openMenu();
   }
-  
+
 }

@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder, 
     private toast: NgToastService,
     private cognitoService: CognitoService) {
+      
     this.myForm = this.fb.group({
       email: ['', [Validators.required, Validators.pattern(/^\S+@\S+\.\S+$/)]],
       password: ['', [Validators.required]],

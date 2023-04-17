@@ -61,5 +61,10 @@ module.exports = {
       'red-alert': '#FF6363'
       }
   },
+  variants: {
+    extends: 
+      {backgroundOpacity: ['active']}
+    
+  },
   plugins: [require('preline/plugin')],
 }
