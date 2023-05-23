@@ -15,6 +15,11 @@ export class ResidentManagerService {
     return this.http.Get<Resident>(ResidentEndpoints.GetAllResidents);
   }
 
+  public GetResidentById(name: string) : Observable<Array<Resident>> {
+    // call http requests service for a GET for the resident by id endpoint
+    return this.http.Get<Resident>(ResidentEndpoints.GetResidentById);
+  }
+
   public GetResidentByName(name: string) : Observable<Array<Resident>> {
     // call http requests service for a GET for the resident by id endpoint
     return this.http.Get<Resident>(ResidentEndpoints.GetResidentByName);
