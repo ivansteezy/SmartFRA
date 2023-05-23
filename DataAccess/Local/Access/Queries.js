@@ -47,6 +47,10 @@ const Queries = {
         GetAllResidents: () => {
             const query = `SELECT * FROM Residents`;
             return query;
+        },
+        GetResidentByEmail: (email) => {
+            const query = `SELECT * FROM Residents WHERE email = ${email}`
+            return query;
         }
     },
 

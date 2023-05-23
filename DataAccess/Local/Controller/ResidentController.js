@@ -30,6 +30,20 @@ router.get('/ResidentById/:id', async function (request, response, next) {
     }
 });
 
+router.get('/ResidentByEmail/:email', async function (request, response, next) {
+    const repository = ResidentRepository;
+    try {
+        console.log('Get residents by email at /ResidentByEmail/:email endpoint...');
+        const result = await repository.GetResidentByEmail(request.params.email);
+        response.json(result);
+        console.log('Got resident successfully');
+    }
+    catch(error) {
+        console.error('Error while trying to get resident', error.message);
+        next(error);
+    }
+});
+
 router.post('/ResidentRegistry', async function (request,response) {
     const repository = ResidentRepository;
 

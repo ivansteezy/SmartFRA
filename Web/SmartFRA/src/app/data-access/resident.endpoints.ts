@@ -5,4 +5,5 @@ export abstract class ResidentEndpoints {
     public static InsertResident: string =  "http://localhost:3000/resident/ResidentRegistry";
     public static GetResidentById: string = "http://localhost:3000/resident/ResidentById/:id'"
     public static GetAllResidents: string = "http://localhost:3000/resident/AllResidents";
+    public static GetResidentByEmail: string = "http://localhost:3000/resident/ResidentByEmail/:email";
 }

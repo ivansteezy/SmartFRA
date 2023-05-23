@@ -24,6 +24,14 @@ const ResidentRepository =
 
         return data;
 
+    },
+
+    GetResidentByEmail: async function( email ){
+        const result= await Adapter.Execute(Queries.Residents.GetResidentByEmail(email));
+        const data = Adapter.EmptyOrRows(result);
+
+        return data;
+
     }
 }
 
