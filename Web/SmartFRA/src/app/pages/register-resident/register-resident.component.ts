@@ -3,6 +3,8 @@ import { FormGroup, FormControl, Validators, ReactiveFormsModule, FormsModule } 
 import { FormBuilder } from '@angular/forms';
 import { Integer } from 'aws-sdk/clients/apigateway';
 import { NgToastService } from 'ng-angular-popup';
+import { catchError, tap } from 'rxjs';
+import { HttpRequestsService } from 'src/app/services/common/http-requests.service';
 
 @Component({
   selector: 'app-register-resident',
@@ -17,7 +19,7 @@ export class RegisterResidentComponent implements OnInit {
   ageNumber!:Integer;
   faceModelTest!:String;
 
-  constructor(private fb:FormBuilder, private toast: NgToastService) {
+  constructor(private fb:FormBuilder, private toast: NgToastService, private http: HttpRequestsService) {
     this.crearFormulario();
     this.ageNumber = 0;
     this.faceModelTest = "Pitaya.xml";
@@ -79,8 +81,35 @@ chargeModelTest(){
   console.log(this.formRegister.get('faceModel')?.status);
 }
 
+
+public postRegister() {
+
+  let dataUser = {
+    residentName:  this.formRegister.getRawValue().residentName,
+    lastName:  this.formRegister.getRawValue().lastName,
+    motherLastName:  this.formRegister.getRawValue().motherLastName,
+    age:  this.formRegister.getRawValue().age,
+    idHouse: this.formRegister.getRawValue().idHouse,
+    plates:  this.formRegister.getRawValue().plates,
+    telephone:  this.formRegister.getRawValue().telephone,
+    faceModel:  this.faceModelTest
+  }
+
+  this.http.Post('http://localhost:3000/resident/ResidentRegistry', dataUser)
+    .pipe(
+      tap(() => {
+        this.toast.success({detail:"Registro exitoso",summary:'Nuevo usuario añadido!',duration:5000});
+      }),
+      catchError((error) => {
+        this.toast.error({detail:"Error de Registro",summary:'Ocurrio un error, intente mas tarde.',duration:5000});
+        throw error;
+      })
+    )
+    .subscribe();
+
+}
+
 guardar(){
-  
   
     console.log(this.formRegister);
 
@@ -94,9 +123,11 @@ guardar(){
       })
     }else{
       console.log("Enviado!",this.formRegister.value);
-      
-    }
 
+      //HTTP Request
+      this.postRegister();
+
+    }
 
 }
 
