@@ -32,6 +32,14 @@ const ResidentRepository =
 
         return data;
 
+    },
+
+    GetResidentByNameLastNameMotherName: async function( name, lastName, motherLastName ){
+        const result= await Adapter.Execute(Queries.Residents.GetResidentByNameLastNameMotherName(name, lastName, motherLastName));
+        const data = Adapter.EmptyOrRows(result);
+
+        return data;
+
     }
 }
 

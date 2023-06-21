@@ -34,5 +34,10 @@ export class ResidentManagerService {
     // call http requests service for a GET for the resident by id endpoint
     return this.http.Post<Resident>(ResidentEndpoints.InsertResident, body);
   }
+
+  public GetResidentByNameLastNameMotherName(name: string) : Observable<Array<Resident>> {
+    // call http requests service for a GET for the resident by id endpoint
+    return this.http.Get<Resident>(ResidentEndpoints.GetResidentByNameLastNameMotherName);
+  }
   
 }
