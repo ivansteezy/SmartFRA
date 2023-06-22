@@ -7,5 +7,5 @@ export abstract class ResidentEndpoints {
     public static GetAllResidents: string = "http://localhost:3000/resident/AllResidents";
     public static GetResidentByEmail: string = "http://localhost:3000/resident/ResidentByEmail/:email";
     public static GetResidentByNameLastNameMotherName: string = "http://localhost:3000/resident/ResidentByNameLastNameMotherName/:name/:lastName/:motherName";
-    public static GetResidentByHouse: string = "http://localhost:3000/resident/GetResidentByHouse/:idHouse";
+    public static GetResidentByHouse: string = "http://localhost:3000/resident/ResidentByHouse/:idHouse";
 }
