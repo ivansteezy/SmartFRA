@@ -16,6 +16,12 @@ const Queries = {
             const query = `SELECT * FROM Houses`
             return query;
         },
+
+        GetHouseByResident: (idResidents) => {
+            const query = `SELECT h.idHouse, h.address, h.numberHouse FROM houses h, residents r WHERE r.idResidents = ${idResidents} AND r.idHouse = h.idHouse`
+            return query;
+            //h.idHouse, h.address, h.numberHouse, r.idResidents
+        },
         
     },
 

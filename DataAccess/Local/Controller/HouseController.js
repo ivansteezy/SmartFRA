@@ -16,5 +16,18 @@ router.get('/AllHouses', async function (request, response, next) {
     }
 });
 
+router.get('/HouseByResident/:idHouse', async function (request, response, next) {
+    const repository = HouseRepository;
+    try {
+        console.log('Get house by resident at /AllHouses endpoint...');
+        const result = await repository.GetHouseByResident(request.params.idHouse);
+        response.json(result);
+        console.log('Got house by resident successfully, number of elements: ' + result.length);
+    }
+    catch(error) {
+        console.error('Error while trying to get house by resident', error.message);
+        next(error);
+    }
+});
 
 module.exports = router;

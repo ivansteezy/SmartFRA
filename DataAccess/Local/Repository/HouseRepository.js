@@ -8,6 +8,13 @@ const HouseRepository =
         const data = Adapter.EmptyOrRows(result);
 
         return data;
+    },
+
+    GetHouseByResident: async function( idResidents ) {
+        const result = await Adapter.Execute(Queries.Houses.GetHouseByResident(idResidents));
+        const data = Adapter.EmptyOrRows(result);
+
+        return data;
     }
 
 }
