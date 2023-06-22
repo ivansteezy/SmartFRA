@@ -16,10 +16,60 @@ router.get('/AllResidents', async function (request, response, next) {
     }
 });
 
-router.get('/ResidentById/:id',  (request, response) => {
-    response.json({
-        id: request.params.id
-    });
+router.get('/ResidentById/:id', async function (request, response, next) {
+    const repository = ResidentRepository;
+    try {
+        console.log('Get residents by id at /ResidentById/:id endpoint...');
+        const result = await repository.GetResidentById(request.params.id);
+        response.json(result);
+        console.log('Got resident successfully');
+    }
+    catch(error) {
+        console.error('Error while trying to get resident', error.message);
+        next(error);
+    }
+});
+
+router.get('/ResidentByEmail/:email', async function (request, response, next) {
+    const repository = ResidentRepository;
+    try {
+        console.log('Get residents by email at /ResidentByEmail/:email endpoint...');
+        const result = await repository.GetResidentByEmail(request.params.email);
+        response.json(result);
+        console.log('Got resident successfully');
+    }
+    catch(error) {
+        console.error('Error while trying to get resident', error.message);
+        next(error);
+    }
+});
+
+router.get('/ResidentByNameLastNameMotherName/:name/:lastName/:motherName', async function (request, response, next) {
+    const repository = ResidentRepository;
+    try {
+        console.log('Get residents by names at ResidentByNameLastNameMotherName/:name/:lastName/:motherName endpoint...');
+        const result = await repository.GetResidentByNameLastNameMotherName(request.params.name, request.params.lastName, request.params.motherName);
+        response.json(result);
+        console.log('Got resident successfully');
+    }
+    catch(error) {
+        console.error('Error while trying to get resident', error.message);
+        next(error);
+    }
+});
+
+router.get('/ResidentByHouse/:idHouse', async function (request, response, next) {
+    const repository = ResidentRepository;
+    try {
+        console.log('Get residents by house at /ResidentByHouse/:idHouse endpoint...');
+        const result = await repository.GetResidentByHouse(request.params.idHouse);
+        response.json(result);
+        console.log('Got resident successfully');
+    }
+    catch(error) {
+        console.error('Error while trying to get resident', error.message);
+        next(error);
+    }
 });
 
 router.post('/ResidentRegistry', async function (request,response) {

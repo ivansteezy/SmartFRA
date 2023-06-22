@@ -1,4 +1,5 @@
 const resident = require('./Controller/ResidentController');
+const house = require('./Controller/HouseController')
 const residentAccess = require('./Controller/ResidentAccessController');
 
 const express = require('express');
@@ -10,3 +11,4 @@ app.use(cors());
 app.use(express.json());
 app.use('/resident-access', residentAccess);
 app.use('/resident', resident);
+app.use('/house', house)
