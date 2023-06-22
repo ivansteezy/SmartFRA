@@ -16,6 +16,38 @@ const ResidentRepository =
 
         return data;
 
+    },
+
+    GetResidentById: async function( id ){
+        const result= await Adapter.Execute(Queries.Residents.GetResidentById(id));
+        const data = Adapter.EmptyOrRows(result);
+
+        return data;
+
+    },
+
+    GetResidentByEmail: async function( email ){
+        const result= await Adapter.Execute(Queries.Residents.GetResidentByEmail(email));
+        const data = Adapter.EmptyOrRows(result);
+
+        return data;
+
+    },
+
+    GetResidentByNameLastNameMotherName: async function( name, lastName, motherLastName ){
+        const result= await Adapter.Execute(Queries.Residents.GetResidentByNameLastNameMotherName(name, lastName, motherLastName));
+        const data = Adapter.EmptyOrRows(result);
+
+        return data;
+
+    },
+
+    GetResidentByHouse: async function( idHouse ){
+        const result= await Adapter.Execute(Queries.Residents.GetResidentByHouse(idHouse));
+        const data = Adapter.EmptyOrRows(result);
+
+        return data;
+
     }
 }
 
