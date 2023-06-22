@@ -58,6 +58,20 @@ router.get('/ResidentByNameLastNameMotherName/:name/:lastName/:motherName', asyn
     }
 });
 
+router.get('/GetResidentByHouse/:idHouse', async function (request, response, next) {
+    const repository = ResidentRepository;
+    try {
+        console.log('Get residents by house at /GetResidentByHouse/:idHouse endpoint...');
+        const result = await repository.GetResidentByHouse(request.params.idHouse);
+        response.json(result);
+        console.log('Got resident successfully');
+    }
+    catch(error) {
+        console.error('Error while trying to get resident', error.message);
+        next(error);
+    }
+});
+
 router.post('/ResidentRegistry', async function (request,response) {
     const repository = ResidentRepository;
 

@@ -15,7 +15,8 @@ const Queries = {
         GetAllHouses: () => {
             const query = `SELECT * FROM Houses`
             return query;
-        }
+        },
+        
     },
 
     ResidentAccess: {
@@ -50,6 +51,10 @@ const Queries = {
         },
         GetResidentByEmail: (email) => {
             const query = `SELECT * FROM Residents WHERE email = ${email}`
+            return query;
+        },
+        GetResidentByHouse: (idHouse) => {
+            const query = `SELECT * FROM Residents WHERE idHouse = ${idHouse}`
             return query;
         }
     },
