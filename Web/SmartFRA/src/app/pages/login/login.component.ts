@@ -28,7 +28,17 @@ export class LoginComponent implements OnInit {
     
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // Validacion de sesiones:
+    if (sessionStorage.getItem('apiResponse') !== null) {
+      // La variable existe en sessionStorage
+      console.log('Hay una sesion activa!');
+      this.navigation.NavigateToRoute('dashboard');
+    } else {
+      // La variable no existe en sessionStorage
+      console.log('Se ha perdido la sesion o no existe');
+    }
+  }
 
   public AuthenticateUser() {
     let data = {

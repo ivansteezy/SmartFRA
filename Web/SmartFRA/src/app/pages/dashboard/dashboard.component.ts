@@ -38,6 +38,7 @@ export class DashboardComponent implements OnInit {
         }),
         catchError((error) => {
           console.log("No he guardado la data");
+          this.navigationService.NavigateToRoute('login');
           throw error;
         })
       )
