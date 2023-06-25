@@ -8,6 +8,15 @@ const Queries = {
     },
 
     Guests: {
+        GetAllGuests: () => {
+            const query = `SELECT * FROM Guests`
+            return query;
+        },
+
+        GetGuestById: (id) => {
+            const query = `SELECT * FROM Guests WHERE idGuest = ${id}`
+            return query;
+        }
 
     },
 
