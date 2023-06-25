@@ -6,22 +6,14 @@ export const menuBarData = [
     },
 
     {
-        routerLink: 'dashboard',
+        routerLink: 'houses-admin',
         icon: '../../../../assets/icons/bars.svg',
-        label: 'Registro de Usuarios'
+        label: 'Casas'
     },
     {
         routerLink: 'dashboard',
         icon: '../../../../assets/icons/bars.svg',
-        label: 'Registro de Usuarios'
+        label: 'Visitas'
     },
-
-    {
-        routerLink: 'dashboard',
-        icon: '../../../../assets/icons/bars.svg',
-        label: 'Registro de Usuarios'
-    },
-
-
 
 ];

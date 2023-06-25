@@ -7,10 +7,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgToastModule } from 'ng-angular-popup';
 import { QRCodeModule } from 'angularx-qrcode';
+import { HousesAdminComponent } from './pages/houses-admin/houses-admin.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    HousesAdminComponent,
   ],
   imports: [
     BrowserModule,

@@ -70,4 +70,33 @@ export class DashboardComponent implements OnInit {
     this.openMenu();
   }
 
+  public closeSession() {
+
+    // Obtener el valor de sessionStorage
+    let contenido = sessionStorage.getItem('apiResponse');
+    
+    // Verificar si el valor existe y no es null
+    if (contenido !== null) {
+      // Parsear el contenido JSON a un objeto JavaScript
+      var datos = JSON.parse(contenido);
+
+      //closeSession Cognito
+      try{
+        this.cognitoService.SignOut(datos[0].email);
+        sessionStorage.removeItem('apiResponse');
+        this.navigationService.NavigateToRoute('login');
+      }catch(error){
+        console.log("Algo ha ocurrido que no deberia al cerrar sesion");
+        console.log(datos);
+      }
+    
+      // Utilizar los datos en tu código
+      console.log(datos);
+    } else {
+      // El valor no existe en sessionStorage o es null
+      console.log('La variable no existe en sessionStorage o es null');
+    }
+      
+    }
+
 }
