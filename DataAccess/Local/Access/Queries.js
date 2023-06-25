@@ -8,6 +8,15 @@ const Queries = {
     },
 
     Guests: {
+        GetAllGuests: () => {
+            const query = `SELECT * FROM Guests`
+            return query;
+        },
+
+        GetGuestById: (id) => {
+            const query = `SELECT * FROM Guests WHERE idGuest = ${id}`
+            return query;
+        }
 
     },
 
@@ -16,7 +25,23 @@ const Queries = {
             const query = `SELECT * FROM Houses`
             return query;
         },
+
+        GetHouseByResident: (idResidents) => {
+            const query = `SELECT h.idHouse, h.address, h.numberHouse FROM houses h, residents r WHERE r.idResidents = ${idResidents} AND r.idHouse = h.idHouse`
+            return query;
+            //h.idHouse, h.address, h.numberHouse, r.idResidents
+        },
         
+
+        GetHouseByHouseNumber: (numberHouse) => {
+            const query = `SELECT * FROM Houses WHERE numberHouse = ${numberHouse}`;
+            return query;
+        },
+
+        InsertHouse: (house) => {
+            const query = `INSERT INTO Houses(address, numberHouse) VALUES('${house.address}', ${house.numberHouse})`;
+            return query;
+        },
     },
 
     ResidentAccess: {

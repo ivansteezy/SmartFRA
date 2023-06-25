@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { House } from '../../models/House.model';
+import { Guest } from '../../models/Guest.model';
 import { HttpRequestsService } from '../common/http-requests.service';
-import { HouseEndpoints } from '../../data-access/house.endpoints';
+import { GuestEndpoints } from '../../data-access/guest.endpoints';
 
 @Injectable({
   providedIn: 'root'
@@ -10,14 +10,14 @@ import { HouseEndpoints } from '../../data-access/house.endpoints';
 export class ResidentManagerService {
   constructor(private http: HttpRequestsService) { }
 
-  public GetAllHouses(name: string) : Observable<Array<House>> {
+  public GetAllHouses(name: string) : Observable<Array<Guest>> {
     // call http requests service for a GET for the resident by id endpoint
-    return this.http.Get<House>(HouseEndpoints.GetAllHouses);
+    return this.http.Get<Guest>(GuestEndpoints.GetAllGuests);
   }
 
-  public GetHouseByResident(name: string) : Observable<Array<House>> {
+  public GetGuestById(name: string) : Observable<Array<Guest>> {
     // call http requests service for a GET for the resident by id endpoint
-    return this.http.Get<House>(HouseEndpoints.GetHouseByResident);
+    return this.http.Get<Guest>(GuestEndpoints.GetGuestById);
   }
   
 }

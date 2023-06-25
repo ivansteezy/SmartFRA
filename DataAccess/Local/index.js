@@ -1,5 +1,6 @@
 const resident = require('./Controller/ResidentController');
 const house = require('./Controller/HouseController')
+const guest = require('./Controller/GuestController')
 const residentAccess = require('./Controller/ResidentAccessController');
 
 const express = require('express');
@@ -12,3 +13,4 @@ app.use(express.json());
 app.use('/resident-access', residentAccess);
 app.use('/resident', resident);
 app.use('/house', house)
+app.use('/guest', guest)
