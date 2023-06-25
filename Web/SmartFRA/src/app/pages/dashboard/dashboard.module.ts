@@ -7,6 +7,7 @@ import { DashboardComponent } from './dashboard.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegisterResidentComponent } from '../register-resident/register-resident.component';
+import { HousesAdminComponent } from '../houses-admin/houses-admin.component';
 
 const MODULE_ROUTES = [
   { path: '', component: DashboardComponent }
@@ -15,7 +16,8 @@ const MODULE_ROUTES = [
 @NgModule({
   declarations: [
     DashboardComponent,
-    RegisterResidentComponent
+    RegisterResidentComponent,
+    HousesAdminComponent
   ],
   imports: [
     CommonModule,
