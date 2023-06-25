@@ -16,5 +16,19 @@ router.get('/AllHouses', async function (request, response, next) {
     }
 });
 
+router.post('/HouseRegistry', async function(request, response, next) {
+    const repository = HouseRepository;
+
+    try {
+        console.log('Inserting a new house endpoint...');
+        const result = await repository.InsertHouse(request.body);
+        response.json(result);
+    }
+    catch(error) {
+        console.error('Error while trying to post the house', error.message);
+        next(error);
+    }
+})
+
 
 module.exports = router;

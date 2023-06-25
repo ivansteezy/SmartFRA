@@ -16,7 +16,16 @@ const Queries = {
             const query = `SELECT * FROM Houses`
             return query;
         },
-        
+
+        GetHouseByHouseNumber: (numberHouse) => {
+            const query = `SELECT * FROM Houses WHERE numberHouse = ${numberHouse}`;
+            return query;
+        },
+
+        InsertHouse: (house) => {
+            const query = `INSERT INTO Houses(address, numberHouse) VALUES('${house.address}', ${house.numberHouse})`;
+            return query;
+        },
     },
 
     ResidentAccess: {
