@@ -38,7 +38,6 @@ const Queries = {
             return query;
             //h.idHouse, h.address, h.numberHouse, r.idResidents
         },
-        
 
         GetHouseByHouseNumber: (numberHouse) => {
             const query = `SELECT * FROM Houses WHERE numberHouse = ${numberHouse}`;
@@ -60,7 +59,10 @@ const Queries = {
     },
 
     ResidentEvents: {
-
+        GetAllResidentEvents: () => {
+            const query = `SELECT residentName, lastName, nameEvent, startTime, endTime, numberAccess, state FROM residentevents re JOIN residents r ON re.idResident = r.idResidents`;
+            return query;
+        }
     },
 
     Residents: {
