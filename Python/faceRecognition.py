@@ -19,14 +19,14 @@ while True:
      ret, frame = cap.read()
      if ret == False: break
      frame = cv2.flip(frame, 1)
-     face_locations = face_recognition.face_locations(frame, model="cnn")
+     face_locations = face_recognition.face_locations(frame)
      if face_locations != []:
           for face_location in face_locations:
                face_frame_encodings = face_recognition.face_encodings(frame, known_face_locations=[face_location])[0]
                result = face_recognition.compare_faces([face_image_encodings], face_frame_encodings)
                #print("Result:", result)
                if result[0] == True:
-                    text = "Gaby"
+                    text = "Residente"
                     color = (125, 220, 0)
                else:
                     text = "Desconocido"
