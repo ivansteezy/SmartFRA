@@ -92,7 +92,10 @@ const Queries = {
     },
 
     ResidentServiceAccess: {
-
+        GetAllResidentServiceAccess: () => {
+            const query = `SELECT residentName, providerName, serviceName, cellphone, accessTime, exitTime FROM residentserviceaccess sa JOIN Services s ON sa.servicesId = s.idServices JOIN Residents r on sa.residentid = r.idResidents`;
+            return query;
+        }
     },
 
     Services: {
