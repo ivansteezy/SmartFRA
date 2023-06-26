@@ -6,10 +6,10 @@ const generalServiceAccess = require('./Controller/GeneralServiceAccessControlle
 const services = require('./Controller/ServicesController');
 const residentServiceAccess = require('./Controller/ResidentServiceAccessController');
 const residentEvent = require('./Controller/ResidentEventController');
+const guestAccess = require('./Controller/GuestAccessController');
 
 const express = require('express');
 const cors = require('cors');
-
 
 const app = express();
 app.listen(3000, () => console.log("Smart FRA server is now running on port 3000..."));
@@ -23,3 +23,4 @@ app.use('/general-service-access', generalServiceAccess);
 app.use('/services', services);
 app.use('/resident-service-access', residentServiceAccess);
 app.use('/resident-event', residentEvent);
+app.use('/guest-access', guestAccess);

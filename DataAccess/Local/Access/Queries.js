@@ -7,7 +7,10 @@ const Queries = {
     },
 
     GuestAccess: {
-
+        GetAllGuestAccess: () => {
+            const query = `SELECT name, telephone, accessTime, exitTime FROM guestaccess ga JOIN guests g ON ga.IdGuest = g.idGuest`;
+            return query;
+        }
     },
 
     Guests: {
