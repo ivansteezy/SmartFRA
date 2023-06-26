@@ -30,4 +30,19 @@ router.get('/GuestById/:idGuest', async function (request, response, next) {
     }
 });
 
+router.post('/GuestRegistry', async function (request,response) {
+    const repository = GuestRepository;
+
+    try{
+        console.log('Post a guest at /GuestRegistry');
+        const result = await repository.InsertGuest(request.body);
+        response.json(result);
+        console.log('Post the guest succesfully');
+    }
+    catch(error){
+        console.error('Error while trying to post the guest', error.message);
+        next(error);
+    }
+});
+
 module.exports = router;

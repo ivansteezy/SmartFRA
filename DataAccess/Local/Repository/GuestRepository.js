@@ -15,8 +15,14 @@ const GuestRepository =
         const data = Adapter.EmptyOrRows(result);
 
         return data;
-    }
+    },
 
+    InsertGuest: async function(guest) {
+        const result = await Adapter.Execute(Queries.Guests.InsertGuest(guest));
+        const data = Adapter.EmptyOrRows(result);
+
+        return data;
+    }
 }
 
 

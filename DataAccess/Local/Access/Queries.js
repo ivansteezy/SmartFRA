@@ -19,8 +19,12 @@ const Queries = {
         GetGuestById: (id) => {
             const query = `SELECT * FROM Guests WHERE idGuest = ${id}`
             return query;
-        }
+        },
 
+        InsertGuest: (guest) => {
+            const query = `INSERT INTO Guests(IdEvent, name, lastName, plates, telephone) VALUES('${guest.idEvent}', '${guest.name}', '${guest.lastName}', '${guest.plates}', '${guest.telephone}')`;
+            return query;
+        }
     },
 
     Houses: {
