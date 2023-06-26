@@ -93,12 +93,12 @@ const Queries = {
 
     Services: {
         GetAllServices: () => {
-            const query = `SELECT * FROM Services'`;
+            const query = `SELECT * FROM Services`;
             return query;
         },
 
-        InsertService: (serviceName) => {
-            const query = `INSERT INTO Services(serviceName) VALUES(${serviceName})'`;
+        InsertService: (service) => {
+            const query = `INSERT INTO Services(serviceName) VALUES('${service.serviceName}')`;
             return query;
         },
 

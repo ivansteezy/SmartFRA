@@ -1,9 +1,9 @@
 const resident = require('./Controller/ResidentController');
-const house = require('./Controller/HouseController')
-const guest = require('./Controller/GuestController')
+const house = require('./Controller/HouseController');
+const guest = require('./Controller/GuestController');
 const residentAccess = require('./Controller/ResidentAccessController');
 const generalServiceAccess = require('./Controller/GeneralServiceAccessController');
-
+const services = require('./Controller/ServicesController');
 const express = require('express');
 const cors = require('cors');
 
@@ -16,3 +16,4 @@ app.use('/resident', resident);
 app.use('/house', house);
 app.use('/guest', guest);
 app.use('/general-service-access', generalServiceAccess);
+app.use('/services', services);
