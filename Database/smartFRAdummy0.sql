@@ -90,6 +90,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `smartfra0`.`ResidentServiceAccess` (
   `idServiceAccess` INT NOT NULL AUTO_INCREMENT,
+  `ServicesId` INT NOT NULL,
   `ResidentId` INT NOT NULL,
   `accessTime` DATETIME(6) NOT NULL,
   `exitTime` DATETIME(6) NOT NULL,
@@ -100,6 +101,11 @@ CREATE TABLE IF NOT EXISTS `smartfra0`.`ResidentServiceAccess` (
   CONSTRAINT `fkResidentId`
     FOREIGN KEY (`ResidentId`)
     REFERENCES `smartfra0`.`Residents` (`idResidents`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fkServiceId`
+    FOREIGN KEY (`ServicesId`)
+    REFERENCES `smartfra0`.`Services` (`idServices`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -227,9 +233,9 @@ INSERT INTO GeneralServiceAccess VALUES ("0","2022-09-22 12:00:00.000000","2022-
 INSERT INTO GeneralServiceAccess VALUES ("0","2022-09-22 12:00:00.000000","2022-09-22 13:59:00.000000","Juan Gonzalo Tavizon","3312567131","183657717","3","2");
 
 -- RESIDENTS SERVICE ACCESS DUMMY ----
-INSERT INTO ResidentServiceAccess VALUES ("0","1","2022-09-24 12:00:00.000000","2022-09-24 23:59:00.000000","Ignacio Bautista Morfin","3321554467","183657717");
-INSERT INTO ResidentServiceAccess VALUES ("0","3","2022-09-22 12:00:00.000000","2022-09-22 23:59:00.000000","Miranda Morales Sanchez","3312349812","183657717");
-INSERT INTO ResidentServiceAccess VALUES ("0","5","2022-09-22 12:00:00.000000","2022-09-22 13:59:00.000000","Juan Gonzalo Tavizon","3312567131","183657717");
+INSERT INTO ResidentServiceAccess VALUES ("0","3", "1","2022-09-24 12:00:00.000000","2022-09-24 23:59:00.000000","Ignacio Bautista Morfin","3321554467","183657717");
+INSERT INTO ResidentServiceAccess VALUES ("0","2", "3","2022-09-22 12:00:00.000000","2022-09-22 23:59:00.000000","Miranda Morales Sanchez","3312349812","183657717");
+INSERT INTO ResidentServiceAccess VALUES ("0","3", "5","2022-09-22 12:00:00.000000","2022-09-22 13:59:00.000000","Juan Gonzalo Tavizon","3312567131","183657717");
 
 -- DROPS --------------------------
 -- drop table smartfra0.residentserviceaccess;

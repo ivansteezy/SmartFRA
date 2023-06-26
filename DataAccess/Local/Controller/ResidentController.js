@@ -85,7 +85,6 @@ router.post('/ResidentRegistry', async function (request,response) {
         console.error('Error while trying to post the resident', error.message);
         next(error);
     }
-    
-})
+});
 
 module.exports = router;
