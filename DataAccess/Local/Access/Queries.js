@@ -1,6 +1,9 @@
 const Queries = {
     GeneralServiceAccess: {
-
+        GetAllGeneralServiceAccess: () => {
+            const query = `SELECT residentName, providerName, serviceName, cellphone, accessTime, exitTime FROM ResidentServiceAccess sa JOIN Services s ON sa.servicesId = s.idServices JOIN Residents r on sa.residentid = r.idResidents;`;
+            return query;
+        }
     },
 
     GuestAccess: {
