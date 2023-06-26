@@ -1,1 +1,58 @@
-<p>houses-admin works!</p>
+<main>
+    <h2>Casas Registradas</h2>
+    <div class="information-square">
+        <span> # Casas</span>
+        <span> 12 Habitantes</span>
+        <span>12 Familias</span>
+
+        <div class="houses-options">
+           <button class="add-house-button" (click)="contentChangeHousesOption('register-house')">+</button><br>
+           <button class="add-house-button" (click)="contentChangeHousesOption('search-house')">search</button> 
+        </div>
+    </div>
+
+    <div class="houses-content-option">
+        <div *ngIf="currentContentHouses == 'register-house'">
+            <h3>Registrar Nueva Casa:</h3>
+            <form [formGroup]="formRegisterHouse" class="" id="RegisterHouseForm" role="form" (ngSubmit)="registerHouse()">
+                <span class="">Direccion*:</span>
+                <input class="" formControlName="address" id="address" type="text" name="name" placeholder="Nombre"><br>
+                <span class=""># Casa*:</span>
+                <input class="" formControlName="numberHouse" id="numberHouse" type="text" name="name" placeholder="Nombre"><br>
+                <button type="submit">Registrar</button>
+            </form>
+        </div>
+
+        <div *ngIf="currentContentHouses == 'search-house'">
+            <h3>Casas Registradas</h3>
+            <form [formGroup]="formSearchHouse" class="" id="RegisterHouseForm" role="form" (ngSubmit)="searchHouse()">
+                <button type="submit">OK!</button>
+                <input class="" formControlName="idResident" id="idResident" type="text" name="name" placeholder="ID de Residente"><br>
+            </form>
+
+            <table class="default">
+                <tr>
+                    <th>Hoy</th>
+                    <th>Mañana</th>
+                    <th>Miércoles</th>
+                </tr>
+                <tr>
+                    <td>Soleado</td>
+                    <td>Mayormente soleado</td>
+                    <td>Parcialmente nublado</td>
+                </tr>
+                <tr>
+                    <td>19°C</td>
+                    <td>17°C</td>
+                    <td>12°C</td>
+                </tr>
+                <tr>
+                    <td>E 13 km/h</td>
+                    <td>E 11 km/h</td>
+                    <td>S 16 km/h</td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+</main>
