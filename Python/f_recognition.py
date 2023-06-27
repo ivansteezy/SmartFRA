@@ -4,7 +4,7 @@ import face_recognition
 import sys
 
 # Codificar los rostros extraidos
-imageFacesPath = "D:\Pio\Carrera\SmartFRA\SmartFRA\Python\Images\Faces"
+imageFacesPath = "/home/syro/Repos/SmartFRA/Python/Images/Faces"
 facesEncodings = []
 facesNames = []
 
@@ -26,12 +26,15 @@ for file_name in os.listdir(imageFacesPath):
 #print(facesNames)
 ##############################################
 # LEYENDO VIDEO
-cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
+cap = cv2.VideoCapture(0)
+
 # Detector facial
 faceClassif = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_frontalface_default.xml")
 while True:
      ret, frame = cap.read()
      if ret == False:
+          # new code for camera error
+          print("error reading frame")
           break
      frame = cv2.flip(frame, 1)
      orig = frame.copy()
@@ -47,18 +50,16 @@ while True:
                name = facesNames[index]
                color = (125, 220, 0)
                timesTrue = timesTrue + 1
-
                if(timesTrue == threshold):
+                  print("Bienvenido Will Smith")
                   sys.exit(ErrorCode.SUCCESS)
-                  break
           else:
                name = "Desconocido"
                color = (50, 50, 255)
                timesFalse = timesFalse + 1
-
                if(timesFalse == threshold):
+                  print("INFO: Face not detected")
                   sys.exit(ErrorCode.FAILURE)
-                  break
 
 
           cv2.rectangle(frame, (x, y + h), (x + w, y + h + 30), color, -1)
