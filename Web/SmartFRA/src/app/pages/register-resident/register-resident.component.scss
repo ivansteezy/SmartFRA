@@ -1,0 +1,29 @@
+.centrar-test {
+    display: flex;
+  justify-content: center;
+}
+
+.is-invalid{
+  border: 2px solid red;
+}
+
+.labels-error {
+  background-color: rgb(203,50,52,0.5);
+  border-radius: 5px;
+  padding: 2px;
+}
+
+.button-spinner {
+  border-radius: 0 15px 0 0;
+
+}
+
+.button-spinner-reverse {
+  border-radius: 15px 0 0 0;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}

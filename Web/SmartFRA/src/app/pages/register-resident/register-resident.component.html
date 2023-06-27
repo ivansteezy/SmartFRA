@@ -1,0 +1,76 @@
+<form [formGroup]="formRegister" class="xsm:grid-cols-1 grid h-screen min-w-full sm:mt-10 sm:grid-cols-2" id="RegisterResidentForm" role="form" (ngSubmit)="guardar()">
+
+
+    <div class="space-y-5 p-8 sm:ml-20">
+        <span class="sm:text-2xl xsm:text-md mt-6 font-normal text-secondary-blue ">Registrar Nuevo Residente</span>
+        <input class="h-12 w-full rounded-xl p-2 bg-complementary-gray-light-color" formControlName="residentName" [class.is-invalid]="nameResidentNoValid" id="residentName"
+            type="text" name="name" placeholder="Nombre"><br>
+        <small class="text-complementary-white labels-error" *ngIf="nameResidentNoValid">* Introduce un nombre valido</small><br>
+        <input class="h-12 w-full rounded-xl p-2 bg-complementary-gray-light-color" formControlName="lastName" [class.is-invalid]="lastNameNoValid" id="lastName" type="text"
+            name="lastName1" placeholder="Apellido Paterno"><br>
+        <small class="text-complementary-white labels-error" *ngIf="lastNameNoValid">* Introduce un nombre valido</small><br>
+        <input class="h-12 w-full rounded-xl p-2 bg-complementary-gray-light-color" formControlName="motherLastName" [class.is-invalid]="motherLastNameNoValid" id="motherLastName"
+            type="text" name="lastName2" placeholder="Apellido Materno"><br>
+        <small class="text-complementary-white labels-error" *ngIf="motherLastNameNoValid">* Introduce un nombre valido</small><br>
+        <div class="flex space-x-4">
+            <div class="flex">
+                <input class="h-12 w-full bg-complementary-gray-light-color rounded-l-xl p-2" formControlName="age" [class.is-invalid]="ageNoValid" id="age" type="number"
+                name="age" placeholder="0" [value]="ageNumber"><br>
+                <div class="flex-col w-24 justify-center text-center">
+                    <button class="font-bold text-md text-white-pure bg-secondary-blue-color button-spinner w-full" type="button" (click)="incrementAge()">
+                        &Hat;
+                    </button>
+                    <button class="font-bold text-md text-white-pure bg-secondary-blue-color rotate-180 button-spinner-reverse  w-full" type="button"  (click)="decrementAge()">
+                        &Hat;
+                    </button>
+                </div>
+            </div>
+
+            <input class="h-12 w-full bg-complementary-gray-light-color rounded-xl p-2" formControlName="idHouse" [class.is-invalid]="idHouseNoValid" id="idHouse"
+                type="text" name="houseNumber" placeholder="Numero de Casa"><br>
+        </div>
+        <div class="flex space-x-4">
+            <small class="text-complementary-white labels-error" *ngIf="ageNoValid">* Introduce una edad valida</small>
+            <small class="text-complementary-white labels-error" *ngIf="idHouseNoValid">* Introduce una casa valida</small>
+        </div>
+        
+        <input class="h-12 w-full rounded-xl p-2 bg-complementary-gray-light-color" formControlName="plates" [class.is-invalid]="platesNoValid" id="plates" type="text"
+            name="plates" placeholder="Placas"><br>
+        <small class="text-complementary-white labels-error" *ngIf="platesNoValid">* Introduce un nombre valido</small><br>
+        <input class="h-12 w-full rounded-xl p-2 bg-complementary-gray-light-color" formControlName="telephone" [class.is-invalid]="telephoneNoValid" id=" telephone" type="tel"
+            name="telephone" placeholder="Telefono de Contacto"><br>
+        <small class="text-complementary-white labels-error" *ngIf="telephoneNoValid">* Introduce un nombre valido</small><br>
+
+    </div>
+
+
+
+
+    <div class="grid h-full justify-center justify-items-center text-center pt-10 content-start">
+
+        <div class="flex mb-6 w-fit h-fit bg-secondary-blue-color p-8 rounded-full">
+            <img src="../../../../assets/icons/bars.svg" alt="Girl in a jacket" width="100px" height="100px" />
+          </div>
+         
+
+          <div class="w-full text-center">
+            <span class="font-bold text-secondary-blue"> Model Recognition </span>
+            <div class="flex space-x-4 w-64 mt-4 ">
+              <span class="h-16 w-fit bg-red-300 text-left font-bold text-secondary-blue">Name: </span><br />
+              <span class="h-16 w-full bg-red-500 font-thin text-left text-secondary-blue">modelo-fulanito-nombre-larguisimo-xml</span> <br />
+            </div>
+          </div>
+    
+
+        <div class="flex w-full h-12 bg-green-300 space-x-4 mt-4">
+            <button type="button" class="bg-secondary-blue-color rounded-2xl w-2/5 text-white-pure" >X</button>
+            <button type="button" (click)="chargeModelTest()" class="bg-secondary-blue-color rounded-full w-full text-white-pure">Grabar Modelo</button>
+          </div>
+      
+          <div class="flex w-full h-12 bg-green-300 space-x-4 sm:mt-36 mt-8 xsm:mb-4">
+            <button class="bg-primary-orange-color rounded-2xl w-full pl-8 pr-8 pb-5 pt-3 text-center text-white-pure font-bold  xsm:rounded-lg" type="button" (click)="limpiar()" >LIMPIAR</button>
+            <button class="bg-primary-orange-color rounded-2xl w-full pl-8 pr-8 pb-5 pt-3 text-white-pure font-bold xsm:rounded-lg" type="submit" form="RegisterResidentForm">REGISTRAR</button>
+          </div>
+
+    </div>
+</form>
