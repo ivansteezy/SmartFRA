@@ -15,11 +15,23 @@ import { HttpRequestsService } from 'src/app/services/common/http-requests.servi
 export class LoginComponent implements OnInit {
   myForm: FormGroup;
 
+  getCurrentSession(){
+    if((sessionStorage.getItem("token") != null)){
+      this.navigationService.NavigateToRoute('dashboard');
+      console.log("Hay una sesion activa");
+    }else{
+      console.log("No una sesion activa :D");
+    }
+  }
+
   constructor(private navigation: NavigationService, 
     private fb: FormBuilder, 
     private toast: NgToastService,
     private cognitoService: CognitoService,
-    private http: HttpRequestsService) {
+    private http: HttpRequestsService,
+    private navigationService: NavigationService) {
+
+    this.getCurrentSession();
       
     this.myForm = this.fb.group({
       email: ['', [Validators.required, Validators.pattern(/^\S+@\S+\.\S+$/)]],
@@ -53,18 +65,6 @@ export class LoginComponent implements OnInit {
       console.log("Authentication good AWS");
       console.log(res);
       /* search in database*/
-
-      // this.http.Get<any>(apiUrl)
-      // .subscribe(
-      //   response => {
-      //     const apiResponse = response;
-      //     console.log(apiResponse);
-      //   },
-      //   error => {
-      //     console.log(error);
-      //   }
-      // );
-
           this.toast.success({detail:"Ingreso correcto",summary:'Bienvenido a SmartFRA',duration:5000});
           //relocation
           this.navigation.NavigateToRoute('dashboard');

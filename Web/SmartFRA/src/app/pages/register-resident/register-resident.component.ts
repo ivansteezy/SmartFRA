@@ -5,6 +5,9 @@ import { Integer } from 'aws-sdk/clients/apigateway';
 import { NgToastService } from 'ng-angular-popup';
 import { catchError, tap } from 'rxjs';
 import { HttpRequestsService } from 'src/app/services/common/http-requests.service';
+import { NavigationService } from 'src/app/services/common/navigation.service';
+import { CognitoService } from 'src/app/services/aws/cognito.service';
+
 
 @Component({
   selector: 'app-register-resident',
@@ -16,11 +19,21 @@ import { HttpRequestsService } from 'src/app/services/common/http-requests.servi
 export class RegisterResidentComponent implements OnInit {
 
   formRegister!:FormGroup;
+  formValidation!:FormGroup;
   ageNumber!:Integer;
   faceModelTest!:String;
 
-  constructor(private fb:FormBuilder, private toast: NgToastService, private http: HttpRequestsService) {
+  show = false;
+
+  constructor(
+    private navigation: NavigationService,
+    private cognitoService: CognitoService,
+    private fb:FormBuilder,
+    private fVb:FormBuilder, 
+    private toast: NgToastService, 
+    private http: HttpRequestsService) {
     this.crearFormulario();
+    this.crearFormularioValidacion();
     this.ageNumber = 0;
     this.faceModelTest = "Pitaya.xml";
   }
@@ -53,6 +66,18 @@ export class RegisterResidentComponent implements OnInit {
     return this.formRegister.get('telephone')?.invalid && this.formRegister.get('telephone')?.touched;
   }
 
+  get emailNoValid(){
+    return this.formRegister.get('email')?.invalid && this.formRegister.get('email')?.touched;
+  }
+
+  get passwordNoValid(){
+    return this.formRegister.get('password')?.invalid && this.formRegister.get('password')?.touched;
+  }
+
+  get codeNoValid(){
+    return this.formRegister.get('password')?.invalid && this.formRegister.get('password')?.touched;
+  }
+
   // get faceIdNoValid(){
   //   return this.formRegister.get('faceId')?.invalid && this.formRegister.get('faceId')?.touched;
   // }
@@ -66,8 +91,16 @@ export class RegisterResidentComponent implements OnInit {
         idHouse:['',[Validators.required, Validators.pattern(/^[A-Za-z0-9\s]+$/)]],
         plates: ['',[Validators.required, Validators.pattern(/^[A-Za-z0-9\s]+$/)]],
         telephone: ['',[Validators.required, Validators.pattern(/^((\d{10})|(\d{13}))$/)]],
+        email: ['', [Validators.required, Validators.pattern(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)]],
+        password: ['', [Validators.required, Validators.pattern(/^(?=.*\d)(?=.*[a-zA-Z])(?=.*[@#$%^&+=!])(?!.*\s).{8,}$/)]],
         // faceModel: ['',[Validators.required, Validators.pattern(/^[A-Za-z0-9\s]+$/)]],
     })
+  }
+
+  crearFormularioValidacion(){
+    this.formValidation = this.fVb.group({
+      code: ['', [Validators.required, Validators.pattern(/^[0-9]{6}$/)]],
+    });
   }
 
 ngOnInit(): void {
@@ -82,6 +115,10 @@ chargeModelTest(){
 }
 
 
+ResendCode(){
+
+}
+
 public postRegister() {
 
   let dataUser = {
@@ -92,13 +129,15 @@ public postRegister() {
     idHouse: this.formRegister.getRawValue().idHouse,
     plates:  this.formRegister.getRawValue().plates,
     telephone:  this.formRegister.getRawValue().telephone,
-    faceModel:  this.faceModelTest
+    faceModel:  this.faceModelTest,
+    email: this.formRegister.getRawValue().email
   }
 
   this.http.Post('http://localhost:3000/resident/ResidentRegistry', dataUser)
     .pipe(
       tap(() => {
         this.toast.success({detail:"Registro exitoso",summary:'Nuevo usuario añadido!',duration:5000});
+        this.limpiar();
       }),
       catchError((error) => {
         this.toast.error({detail:"Error de Registro",summary:'Ocurrio un error, intente mas tarde.',duration:5000});
@@ -125,7 +164,7 @@ guardar(){
       console.log("Enviado!",this.formRegister.value);
 
       //HTTP Request
-      this.postRegister();
+      this.SubmitForm();
 
     }
 
@@ -162,6 +201,61 @@ decrementAge(){
   this.formRegister.get('age')?.setValue(this.ageNumber);
 }
 
+// -----------------------
+public VerifyUser(){
+  let data = {
+    email: this.formRegister.getRawValue().email,
+    verificationCode: this.formValidation.getRawValue().code
+  }
+
+  this.cognitoService.VerifyUser(data).then(res => {
+    console.log("DATOS CORRECTOS: ",data)
+    this.toast.success({detail:"Usuario verificado.",summary:'Tu cuenta ha sido verificada exitosamente.',duration:5000});
+    //Se registra en BDD loacl:
+    this.postRegister();
+    this.show = false;
+  }).catch(error => {
+    console.log("DATOS NO CORRECTOS: ",data)
+    this.toast.error({detail:"Error de verificacion",summary:'Introduce un código válido.',duration:5000});
+  })
+}
+
+public RegisterUser(){
+  let data = {
+    email: this.formRegister.getRawValue().email,
+    password: this.formRegister.getRawValue().password,
+    names: this.formRegister.getRawValue().name,
+    lastNames: this.formRegister.getRawValue().lastName,
+    phoneNumber: this.formRegister.getRawValue().phoneNumber
+  }
+
+    this.cognitoService.SignUpUser(data).then(res => {
+      this.show = true;
+    }).catch(error => {
+      this.toast.error({detail:"Error de registro",summary:'Algo salió mal, intente nuevamente más tarde.',duration:5000});  
+    })
+}
+
+  public SubmitForm() {
+    if (this.formRegister.invalid) {
+      this.toast.error({detail:"Error de registro",summary:'Introduce tu informacion correctamente.',duration:5000});      
+      return;
+
+    } else {
+      const rawFormValues = this.formRegister.getRawValue();
+      this.RegisterUser(); 
+    }
+  }
+
+  public SubmitFormValidation() {
+    if (this.show) {
+      if (this.formValidation.invalid) {
+        this.toast.error({detail:"Codigo Incorrecto",summary:'No has ingresado un codigo valido.',duration:5000});       
+      } else {
+        this.VerifyUser();
+      }
+    }
+  }
 
 
 }

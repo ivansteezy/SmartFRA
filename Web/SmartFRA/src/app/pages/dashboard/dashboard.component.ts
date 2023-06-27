@@ -19,30 +19,29 @@ export class DashboardComponent implements OnInit {
   navData = menuBarData;
   currentContent : string = "";
 
+  getCurrentSession(){
+    if((sessionStorage.getItem("token") === null)){
+      this.navigationService.NavigateToRoute('login');
+    }else{
+      console.log("Hay una sesion activa :D");
+    }
+  }
+
   constructor(private navigationService: NavigationService, private toast: NgToastService,private cognitoService: CognitoService, private http: HttpRequestsService) {
 
+    this.getCurrentSession();
+    
     let apiUrl = "http://localhost:3000/resident/ResidentByEmail/"
     this.cognitoService.GetLoggedUser().then((res:any) => {
       console.log(res.payload.email);
-
-      this.http.Get(apiUrl, `%27${res.payload.email}%27` )
-      .pipe(
-        tap((response) => {
-         console.log("He guardado la data");
-         if(JSON.stringify(response) === JSON.stringify(JSON.parse("[]"))){
-          this.navigationService.NavigateToRoute('login');
-         }else{
-          sessionStorage.setItem('apiResponse', JSON.stringify(response));
-         }
-         
-        }),
-        catchError((error) => {
-          console.log("No he guardado la data");
-          this.navigationService.NavigateToRoute('login');
-          throw error;
-        })
-      )
-      .subscribe();
+      console.log("Todo bien, guarde el correo :)");
+      try{
+        sessionStorage.setItem("emailUser", res.payload.email);
+        sessionStorage.setItem("token", res.jwtToken);
+      }catch(error){
+        console.log("Woops, no he guardado la data del administrador");
+        console.log(error);
+      }
 
     }).catch((error) => {
       console.log("Oh algo ha salido mal");
@@ -71,27 +70,26 @@ export class DashboardComponent implements OnInit {
   }
 
   public closeSession() {
+    console.log("si funciona el close session?");
 
     // Obtener el valor de sessionStorage
-    let contenido = sessionStorage.getItem('apiResponse');
+    let emailStorage = sessionStorage.getItem('emailUser');
+    let tokenStorage = sessionStorage.getItem('token');
     
     // Verificar si el valor existe y no es null
-    if (contenido !== null) {
+    if ((emailStorage !== null) && (tokenStorage !== null)) {
       // Parsear el contenido JSON a un objeto JavaScript
-      var datos = JSON.parse(contenido);
-
+      var emailS = emailStorage;
       //closeSession Cognito
       try{
-        this.cognitoService.SignOut(datos[0].email);
-        sessionStorage.removeItem('apiResponse');
+        this.cognitoService.SignOut(emailS);
+        sessionStorage.removeItem('emailUser');
+        sessionStorage.removeItem('token');
         this.navigationService.NavigateToRoute('login');
       }catch(error){
         console.log("Algo ha ocurrido que no deberia al cerrar sesion");
-        console.log(datos);
+        console.log(emailStorage, tokenStorage);
       }
-    
-      // Utilizar los datos en tu código
-      console.log(datos);
     } else {
       // El valor no existe en sessionStorage o es null
       console.log('La variable no existe en sessionStorage o es null');
