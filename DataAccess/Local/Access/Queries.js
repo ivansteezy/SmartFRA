@@ -65,7 +65,12 @@ const Queries = {
         GetAllResidentEvents: () => {
             const query = `SELECT residentName, lastName, nameEvent, startTime, endTime, numberAccess, state FROM residentevents re JOIN residents r ON re.idResident = r.idResidents`;
             return query;
-        }
+        },
+        InsertResidentEvent: (residentevents) => {
+            const query = `INSERT INTO residentevents(IdResident, nameEvent, startTime, endTime, state, numberAccess) ` +
+                          `VALUES('${residentevents.IdResident}', '${residentevents.nameEvent}', '${residentevents.startTime}', '${residentevents.endTime}', '${residentevents.state}', '${residentevents.numberAccess}')`;
+            return query;
+        },
     },
 
     Residents: {

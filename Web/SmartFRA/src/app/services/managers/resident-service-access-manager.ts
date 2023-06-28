@@ -7,7 +7,7 @@ import { ResidentServiceAccessEndpoints } from '../../data-access/resident-servi
 @Injectable({
   providedIn: 'root'
 })
-export class GeneralServiceAccessManagerService {
+export class ResidentServiceAccessManagerService {
   constructor(private http: HttpRequestsService) { }
 
   public GetAllGeneralServiceAccess(name: string) : Observable<Array<ResidentServiceAccess>> {

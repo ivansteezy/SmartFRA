@@ -7,7 +7,7 @@ import { GuestAccessEndpoints } from '../../data-access/guest-access.endpoints';
 @Injectable({
   providedIn: 'root'
 })
-export class GeneralServiceAccessManagerService {
+export class GuestAccessManagerService {
   constructor(private http: HttpRequestsService) { }
 
   public GetAllGeneralServiceAccess(name: string) : Observable<Array<GuestAccess>> {

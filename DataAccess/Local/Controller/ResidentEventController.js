@@ -16,4 +16,19 @@ router.get('/AllResidentEvents', async function (request, response, next) {
     }
 });
 
+router.post('/ResidentEventRegistry', async function (request,response,next) {
+    const repository = ResidentEventRepository;
+
+    try{
+        console.log('Post a resident at /ResidentEventRegistry');
+        const result = await repository.InsertResidentEvent(request.body);
+        response.json(result);
+        console.log('Post the ResidentEvent succesfully');
+    }
+    catch(error){
+        console.error('Error while trying to post the ResidentEvent', error.message);
+        next(error);
+    }
+});
+
 module.exports = router;

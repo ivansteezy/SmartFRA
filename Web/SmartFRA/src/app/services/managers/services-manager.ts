@@ -7,7 +7,7 @@ import { ServicesEndpoints } from '../../data-access/services.endpoints';
 @Injectable({
   providedIn: 'root'
 })
-export class GeneralServiceAccessManagerService {
+export class ServicesManagerService {
   constructor(private http: HttpRequestsService) { }
 
   public GetAllGeneralServiceAccess(name: string) : Observable<Array<Services>> {
