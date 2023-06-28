@@ -14,5 +14,10 @@ export class GeneralServiceAccessManagerService {
     // call http requests service for a GET for the resident by id endpoint
     return this.http.Get<GeneralServiceAccess>(GeneralServiceAccessEndpoints.GetAllGeneralServiceAccess);
   }
+
+  public InsertGeneralServiceAccess(name: string, body: GeneralServiceAccess) : Observable<GeneralServiceAccess> {
+    // call http requests service for a GET for the resident by id endpoint
+    return this.http.Post<GeneralServiceAccess>(GeneralServiceAccessEndpoints.InsertGeneralServiceAccess, body);
+  }
   
 }

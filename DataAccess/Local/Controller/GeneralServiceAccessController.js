@@ -16,4 +16,19 @@ router.get('/AllGeneralServiceAccess', async function (request, response, next) 
     }
 });
 
+router.post('/GeneralServiceAccessRegistry', async function (request,response,next) {
+    const repository = GeneralServiceAccessRepository;
+
+    try{
+        console.log('Post a resident at /GeneralServiceAccessRegistry');
+        const result = await repository.InsertGeneralServiceAccess(request.body);
+        response.json(result);
+        console.log('Post the GeneralServiceAccess succesfully');
+    }
+    catch(error){
+        console.error('Error while trying to post the GeneralServiceAccess', error.message);
+        next(error);
+    }
+});
+
 module.exports = router;

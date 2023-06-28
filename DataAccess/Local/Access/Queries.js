@@ -3,7 +3,12 @@ const Queries = {
         GetAllGeneralServiceAccess: () => {
             const query = `SELECT residentName, providerName, serviceName, cellphone, accessTime, exitTime FROM ResidentServiceAccess sa JOIN Services s ON sa.servicesId = s.idServices JOIN Residents r on sa.residentid = r.idResidents;`;
             return query;
-        }
+        },
+        InsertGeneralServiceAccess: (generalserviceaccess) => {
+            const query = `INSERT INTO generalserviceaccess(accessTime, exitTime, providerName, companyName, cellPhone, cicNumber, conceptName) ` +
+                          `VALUES('${generalserviceaccess.accessTime}', '${generalserviceaccess.exitTime}', '${generalserviceaccess.providerName}', '${generalserviceaccess.companyName}', '${generalserviceaccess.cellPhone}', '${generalserviceaccess.cicNumber}', '${generalserviceaccess.conceptName}')`;
+            return query;
+        },
     },
 
     GuestAccess: {

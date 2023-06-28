@@ -8,7 +8,15 @@ const GeneralServiceAccessRepository =
         const data = Adapter.EmptyOrRows(result);
 
         return data;
-    }
+    },
+
+    InsertGeneralServiceAccess: async function( generalserviceaccess ){
+        const result= await Adapter.Execute(Queries.GeneralServiceAccess.InsertGeneralServiceAccess(generalserviceaccess));
+        const data = Adapter.EmptyOrRows(result);
+
+        return data;
+
+    },
 }
 
 
