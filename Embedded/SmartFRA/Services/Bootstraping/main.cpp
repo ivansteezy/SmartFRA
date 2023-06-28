@@ -44,21 +44,21 @@ int main(int argc, char *argv[])
 //    auto result = QProcess::execute("python", QStringList() << "../../Python/f_recognition.py");
 //    qDebug() << "El codigo es: " << result;
 
-    QProcess process;
-    process.start("python", QStringList() << "../../Python/f_recognition.py");
+//    QProcess process;
+//    process.start("python", QStringList() << "../../Python/f_recognition.py");
 
-    if(process.waitForStarted() && process.waitForFinished())
-    {
-        QByteArray res = process.readAllStandardOutput();
-        QString output(res);
+//    if(process.waitForStarted() && process.waitForFinished())
+//    {
+//        QByteArray res = process.readAllStandardOutput();
+//        QString output(res);
 
-        qDebug() << "El codgio de ejecucion fue: " << process.exitCode();
-        qDebug() << "el string es: " << output;
-    }
-    else
-    {
-        qDebug() << "ERROR";
-    }
+//        qDebug() << "El codgio de ejecucion fue: " << process.exitCode();
+//        qDebug() << "el string es: " << output;
+//    }
+//    else
+//    {
+//        qDebug() << "ERROR";
+//    }
 
     return app.exec();
 }

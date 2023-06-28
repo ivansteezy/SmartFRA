@@ -34,6 +34,10 @@ set(PROJECT_SOURCES
         Services/Networking/Networking.Base.cpp
         Services/Networking/HttpRequestManager.hpp
         Services/Networking/HttpRequestManager.cpp
+        Services/FaceDetection/FaceDetection.Base.hpp
+        Services/FaceDetection/FaceDetection.Base.cpp
+        Services/FaceDetection/FaceDetectionManager.hpp
+        Services/FaceDetection/FaceDetectionManager.cpp
         UI/Qml/resources.qrc
 )
 

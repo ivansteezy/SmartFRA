@@ -25,24 +25,34 @@ ApplicationWindow {
             id: fraRegular
             source: "qrc:/fonts/regular.ttf"
         }
-
-        Label {
-            Layout.alignment: Qt.AlignCenter
-            text: "¿Cómo ingresaremos?"
-            font.family: fraBold.font.family
-            font.pixelSize: 20
-            font.bold: true
-            font.weight: 400
-            color: '#D9D9D9'
-        }
     }
-
-
 
     Image {
         id: background
         anchors.fill: parent
-        source: "qrc:/images/background.png"
+        source: "qrc:/images/driver-page.png"
         z: -1
+    }
+
+    Button {
+        id: startRecognition
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.top: parent.top
+        anchors.topMargin: 500
+        contentItem: Text {
+            text: "Identificate!"
+            color: "#FFFFFF"
+            font.family: fraRegular.font.family
+            font.pixelSize: 18
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
+        }
+
+        background: Rectangle {
+            implicitWidth: 300
+            implicitHeight: 40
+            color: walkingResidentButton.down ? "#084f70" : "#05364D"
+            radius: 5
+        }
     }
 }

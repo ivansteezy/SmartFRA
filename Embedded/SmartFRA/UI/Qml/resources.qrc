@@ -5,6 +5,9 @@
     </qresource>
     <qresource prefix="/images">
         <file alias="background.png">resources/images/background-home.png</file>
+        <file alias="driver-page.png">resources/images/smart-fra-ui-normal-09.png</file>
+        <file alias="driver-successful-page.png">resources/images/smart-fra-ui-normal-08.png</file>
+        <file alias="driver-fail-page.png">resources/images/smart-fra-ui-normal-10.png</file>
     </qresource>
     <qresource prefix="/fonts">
         <file>resources/fonts/Montserrat-Black.ttf</file>
@@ -15,5 +18,7 @@
         <file>resources/fonts/Montserrat-SemiBold.ttf</file>
     </qresource>
     <qresource prefix="/">
+        <file>ResidentDriverSuccessfulPage.qml</file>
+        <file>ResidentDriverFailurePage.qml</file>
     </qresource>
 </RCC>
