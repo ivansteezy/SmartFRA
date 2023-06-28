@@ -52,7 +52,6 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  
 
   public NavigateToLogin() {
     this.navigationService.NavigateToRoute('login');
