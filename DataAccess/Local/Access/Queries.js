@@ -15,7 +15,12 @@ const Queries = {
         GetAllGuestAccess: () => {
             const query = `SELECT name, telephone, accessTime, exitTime FROM guestaccess ga JOIN guests g ON ga.IdGuest = g.idGuest`;
             return query;
-        }
+        },
+        InsertGuestAccess: (guestaccess) => {
+            const query = `INSERT INTO guestaccess(idGuest, accessTime, exitTime) ` +
+                          `VALUES('${guestaccess.idGuest}', '${guestaccess.accessTime}', '${guestaccess.exitTime}')`;
+            return query;
+        },
     },
 
     Guests: {

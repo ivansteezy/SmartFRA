@@ -16,4 +16,19 @@ router.get('/AllGuestsAccess', async function (request, response, next) {
     }
 });
 
+router.post('/GuestAccessRegistry', async function (request,response,next) {
+    const repository = GuestAccessRepository;
+
+    try{
+        console.log('Post a resident at /GuestAccessRegistry');
+        const result = await repository.InsertGuestAccess(request.body);
+        response.json(result);
+        console.log('Post the GuestAccess succesfully');
+    }
+    catch(error){
+        console.error('Error while trying to post the GuestAccess', error.message);
+        next(error);
+    }
+});
+
 module.exports = router;

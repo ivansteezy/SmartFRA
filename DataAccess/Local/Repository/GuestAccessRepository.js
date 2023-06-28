@@ -8,7 +8,15 @@ const GuestAccessRepository =
         const data = Adapter.EmptyOrRows(result);
 
         return data;
-    }
+    },
+
+    InsertGuestAccess: async function( guestaccess ){
+        const result= await Adapter.Execute(Queries.GuestAccess.InsertGuestAccess(guestaccess));
+        const data = Adapter.EmptyOrRows(result);
+
+        return data;
+
+    },
 }
 
 module.exports = GuestAccessRepository;
