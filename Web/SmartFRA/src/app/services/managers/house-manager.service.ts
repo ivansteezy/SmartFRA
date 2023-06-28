@@ -7,7 +7,7 @@ import { HouseEndpoints } from '../../data-access/house.endpoints';
 @Injectable({
   providedIn: 'root'
 })
-export class ResidentManagerService {
+export class HouseManagerService {
   constructor(private http: HttpRequestsService) { }
 
   public GetAllHouses(name: string) : Observable<Array<House>> {

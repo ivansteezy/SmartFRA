@@ -1,5 +1,5 @@
 
-export interface Event {
+export interface ResidentEvent {
     idEvent: number
     nameEvent: string
     startTime: Date
