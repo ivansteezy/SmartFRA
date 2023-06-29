@@ -37,7 +37,12 @@ const Queries = {
         InsertGuest: (guest) => {
             const query = `INSERT INTO Guests(IdEvent, name, lastName, plates, telephone) VALUES('${guest.idEvent}', '${guest.name}', '${guest.lastName}', '${guest.plates}', '${guest.telephone}')`;
             return query;
-        }
+        },
+
+        GetAllVisits: () => {
+            const query = `SELECT * from guests g, residents r, guestaccess a, residentevents e WHERE e.IdResident = r.idResidents AND e.idEvent = g.IdEvent AND a.IdGuest = g.idGuest`
+            return query;
+        },
     },
 
     Houses: {
@@ -67,7 +72,12 @@ const Queries = {
         GetAllResidentAccess: () => {
             const query = `SELECT  r.residentName, a.acessTime, a.exitTime FROM residentAccess a, Residents r WHERE a.idResident = r.idResidents`;
             return query;
-        }
+        },
+        InsertResidentAccess: (residentaccess) => {
+            const query = `INSERT INTO residentaccess(IdResident, acessTime, exitTime) ` +
+                          `VALUES('${residentaccess.IdResident}', '${residentaccess.acessTime}', '${residentaccess.exitTime}')`;
+            return query;
+        },
 
     },
 
@@ -115,7 +125,12 @@ const Queries = {
         GetAllResidentServiceAccess: () => {
             const query = `SELECT residentName, providerName, serviceName, cellphone, accessTime, exitTime FROM residentserviceaccess sa JOIN Services s ON sa.servicesId = s.idServices JOIN Residents r on sa.residentid = r.idResidents`;
             return query;
-        }
+        },
+        InsertResidentServiceAccess: (residentserviceaccess) => {
+            const query = `INSERT INTO residentserviceaccess(ResidentId, accessTime, exitTime, providerName, cellPhone, cicNumber) 
+                           VALUES('${residentserviceaccess.ResidentId}', '${residentserviceaccess.accessTime}', '${residentserviceaccess.exitTime}', '${residentserviceaccess.providerName}', '${residentserviceaccess.cellPhone}', '${residentserviceaccess.cicNumber}')`;
+            return query;
+        },
     },
 
     Services: {
