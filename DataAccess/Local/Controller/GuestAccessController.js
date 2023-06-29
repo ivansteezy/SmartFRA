@@ -31,4 +31,18 @@ router.post('/GuestAccessRegistry', async function (request,response,next) {
     }
 });
 
+router.put('/UpdateExitTime/:exitTime/:idGuest', async function (request, response, next) {
+    const repository = GuestAccessRepository;
+    try {
+        console.log('Update exitTime at /UpdateExitTime/:exitTime/:idGuest endpoint...');
+        const result = await repository.UpdateExitTime(request.params.exitTime, request.params.idGuest);
+        response.json(result);
+        console.log('Updated exitTime successfully');
+    }
+    catch(error) {
+        console.error('Error while trying to update exitTime', error.message);
+        next(error);
+    }
+});
+
 module.exports = router;

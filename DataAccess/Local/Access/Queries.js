@@ -21,6 +21,10 @@ const Queries = {
                           `VALUES('${guestaccess.idGuest}', '${guestaccess.accessTime}', '${guestaccess.exitTime}')`;
             return query;
         },
+        UpdateExitTime: (exitTime, idGuest) => {
+            const query = `UPDATE guestaccess SET exitTime = ${exitTime} WHERE idGuest = '${idGuest}'`;
+            return query;
+        },
     },
 
     Guests: {
