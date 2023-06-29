@@ -67,7 +67,12 @@ const Queries = {
         GetAllResidentAccess: () => {
             const query = `SELECT  r.residentName, a.acessTime, a.exitTime FROM residentAccess a, Residents r WHERE a.idResident = r.idResidents`;
             return query;
-        }
+        },
+        InsertResidentAccess: (residentaccess) => {
+            const query = `INSERT INTO residentaccess(IdResident, acessTime, exitTime) ` +
+                          `VALUES('${residentaccess.IdResident}', '${residentaccess.acessTime}', '${residentaccess.exitTime}')`;
+            return query;
+        },
 
     },
 

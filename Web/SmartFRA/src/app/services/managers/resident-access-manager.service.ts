@@ -14,4 +14,9 @@ export class ResidentAccessManagerService {
     // call http requests service for a GET for the resident by id endpoint
     return this.http.Get<ResidentAccess>(ResidentAccessEndpoints.GetAllResidentAccess);
   }
+
+  public InsertResidentAccess(name: string, body: ResidentAccess) : Observable<ResidentAccess> {
+    // call http requests service for a GET for the resident by id endpoint
+    return this.http.Post<ResidentAccess>(ResidentAccessEndpoints.InsertResidentAccess, body);
+  }
 }
