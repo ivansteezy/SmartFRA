@@ -9,7 +9,7 @@ export class HttpRequestsService {
   constructor(private http: HttpClient) { }
 
   public Get<T>(endpoint: string, params: string = "") : Observable<Array<T>> {
-    return this.http.get<Array<T>>(endpoint, { headers: this.GetHTTPHeaders() });
+    return this.http.get<Array<T>>(endpoint+params, { headers: this.GetHTTPHeaders() }); // :'D
   }
 
   public Post<T>(endpoint: string, body: T, params: string = "" ) : Observable<T> {

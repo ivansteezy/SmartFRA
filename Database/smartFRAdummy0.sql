@@ -40,6 +40,7 @@ CREATE TABLE IF NOT EXISTS `smartfra0`.`Residents` (
   `plates` VARCHAR(7) NULL,
   `telephone` DECIMAL(15) NOT NULL,
   `faceModel` VARCHAR(60) NOT NULL,
+  `email` VARCHAR(60) NOT NULL,
   PRIMARY KEY (`idResidents`),
   CONSTRAINT `fkIdHouse`
     FOREIGN KEY (`idHouse`)
@@ -182,7 +183,7 @@ INSERT INTO Houses VALUES ("0","Lazaro Cárdenas 2834", "5");
 -- truncate table Houses;
 
 -- RESIDENTS DUMMY --
-INSERT INTO Residents VALUES ("0","Alma Alejandra","Hernández","Jiménez","21","1","2488ZFH","3321779665","2488ZFH.xml");
+INSERT INTO Residents VALUES ("0","Alma Alejandra","Hernández","Jiménez","21","1","2488ZFH","3321779665","2488ZFH.xml","alma.hj0606@gmail.com");
 INSERT INTO Residents VALUES ("0","Jose Manuel","Buendía","Rodriguez","25","1","2488ZFH","3321771234","2488ZFH2.xml");
 
 INSERT INTO Residents VALUES ("0","Ivan Oswaldo","Ayala","Martinez","22","2","7174NVE","3331245678","7174NVE.xml");

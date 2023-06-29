@@ -1,1 +1,58 @@
-<p (click)="NavigateToLogin()">dashboard works!</p>
+<main
+    class="flex min-h-screen xsm:flex-col sm:flex-col md:flex lg:flex xsm:bg-background-dashboard-large sm:bg-background-dashboard-large bg-no-repeat xsm:bg-cover md:bg-cover bg-opacity-10 bg-fixed">
+
+    <nav>
+        <div class="bg-secondary-blue-color p-2 flex content-end">
+            <span class="flex text-white-pure">DASHBOARD ADMINISTRADOR</span>
+        </div>
+
+        <div class="flex justify-between">
+            <div class="flex justify-start items-center ml-3">
+                <img (click)="openMenu()" class="xsm:w-10 xsm:h-min sm:w-14 sm:h-min ml-2" [src]="iconMenuState"
+                    (mouseover)="iconMenuState = '../../../../assets/icons/bars-test2.svg'"
+                    (mouseout)="iconMenuState = '../../../../assets/icons/bars.svg'" alt="user-profile-icon" alt="" />
+                <img src="../../../assets/img/wallpapers/title-login-orange-lg.png"
+                    class="xsm:w-40 xsm:h-min  sm:w-1/5 sm:h-min ml-2 " alt="" />
+            </div>
+
+            <div class="flex items-center justify-end mr-2 navbar-user">
+                <img [src]="iconUserState" (mouseover)="iconUserState = '../../../../assets/icons/user-test.svg'"
+                    (mouseout)="iconUserState = '../../../../assets/icons/user.svg'"
+                    class="xsm:w-10 xsm:h-min sm:w-14 sm:h-min mr-3" alt="user-profile-icon" />
+            </div>
+        </div>
+    </nav>
+
+    <div>
+        <div [ngClass]="{'fade-out':!setShowMenu, 'fade-in':setShowMenu}"
+        class="bg-complementary-gray-light-color/50 min-h-screen w-full absolute z-10 backdrop-blur-sm">
+    </div>
+    
+    <div [ngClass]="{'fade-out':!setShowMenu, 'fade-in':setShowMenu}"
+        class=" bg-secondary-blue-color absolute z-20 h-screen w-1/5 xsm:w-52 ">
+        <div>
+            <div class="flex justify-start items-center pl-2 pr-2 pt-8" *ngFor="let data of navData">
+                <a class="flex justify-start items-center" (click)="contentChange(data.routerLink)">
+                    <img class="w-10 pr-3 min-h-fit " [src]="[data.icon]" alt="">
+                    <span
+                        class="font-normal text-sm mb-1 text-white-pure transition ease-in-out hover:scale-110 hover:bg-indigo-500 duration-150">{{data.label}}</span>
+                </a>
+            </div>
+        </div>
+        <hr class="mt-8">
+        <div class="absolute justify-start  pl-2 pr-2 pt-5">
+            <a class="flex justify-start items-center" routerLink="/">
+                <img class="w-10 pr-3 min-h-fit " src="../../../../assets/icons/bars.svg" alt="">
+                <span
+                    class="font-normal text-sm mb-1 text-primary-orange transition ease-in-out hover:scale-110 hover:bg-indigo-500 duration-150" (click)="closeSession()">Cerrar
+                    sesión</span>
+            </a>
+        </div>
+    </div>
+    </div>
+
+    <!-- DYNAMIC CONTAINER -->
+    <app-register-resident *ngIf="currentContent == 'register-resident'"></app-register-resident>
+    
+
+</main>
