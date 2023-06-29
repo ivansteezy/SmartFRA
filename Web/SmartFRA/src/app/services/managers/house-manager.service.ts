@@ -20,4 +20,9 @@ export class HouseManagerService {
     return this.http.Get<House>(HouseEndpoints.GetHouseByResident);
   }
   
+  public InsertHouse(name: string, body: House) : Observable<House> {
+    // call http requests service for a GET for the resident by id endpoint
+    return this.http.Post<House>(HouseEndpoints.InsertHouse, body);
+  }
+  
 }
