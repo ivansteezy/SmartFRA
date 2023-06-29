@@ -17,6 +17,14 @@ const ResidentEventsRepository =
         return data;
 
     },
+
+    UpdateState: async function( state, idEvent ){
+        const result= await Adapter.Execute(Queries.ResidentEvents.UpdateState(state, idEvent));
+        const data = Adapter.EmptyOrRows(result);
+
+        return data;
+
+    },
 }
 
 module.exports = ResidentEventsRepository;

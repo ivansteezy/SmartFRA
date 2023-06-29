@@ -31,4 +31,18 @@ router.post('/ResidentEventRegistry', async function (request,response,next) {
     }
 });
 
+router.put('/UpdateState/:state/:idEvent', async function (request, response, next) {
+    const repository = ResidentEventRepository;
+    try {
+        console.log('Update state at /UpdateState/:state/:idEvent endpoint...');
+        const result = await repository.UpdateState(request.params.state, request.params.idEvent);
+        response.json(result);
+        console.log('Updated state successfully');
+    }
+    catch(error) {
+        console.error('Error while trying to state exitTime', error.message);
+        next(error);
+    }
+});
+
 module.exports = router;

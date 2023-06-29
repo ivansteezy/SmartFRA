@@ -95,6 +95,10 @@ const Queries = {
                           `VALUES('${residentevents.IdResident}', '${residentevents.nameEvent}', '${residentevents.startTime}', '${residentevents.endTime}', '${residentevents.state}', '${residentevents.numberAccess}')`;
             return query;
         },
+        UpdateState: (state, idEvent) => {
+            const query = `UPDATE residentevents SET state = ${state} WHERE idEvent = '${idEvent}'`;
+            return query;
+        },
     },
 
     Residents: {
