@@ -13,12 +13,12 @@ import { HttpRequestsService } from 'src/app/services/common/http-requests.servi
 })
 export class HousesAdminComponent implements OnInit {
 
-  currentContentHouses : string = "";
+  currentContentHouses : string = "main-menu";
   formRegisterHouse!:FormGroup;
   formSearchHouse!:FormGroup;
   ageNumber!:Integer;
   faceModelTest!:String;
-  housesResult: any;
+  housesResul: any[] = [];
 
   constructor(private fb:FormBuilder, private toast: NgToastService, private http: HttpRequestsService) { 
     this.crearFormularioRegister();
@@ -30,7 +30,53 @@ export class HousesAdminComponent implements OnInit {
   ngOnInit(): void {
 
     // here's gonna try to add the get houses api
+    this.getInfoHouses();
+
   }
+
+getInfoHouses(){
+  
+  this.http.Get(`http://localhost:3000/house/AllHouses`)
+  .pipe(
+    tap((res) => {
+      this.toast.success({ detail: "Solicitud exitosa", summary: "Solicitud GET ALL HOUSES realizada", duration: 5000 });
+      console.log(res);
+      this.housesResul = res;
+      console.log(this.housesResul)
+
+    }),
+    catchError((error) => {
+      this.toast.error({ detail: "Error en la solicitud", summary: "Ocurrió un error, inténtelo de nuevo más tarde.", duration: 5000 });
+      throw error;
+    })
+  )
+  .subscribe();
+}
+  
+public insertHouse() {
+
+  let dataHouse = {
+    address: this.formRegisterHouse.getRawValue().address,
+    numberHouse: this.formRegisterHouse.getRawValue().numberHouse,
+  }
+
+  this.http.Post('http://localhost:3000/house/InsertHouse/HouseRegistry', dataHouse)
+    .pipe(
+      tap(() => {
+        this.toast.success({detail:"Registro exitoso",summary:'Nueva casa añadida!',duration:5000});
+      }),
+      catchError((error) => {
+        this.toast.error({detail:"Error de Registro",summary:'Ocurrio un error, intente mas tarde.',duration:5000});
+        throw error;
+      })
+    )
+    .subscribe();
+
+}
+
+moreDataHouse(numberHouse : number){
+  console.log(numberHouse);
+}
 
   public contentChangeHousesOption(contentPage:string) {
     this.currentContentHouses = contentPage;
@@ -67,13 +113,11 @@ export class HousesAdminComponent implements OnInit {
       console.log("Enviado!",this.formRegisterHouse.value);
 
       //HTTP Request
-      // this.postRegister();
+      this.insertHouse();
 
     }
    
-
 }
-
 
 
 searchHouse(){
@@ -91,8 +135,17 @@ searchHouse(){
   }else{
     console.log("Enviado!",this.formSearchHouse.value);
 
-    //HTTP Request
-    // this.postRegister();
+  // this.http.Get(`http://localhost:3000/house/HouseByResident/${idResidents}`)
+  // .pipe(
+  //   tap(() => {
+  //     this.toast.success({ detail: "Solicitud exitosa", summary: "Solicitud GET realizada", duration: 5000 });
+  //   }),
+  //   catchError((error) => {
+  //     this.toast.error({ detail: "Error en la solicitud", summary: "Ocurrió un error, inténtelo de nuevo más tarde.", duration: 5000 });
+  //     throw error;
+  //   })
+  // )
+  // .subscribe();
 
   }
 }

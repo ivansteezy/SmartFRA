@@ -11,7 +11,7 @@ export const menuBarData = [
         label: 'Casas'
     },
     {
-        routerLink: 'dashboard',
+        routerLink: 'visitas-admin',
         icon: '../../../../assets/icons/bars.svg',
         label: 'Visitas'
     },

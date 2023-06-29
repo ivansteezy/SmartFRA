@@ -1,0 +1,69 @@
+<main>
+    <h2>Casas Registradas</h2>
+    <div class="information-square">
+        <span> # Casas</span>
+        <span> 12 Habitantes</span>
+        <span>12 Familias</span>
+
+        <div class="houses-options">
+           <button class="add-house-button" (click)="contentChangeHousesOption('register-visit')">Registrar Visita</button><br>
+        </div>
+    </div>
+
+    <div class="houses-content-option">
+        <div *ngIf="currentContentHouses == 'main-menu'">
+            <h3>Casas Registradas</h3>
+
+            <table class="default">
+                <tr>
+                    <th>#</th>
+                    <th>Direccion</th>
+                    <th>Numero de Casa</th>
+                    <th>Detalles</th>
+                </tr>
+                <tr *ngFor="let house of housesResul">
+                    <td>{{ house.idHouse }}</td>
+                    <td>{{ house.address }}</td>
+                    <td>{{ house.numberHouse }}</td>
+                    <td><button (click)="moreDataHouse(house.numberHouse)">Detalles</button></td>
+                </tr>
+                
+            </table>
+        </div>
+
+        <div *ngIf="currentContentHouses == 'register-house'">
+            <h3>Registrar Nueva Casa:</h3>
+            <form [formGroup]="formRegisterHouse" class="" id="RegisterHouseForm" role="form" (ngSubmit)="registerHouse()">
+                <span class="">Direccion*:</span>
+                <input class="" formControlName="address" id="address" type="text" name="name" placeholder="Nombre"><br>
+                <span class=""># Casa*:</span>
+                <input class="" formControlName="numberHouse" id="numberHouse" type="text" name="name" placeholder="Nombre"><br>
+                <button type="submit">Registrar</button>
+            </form>
+        </div>
+
+        <div *ngIf="currentContentHouses == 'search-house'">
+            <h3>Casa de Residente: </h3>
+            <form [formGroup]="formSearchHouse" class="" id="RegisterHouseForm" role="form" (ngSubmit)="searchHouse()">
+                <button type="submit">OK!</button>
+                <input class="" formControlName="idResident" id="idResident" type="text" name="name" placeholder="ID de Residente"><br>
+            </form>
+
+            <table class="default">
+                <tr>
+                    <th>#</th>
+                    <th>Direccion</th>
+                    <th>Numero de Casa</th>
+                    <th>Detalles</th>
+                </tr>
+                <tr *ngFor="let house of housesResul">
+                    <td>{{ house.idHouse }}</td>
+                    <td>{{ house.address }}</td>
+                    <td>{{ house.numberHouse }}</td>
+                    <td><button (click)="moreDataHouse(house.numberHouse)">Detalles</button></td>
+                </tr>    
+            </table>
+
+        </div>
+    </div>
+</main>
