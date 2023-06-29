@@ -1,52 +1,69 @@
 <main>
-    <h2>Visitas</h2>
+    <h2>Casas Registradas</h2>
     <div class="information-square">
-        <span> Aqui encontraras todas las visitas del recinto!</span>
+        <span> # Casas</span>
+        <span> 12 Habitantes</span>
+        <span>12 Familias</span>
 
         <div class="houses-options">
-           <button class="add-house-button" (click)="contentChangeHousesOption('register-guess-access')">Registrar Visita</button><br>
+           <button class="add-house-button" (click)="contentChangeHousesOption('register-visit')">Registrar Visita</button><br>
         </div>
     </div>
 
     <div class="houses-content-option">
         <div *ngIf="currentContentHouses == 'main-menu'">
-            <h3>Visitas Registradas</h3>
+            <h3>Casas Registradas</h3>
 
             <table class="default">
                 <tr>
                     <th>#</th>
-                    <th>Visitante</th>
-                    <th>Residente</th>
-                    <th>Fecha</th>
+                    <th>Direccion</th>
+                    <th>Numero de Casa</th>
+                    <th>Detalles</th>
                 </tr>
                 <tr *ngFor="let house of housesResul">
                     <td>{{ house.idHouse }}</td>
                     <td>{{ house.address }}</td>
                     <td>{{ house.numberHouse }}</td>
-                    <td><button (click)="moreDataHouse(house.numberHouse)">Marcar Salida</button></td>
+                    <td><button (click)="moreDataHouse(house.numberHouse)">Detalles</button></td>
                 </tr>
                 
             </table>
         </div>
 
-        <div *ngIf="currentContentHouses == 'register-guess-access'">
-            <h3>Registrar Nueva Visita:</h3>
+        <div *ngIf="currentContentHouses == 'register-house'">
+            <h3>Registrar Nueva Casa:</h3>
             <form [formGroup]="formRegisterHouse" class="" id="RegisterHouseForm" role="form" (ngSubmit)="registerHouse()">
-                <span class="">Nombre de invitado*:</span>
+                <span class="">Direccion*:</span>
                 <input class="" formControlName="address" id="address" type="text" name="name" placeholder="Nombre"><br>
-                <span class="">Apellidos*:</span>
-                <input class="" formControlName="numberHouse" id="numberHouse" type="text" name="name" placeholder="Nombre"><br>
-                <span class="">Placas*:</span>
-                <input class="" formControlName="address" id="address" type="text" name="name" placeholder="Nombre"><br>
-                <span class=""># Telefono*:</span>
-                <input class="" formControlName="numberHouse" id="numberHouse" type="text" name="name" placeholder="Nombre"><br>
-                <span class="">Fecha de visita*:</span>
-                <input class="" formControlName="address" id="address" type="text" name="name" placeholder="Nombre"><br>
-                <span class=""># Evento*:</span>
+                <span class=""># Casa*:</span>
                 <input class="" formControlName="numberHouse" id="numberHouse" type="text" name="name" placeholder="Nombre"><br>
                 <button type="submit">Registrar</button>
             </form>
         </div>
 
+        <div *ngIf="currentContentHouses == 'search-house'">
+            <h3>Casa de Residente: </h3>
+            <form [formGroup]="formSearchHouse" class="" id="RegisterHouseForm" role="form" (ngSubmit)="searchHouse()">
+                <button type="submit">OK!</button>
+                <input class="" formControlName="idResident" id="idResident" type="text" name="name" placeholder="ID de Residente"><br>
+            </form>
+
+            <table class="default">
+                <tr>
+                    <th>#</th>
+                    <th>Direccion</th>
+                    <th>Numero de Casa</th>
+                    <th>Detalles</th>
+                </tr>
+                <tr *ngFor="let house of housesResul">
+                    <td>{{ house.idHouse }}</td>
+                    <td>{{ house.address }}</td>
+                    <td>{{ house.numberHouse }}</td>
+                    <td><button (click)="moreDataHouse(house.numberHouse)">Detalles</button></td>
+                </tr>    
+            </table>
+
+        </div>
     </div>
 </main>

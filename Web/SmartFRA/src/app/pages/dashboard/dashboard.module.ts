@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegisterResidentComponent } from '../register-resident/register-resident.component';
 import { HousesAdminComponent } from '../houses-admin/houses-admin.component';
+import { VisitasAdminComponent } from '../visitas-admin/visitas-admin.component';
 
 const MODULE_ROUTES = [
   { path: '', component: DashboardComponent }
@@ -17,7 +18,8 @@ const MODULE_ROUTES = [
   declarations: [
     DashboardComponent,
     RegisterResidentComponent,
-    HousesAdminComponent
+    HousesAdminComponent,
+    VisitasAdminComponent
   ],
   imports: [
     CommonModule,

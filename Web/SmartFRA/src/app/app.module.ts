@@ -7,13 +7,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgToastModule } from 'ng-angular-popup';
 import { QRCodeModule } from 'angularx-qrcode';
-import { VisitasAdminComponent } from './pages/visitas-admin/visitas-admin.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    VisitasAdminComponent,
 
   ],
   imports: [

@@ -1,69 +1,69 @@
 <main>
-    <h2>Casas Registradas</h2>
+    <h2>Visitas Registradas</h2>
     <div class="information-square">
-        <span> # Casas</span>
-        <span> 12 Habitantes</span>
-        <span>12 Familias</span>
+        <span> Aqui encontraras todas las visitas registradas del recinto!</span>
 
         <div class="houses-options">
-           <button class="add-house-button" (click)="contentChangeHousesOption('register-visit')">Registrar Visita</button><br>
+           <button class="add-house-button" (click)="openRegister()">Registrar Visita</button><br>
         </div>
+
+       <div  *ngIf="viewRegisterMenu == true">
+        <h3>Registrar entrada!</h3>
+        <div>
+            <h3>Registrar Nueva Visita:</h3>
+            <form [formGroup]="formRegisterVisit" class="" id="RegisterVisitForm" role="form" (ngSubmit)="registerVisit()">
+                <span class="">Nombre de invitado*:</span>
+                <input class="" formControlName="name" id="name" type="text" name="name" placeholder="Nombre"><br>
+                <span class="">Apellidos*:</span>
+                <input class="" formControlName="lastName" id="lasName" type="text" name="lasName" placeholder="Apellido"><br>
+                <span class="">Placas*:</span>
+                <input class="" formControlName="plates" id="plates" type="text" name="plates" placeholder="XXXX"><br>
+                <span class=""># Telefono*:</span>
+                <input class="" formControlName="telephone" id="telephone" type="text" name="telephone" placeholder="numberGuest"><br>
+                <span class=""># Evento*:</span>
+                <input class="" formControlName="event" id="event" type="number" name="event" placeholder="Evento"><br>
+                <button type="submit">Registrar</button>
+            </form>
+        </div>
+       </div> 
     </div>
 
     <div class="houses-content-option">
-        <div *ngIf="currentContentHouses == 'main-menu'">
-            <h3>Casas Registradas</h3>
+        <div *ngIf="currentContentVisit == 'main-menu'">
+            <h3>Visitas Registradas</h3>
 
             <table class="default">
                 <tr>
-                    <th>#</th>
-                    <th>Direccion</th>
-                    <th>Numero de Casa</th>
-                    <th>Detalles</th>
+                    <th>Nombre</th>
+                    <th>Apellido P</th>
+                    <th>Apellido M</th>
+                    <th>Evento</th>
+                    <th>Ingreso</th>
+                    <th>Salida</th>
+                    <th>Tel.</th>
+                    <th>Host</th>
+                    <th>Acciones</th>
                 </tr>
-                <tr *ngFor="let house of housesResul">
-                    <td>{{ house.idHouse }}</td>
-                    <td>{{ house.address }}</td>
-                    <td>{{ house.numberHouse }}</td>
-                    <td><button (click)="moreDataHouse(house.numberHouse)">Detalles</button></td>
+                <tr *ngFor="let visit of visitsResult">
+                    <td>{{ visit.name}}</td>
+                    <td>{{ visit.lastName}}</td>
+                    <td>{{ visit.motherLastName}}</td>
+                    <td>{{ visit.nameEvent}}</td>
+                    <td>{{ visit.accessTime }}</td>
+                    <td>
+                        <ng-container *ngIf="visit.exitTime; else emptyExitTime">{{ visit.exitTime }}</ng-container></td>
+                        <ng-template #emptyExitTime>NE</ng-template>
+                    <td>{{ visit.telephone}}</td>
+                    <td>{{ visit.residentName }}</td>
+                    <td><button (click)="marcarSalidaVisita(visit.idGuest)">Marcar Salida</button></td>
                 </tr>
                 
             </table>
         </div>
 
-        <div *ngIf="currentContentHouses == 'register-house'">
-            <h3>Registrar Nueva Casa:</h3>
-            <form [formGroup]="formRegisterHouse" class="" id="RegisterHouseForm" role="form" (ngSubmit)="registerHouse()">
-                <span class="">Direccion*:</span>
-                <input class="" formControlName="address" id="address" type="text" name="name" placeholder="Nombre"><br>
-                <span class=""># Casa*:</span>
-                <input class="" formControlName="numberHouse" id="numberHouse" type="text" name="name" placeholder="Nombre"><br>
-                <button type="submit">Registrar</button>
-            </form>
-        </div>
+        
 
-        <div *ngIf="currentContentHouses == 'search-house'">
-            <h3>Casa de Residente: </h3>
-            <form [formGroup]="formSearchHouse" class="" id="RegisterHouseForm" role="form" (ngSubmit)="searchHouse()">
-                <button type="submit">OK!</button>
-                <input class="" formControlName="idResident" id="idResident" type="text" name="name" placeholder="ID de Residente"><br>
-            </form>
-
-            <table class="default">
-                <tr>
-                    <th>#</th>
-                    <th>Direccion</th>
-                    <th>Numero de Casa</th>
-                    <th>Detalles</th>
-                </tr>
-                <tr *ngFor="let house of housesResul">
-                    <td>{{ house.idHouse }}</td>
-                    <td>{{ house.address }}</td>
-                    <td>{{ house.numberHouse }}</td>
-                    <td><button (click)="moreDataHouse(house.numberHouse)">Detalles</button></td>
-                </tr>    
-            </table>
-
-        </div>
     </div>
 </main>
+
+
