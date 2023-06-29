@@ -120,7 +120,12 @@ const Queries = {
         GetAllResidentServiceAccess: () => {
             const query = `SELECT residentName, providerName, serviceName, cellphone, accessTime, exitTime FROM residentserviceaccess sa JOIN Services s ON sa.servicesId = s.idServices JOIN Residents r on sa.residentid = r.idResidents`;
             return query;
-        }
+        },
+        InsertResidentServiceAccess: (residentserviceaccess) => {
+            const query = `INSERT INTO residentserviceaccess(ResidentId, accessTime, exitTime, providerName, cellPhone, cicNumber) 
+                           VALUES('${residentserviceaccess.ResidentId}', '${residentserviceaccess.accessTime}', '${residentserviceaccess.exitTime}', '${residentserviceaccess.providerName}', '${residentserviceaccess.cellPhone}', '${residentserviceaccess.cicNumber}')`;
+            return query;
+        },
     },
 
     Services: {

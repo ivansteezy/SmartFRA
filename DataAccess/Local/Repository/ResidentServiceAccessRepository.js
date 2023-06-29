@@ -8,7 +8,15 @@ const ResidentServiceAccessRepository =
         const data = Adapter.EmptyOrRows(result);
 
         return data;
-    }
+    },
+
+    InsertResidentServiceAccess: async function( residentserviceaccess ){
+        const result= await Adapter.Execute(Queries.ResidentServiceAccess.InsertResidentServiceAccess(residentserviceaccess));
+        const data = Adapter.EmptyOrRows(result);
+
+        return data;
+
+    },
 }
 
 module.exports = ResidentServiceAccessRepository;
