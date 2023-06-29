@@ -155,7 +155,11 @@ const Queries = {
         DeleteService: (idService) => {
             const query = `DELETE FROM Services WHERE id = ${idService}`;
             return query;
-        }
+        },
+        GetAllServicesWAccess: () => {
+            const query = `SELECT * FROM services s, residentserviceaccess r WHERE r.ServicesId = s.idServices `;
+            return query;
+        },
     }
 }
 

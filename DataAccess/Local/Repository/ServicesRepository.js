@@ -15,7 +15,14 @@ const ServicesRepository =
         const data = Adapter.EmptyOrRows(result);
 
         return data;
-    }
+    },
+
+    GetAllServicesWAccess: async function() {
+        const result = await Adapter.Execute(Queries.Services.GetAllServicesWAccess());
+        const data = Adapter.EmptyOrRows(result);
+
+        return data;
+    },
 }
 
 
