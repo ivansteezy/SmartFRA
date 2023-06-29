@@ -37,7 +37,12 @@ const Queries = {
         InsertGuest: (guest) => {
             const query = `INSERT INTO Guests(IdEvent, name, lastName, plates, telephone) VALUES('${guest.idEvent}', '${guest.name}', '${guest.lastName}', '${guest.plates}', '${guest.telephone}')`;
             return query;
-        }
+        },
+
+        GetAllVisits: () => {
+            const query = `SELECT * from guests g, residents r, guestaccess a, residentevents e WHERE e.IdResident = r.idResidents AND e.idEvent = g.IdEvent AND a.IdGuest = g.idGuest`
+            return query;
+        },
     },
 
     Houses: {

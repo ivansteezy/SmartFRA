@@ -45,4 +45,18 @@ router.post('/GuestRegistry', async function (request,response) {
     }
 });
 
+router.get('/AllVisits', async function (request, response, next) {
+    const repository = GuestRepository;
+    try {
+        console.log('Get all visits at /AllVisits endpoint...');
+        const result = await repository.GetAllVisits();
+        response.json(result);
+        console.log('Got all visits successfully, number of elements: ' + result.length);
+    }
+    catch(error) {
+        console.error('Error while trying to get all visits', error.message);
+        next(error);
+    }
+});
+
 module.exports = router;

@@ -4,4 +4,5 @@ export abstract class GuestEndpoints {
     public static GetAllGuests: string = "http://localhost:3000/guest/AllGuests";
     public static GetGuestById: string = "http://localhost:3000/guest/GuestById/:idGuest";
     public static InsertGuest: string = "http://localhost:3000/guest/GuestRegistry";
+    public static GetAllVisits: string = "http://localhost:3000/guest/AllVisits";
 }

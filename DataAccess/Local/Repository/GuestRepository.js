@@ -22,7 +22,14 @@ const GuestRepository =
         const data = Adapter.EmptyOrRows(result);
 
         return data;
-    }
+    },
+
+    GetAllVisits: async function() {
+        const result = await Adapter.Execute(Queries.Guests.GetAllVisits());
+        const data = Adapter.EmptyOrRows(result);
+
+        return data;
+    },
 }
 
 
