@@ -135,6 +135,10 @@ const Queries = {
                            VALUES('${residentserviceaccess.ResidentId}', '${residentserviceaccess.accessTime}', '${residentserviceaccess.exitTime}', '${residentserviceaccess.providerName}', '${residentserviceaccess.cellPhone}', '${residentserviceaccess.cicNumber}')`;
             return query;
         },
+        UpdateExitTime: (exitTime, ResidentId) => {
+            const query = `UPDATE residentserviceaccess SET exitTime = ${exitTime} WHERE ResidentId = '${ResidentId}'`;
+            return query;
+        },
     },
 
     Services: {

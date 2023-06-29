@@ -31,5 +31,19 @@ router.post('/ResidentServiceAccessRegistry', async function (request,response) 
     }
 });
 
+router.put('/UpdateExitTime/:exitTime/:ResidentId', async function (request, response, next) {
+    const repository = ResidentServiceAccessRepository;
+    try {
+        console.log('Update exitTime at /UpdateExitTime/:exitTime/:ResidentId endpoint...');
+        const result = await repository.UpdateExitTime(request.params.exitTime, request.params.ResidentId);
+        response.json(result);
+        console.log('Updated exitTime successfully');
+    }
+    catch(error) {
+        console.error('Error while trying to update exitTime', error.message);
+        next(error);
+    }
+});
+
 
 module.exports = router;
