@@ -1,6 +1,6 @@
 
 export interface GuestAccess {
     idGuestAccess: number
-    accessTime: Date
-    exitTime: Date
+    accessTime: string
+    exitTime: string
 }

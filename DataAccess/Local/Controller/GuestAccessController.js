@@ -22,11 +22,14 @@ router.post('/GuestAccessRegistry', async function (request,response,next) {
     try{
         console.log('Post a resident at /GuestAccessRegistry');
         const result = await repository.InsertGuestAccess(request.body);
+        console.log("FROM HERE WEWE: ",result);
         response.json(result);
         console.log('Post the GuestAccess succesfully');
+        console.log(request);
     }
     catch(error){
         console.error('Error while trying to post the GuestAccess', error.message);
+        console.log(request);
         next(error);
     }
 });

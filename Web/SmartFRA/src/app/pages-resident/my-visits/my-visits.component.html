@@ -1,1 +1,45 @@
-<p>my-visits works!</p>
+<p>My Visits</p>
+
+<div>
+    Mis Eventos
+
+    <button>Crear Evento</button>
+    <button>Ver Visitas</button>
+
+    <div class="houses-content-option">
+        <div *ngIf="currentContentVisit == 'main-menu'">
+            <h3>Visitas Registradas</h3>
+
+            <table class="default">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido P</th>
+                    <th>Apellido M</th>
+                    <th>Evento</th>
+                    <th>Ingreso</th>
+                    <th>Salida</th>
+                    <th>Tel.</th>
+                    <th>Host</th>
+                    <th>Acciones</th>
+                </tr>
+                <tr *ngFor="let visit of visitsResult">
+                    <td>{{ visit.name}}</td>
+                    <td>{{ visit.lastName}}</td>
+                    <td>{{ visit.motherLastName}}</td>
+                    <td>{{ visit.nameEvent}}</td>
+                    <td>{{ visit.accessTime }}</td>
+                    <td>
+                        <ng-container *ngIf="visit.exitTime; else emptyExitTime">{{ visit.exitTime }}</ng-container></td>
+                        <ng-template #emptyExitTime>NE</ng-template>
+                    <td>{{ visit.telephone}}</td>
+                    <td>{{ visit.residentName }}</td>
+                </tr>
+                
+            </table>
+        </div>
+
+        <div class="" *ngIf="currentContentVisit == 'main-menu'">
+
+        </div>
+        
+</div>

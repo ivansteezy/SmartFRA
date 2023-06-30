@@ -38,7 +38,6 @@ export class ForgotPassResidentComponent implements OnInit {
       pass2: ['', [Validators.required, Validators.pattern(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/)]]
     });
     
-
   }
 
   ngOnInit(): void {
@@ -109,7 +108,6 @@ export class ForgotPassResidentComponent implements OnInit {
     return this.myFormResetPassValidation.controls;
   }
 
-
   get email() {
     return this.myFormResetPass.get('email');
   }
@@ -125,7 +123,6 @@ export class ForgotPassResidentComponent implements OnInit {
     return this.myFormResetPassValidation.get('pass2');
   }
 
-
   public NavigateToResetPass() {
     this.navigation.NavigateToRoute('forgot-password');
   }
@@ -133,6 +130,5 @@ export class ForgotPassResidentComponent implements OnInit {
   public NavigateToLogin() {
     this.navigation.NavigateToRoute('login-resident');
   }
-
 
 }

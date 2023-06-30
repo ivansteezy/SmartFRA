@@ -20,6 +20,8 @@ export class VisitasAdminComponent implements OnInit {
   visitsResult: any[] =  [];
   viewRegisterMenu = false;
 
+  idGuessToAccess : string = "";
+
   constructor(private fb:FormBuilder, private toast: NgToastService, private http: HttpRequestsService) { 
     this.crearFormularioRegister();
   }
@@ -62,33 +64,15 @@ public insertVisit() {
     idEvent: this.formRegisterVisit.getRawValue().event
    }
 
-   
+   let insertionCompleted = false;
 
   this.http.Post('http://localhost:3000/guest/GuestRegistry', dataGuest)
     .pipe(
       tap((resp_insert:any) => {
         this.toast.success({detail:"Registro exitoso",summary:'Nueva casa añadida!',duration:5000});
+        insertionCompleted = true;
+        this.idGuessToAccess = resp_insert.id
 
-        let dataGuestAccess = {
-          IdGuest: 2, 
-          accessTime: this.getDate(), 
-          exitTime: "" 
-        }
-
-        console.log("dataGuestAccess: ", dataGuestAccess);
-  
-        this.http.Post('http://localhost:3000/guest-access/GuestAccessRegistry', dataGuestAccess)
-          .pipe(
-            tap(() => {
-              console.log("Se ha regisrado acceso correcto");
-            }),
-            catchError((error) => {
-              console.log("NO ha regisrado acceso correcto");
-              throw error;
-            })
-          )
-          .subscribe();
-        
       }),
       catchError((error) => {
         this.toast.error({detail:"Error de Registro",summary:'Ocurrio un error, intente mas tarde.',duration:5000});
@@ -97,6 +81,24 @@ public insertVisit() {
     )
     .subscribe();
 
+    if(insertionCompleted){
+      // tengo que buscar el registrooo
+    }
+}
+
+public insertAccessGuess(){
+  this.http.Post('http://localhost:3000/guest/GuestRegistry', dataGuest)
+    .pipe(
+      tap(() => {
+        console.log("Se ha ingresado correctamente el acceso de este viitante");
+        
+      }),
+      catchError((error) => {
+        this.toast.error({detail:"Error de Registro",summary:'Ocurrio un error, intente mas tarde.',duration:5000});
+        throw error;
+      })
+    )
+    .subscribe();
 }
 
 moreDataHouse(numberHouse : number){

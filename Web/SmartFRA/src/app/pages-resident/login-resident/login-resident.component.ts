@@ -10,6 +10,7 @@ import { CognitoService } from 'src/app/services/aws/cognito.service';
   templateUrl: './login-resident.component.html',
   styleUrls: ['./login-resident.component.scss']
 })
+
 export class LoginResidentComponent implements OnInit {
   myForm: FormGroup;
 
@@ -62,6 +63,7 @@ export class LoginResidentComponent implements OnInit {
     }).catch(error => {
       this.toast.error({detail:"Error de Inicio de Sesión",summary:'Usuario o contraseña incorrectos.',duration:5000});
     })
+
   }
 
   public SubmitForm() {
@@ -76,7 +78,6 @@ export class LoginResidentComponent implements OnInit {
   get f(): any {
     return this.myForm.controls;
   }
-
 
   get email() {
     return this.myForm.get('email');
@@ -106,7 +107,7 @@ export class LoginResidentComponent implements OnInit {
   }
 
   public NavigateToLogin() {
-    this.navigation.NavigateToRoute('login');
+    this.navigation.NavigateToRoute('login-resident');
   }
 
 }

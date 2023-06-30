@@ -32,9 +32,11 @@ export class DashboardComponent implements OnInit {
     this.getCurrentSession();
     
     let apiUrl = "http://localhost:3000/resident/ResidentByEmail/"
+
     this.cognitoService.GetLoggedUser().then((res:any) => {
       console.log(res.payload.email);
       console.log("Todo bien, guarde el correo :)");
+      
       try{
         sessionStorage.setItem("emailUser", res.payload.email);
         sessionStorage.setItem("token", res.jwtToken);
@@ -49,14 +51,12 @@ export class DashboardComponent implements OnInit {
     })
 
    }
-
   ngOnInit(): void {
   }
 
   public NavigateToLogin() {
     this.navigationService.NavigateToRoute('login');
   }
-
 
   openMenu() {
     this.setShowMenu = !this.setShowMenu;

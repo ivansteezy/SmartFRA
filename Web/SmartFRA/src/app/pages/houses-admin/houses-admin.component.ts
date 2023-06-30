@@ -24,7 +24,7 @@ export class HousesAdminComponent implements OnInit {
     this.crearFormularioRegister();
     this.crearFormularioSearch();
     this.ageNumber = 0;
-    this.faceModelTest = "Pitaya.xml";
+    
   }
 
   ngOnInit(): void {
@@ -57,10 +57,12 @@ public insertHouse() {
 
   let dataHouse = {
     address: this.formRegisterHouse.getRawValue().address,
-    numberHouse: this.formRegisterHouse.getRawValue().numberHouse,
+    numberHouse: this.formRegisterHouse.getRawValue().numberHouse
   }
 
-  this.http.Post('http://localhost:3000/house/InsertHouse/HouseRegistry', dataHouse)
+  console.log("contenido de dataHouse ->",dataHouse);
+
+  this.http.Post('http://localhost:3000/house/HouseRegistry', dataHouse)
     .pipe(
       tap(() => {
         this.toast.success({detail:"Registro exitoso",summary:'Nueva casa añadida!',duration:5000});
@@ -85,8 +87,8 @@ moreDataHouse(numberHouse : number){
 
   crearFormularioRegister(){
     this.formRegisterHouse = this.fb.group({
-        address: ['',[Validators.required, Validators.pattern(/^[a-zA-Z\s]*$/)]],
-        numberHouse: ['',[Validators.required, Validators.pattern(/^[a-zA-Z\s]*$/)]],
+      address: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9\s\-\.,#]*$/)]],
+      numberHouse: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9\-]*$/)]],
     })
   }
 
@@ -95,7 +97,6 @@ moreDataHouse(numberHouse : number){
         idResident: ['',[Validators.required, Validators.pattern(/^[a-zA-Z\s]*$/)]],
     })
   }
-
 
   registerHouse(){
   
@@ -119,7 +120,6 @@ moreDataHouse(numberHouse : number){
    
 }
 
-
 searchHouse(){
   
   console.log(this.formSearchHouse);
@@ -134,18 +134,6 @@ searchHouse(){
     })
   }else{
     console.log("Enviado!",this.formSearchHouse.value);
-
-  // this.http.Get(`http://localhost:3000/house/HouseByResident/${idResidents}`)
-  // .pipe(
-  //   tap(() => {
-  //     this.toast.success({ detail: "Solicitud exitosa", summary: "Solicitud GET realizada", duration: 5000 });
-  //   }),
-  //   catchError((error) => {
-  //     this.toast.error({ detail: "Error en la solicitud", summary: "Ocurrió un error, inténtelo de nuevo más tarde.", duration: 5000 });
-  //     throw error;
-  //   })
-  // )
-  // .subscribe();
 
   }
 }
