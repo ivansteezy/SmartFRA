@@ -99,6 +99,11 @@ const Queries = {
             const query = `UPDATE residentevents SET state = ${state} WHERE idEvent = '${idEvent}'`;
             return query;
         },
+        GetEventByResidentId: (IdResident) => {
+            const query = `SELECT r.idResidents, r.residentName, r.lastName, r.motherLastName, e.idEvent, e.nameEvent, e.startTime, e.endTime, e.state, e.numberAccess 
+            FROM residents r, residentevents e WHERE r.idResidents = e.IdResident AND r.idResidents = ${IdResident} `;
+            return query;
+        },
     },
 
     Residents: {

@@ -25,6 +25,14 @@ const ResidentEventsRepository =
         return data;
 
     },
+
+    GetEventByResidentId: async function( IdResident ){
+        const result= await Adapter.Execute(Queries.ResidentEvents.GetEventByResidentId(IdResident));
+        const data = Adapter.EmptyOrRows(result);
+
+        return data;
+
+    },
 }
 
 module.exports = ResidentEventsRepository;

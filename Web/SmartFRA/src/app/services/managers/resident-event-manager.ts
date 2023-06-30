@@ -24,5 +24,10 @@ export class ResidentEventManagerService {
     // call http requests service for a GET for the resident by id endpoint
     return this.http.Get<ResidentEvent>(ResidentEventEndpoints.UpdateState);
   }
+
+  public GetEventByResidentId(name: string) : Observable<Array<ResidentEvent>> {
+    // call http requests service for a GET for the resident by id endpoint
+    return this.http.Get<ResidentEvent>(ResidentEventEndpoints.GetEventByResidentId);
+  }
   
 }
