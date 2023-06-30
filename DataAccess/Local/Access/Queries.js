@@ -47,6 +47,11 @@ const Queries = {
             const query = `SELECT * from guests g, residents r, guestaccess a, residentevents e WHERE e.IdResident = r.idResidents AND e.idEvent = g.IdEvent AND a.IdGuest = g.idGuest`
             return query;
         },
+
+        GetGuestByPlates: (plates) => {
+            const query = `SELECT * FROM guests WHERE plates = ${plates}`
+            return query;
+        },
     },
 
     Houses: {

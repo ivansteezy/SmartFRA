@@ -59,4 +59,18 @@ router.get('/AllVisits', async function (request, response, next) {
     }
 });
 
+router.get('/GetGuestByPlates/:plates', async function (request, response, next) {
+    const repository = GuestRepository;
+    try {
+        console.log('Get guest by plates at /GetGuestByPlates/:plates endpoint...');
+        const result = await repository.GetGuestByPlates(request.params.plates);
+        response.json(result);
+        console.log('Got guest by plates successfully, number of elements: ' + result.length);
+    }
+    catch(error) {
+        console.error('Error while trying to get guest by plates', error.message);
+        next(error);
+    }
+});
+
 module.exports = router;

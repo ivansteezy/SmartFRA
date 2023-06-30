@@ -30,6 +30,13 @@ const GuestRepository =
 
         return data;
     },
+
+    GetGuestByPlates: async function( plates ) {
+        const result = await Adapter.Execute(Queries.Guests.GetGuestByPlates(plates));
+        const data = Adapter.EmptyOrRows(result);
+
+        return data;
+    },
 }
 
 

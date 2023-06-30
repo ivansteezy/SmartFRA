@@ -30,4 +30,9 @@ export class GuestManagerService {
     return this.http.Get<Guest>(GuestEndpoints.GetAllVisits);
   }
 
+  public GetGuestByPlates(name: string) : Observable<Array<Guest>> {
+    // call http requests service for a GET for the resident by id endpoint
+    return this.http.Get<Guest>(GuestEndpoints.GetGuestByPlates);
+  }
+
 }
