@@ -16,6 +16,8 @@ module.exports = {
         'background-dashboard-large': "url('src/assets/img/wallpapers/dashboard-large.png')",
         'background-login-resident-large': "url('src/assets/img/wallpapers/login-register-wall-lg-06.svg')",
         'background-login-resident-small': "url('src/assets/img/wallpapers/login-wall-sm.png')",
+        'background-login-resident-yellow': "url('src/assets/img/wallpapers/smartfra-resident-11.png')",
+        'background-login-resident-yellow-large': "url('src/assets/img/wallpapers/smartfra-resident-12.png')"
         
       }),
       // that is animation class

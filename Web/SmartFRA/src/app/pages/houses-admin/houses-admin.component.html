@@ -1,5 +1,5 @@
 <main>
-    <h2>Casas Registradas</h2>
+    <h2 class="text-5xl">Casas Registradas</h2>
     <div class="information-square">
         <span> # Casas</span>
         <span> 12 Habitantes</span>
@@ -11,22 +11,22 @@
         </div>
     </div>
 
-    <div class="houses-content-option">
-        <div *ngIf="currentContentHouses == 'main-menu'">
+    <div class="table-auto w-3/4 ml-16 mr-16 rounded-xl text-center">
+        <div  class="mt-8" *ngIf="currentContentHouses == 'main-menu'">
             <h3>Casas Registradas</h3>
 
-            <table class="default">
-                <tr>
-                    <th>#</th>
-                    <th>Direccion</th>
-                    <th>Numero de Casa</th>
-                    <th>Detalles</th>
+            <table class="default w-full bg-complementary-gray-light-color">
+                <tr class="bg-primary-orange-color">
+                    <th class="text-white-pure">#</th>
+                    <th class="text-white-pure">Direccion</th>
+                    <th class="text-white-pure">Numero de Casa</th>
+                    <th class="text-white-pure">Detalles</th>
                 </tr>
                 <tr *ngFor="let house of housesResul">
-                    <td>{{ house.idHouse }}</td>
+                    <td >{{ house.idHouse }}</td>
                     <td>{{ house.address }}</td>
                     <td>{{ house.numberHouse }}</td>
-                    <td><button (click)="moreDataHouse(house.numberHouse)">Detalles</button></td>
+                    <td><button class="rounded-full bg-primary-orange-color p-2 text-white-pure font-bold mt-2 hover:bg-secondary-blue-color" (click)="moreDataHouse(house.numberHouse)">Detalles</button></td>
                 </tr>
                 
             </table>

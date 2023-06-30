@@ -1,12 +1,29 @@
-<h3>Mi Casa</h3>
-<p> # Miembros</p>
-<p> Direccion </p>
-<p> Casa #</p>
+<div class="flex flex-col justify-center items-center h-full">
+    <h1 class="text-5xl">Mi Casa</h1>
+Miembros pertenecientes a tu vivienda activa
 
-<h2>Miembros de casa Casa</h2>
-<p>Fulanito 1</p>
-<p>Fulanito 2</p>
-<p>Fulanito 3</p>
+<h2 class="text-xl text-primary-orange mt-5 font-bold ml-16 mr-16 rounded-3xl">Miembros de casa</h2>
+<div class="table-auto w-3/4 ml-16 mr-16 rounded-xl text-center">
+        <div class="mt-8">
+            <table class="default w-full bg-complementary-gray-light-color">
+                <tr class="bg-primary-orange-color">
+                    <th class="text-white-pure">Nombre</th>
+                    <th class="text-white-pure">Apellido P</th>
+                    <th class="text-white-pure">Apellido M</th>
+                    <th class="text-white-pure">Telefono</th>
 
-<button>Actualizar mis datos</button>
-<button>Solicitar Servicio</button>
+                </tr>
+                <tr *ngFor="let member of visitsResult">
+                    <td>{{ member.residentName}}</td>
+                    <td>{{ member.lastName}}</td>
+                    <td>{{ member.motherLastName}}</td>
+
+                    <td>{{ member.telephone}}</td>
+                </tr>
+                
+            </table>
+        </div>
+
+ </div>
+        
+</div>

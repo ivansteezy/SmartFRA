@@ -86,20 +86,20 @@ public insertVisit() {
     }
 }
 
-public insertAccessGuess(){
-  this.http.Post('http://localhost:3000/guest/GuestRegistry', dataGuest)
-    .pipe(
-      tap(() => {
-        console.log("Se ha ingresado correctamente el acceso de este viitante");
+// public insertAccessGuess(){
+//   this.http.Post('http://localhost:3000/guest/GuestRegistry', dataGuest)
+//     .pipe(
+//       tap(() => {
+//         console.log("Se ha ingresado correctamente el acceso de este viitante");
         
-      }),
-      catchError((error) => {
-        this.toast.error({detail:"Error de Registro",summary:'Ocurrio un error, intente mas tarde.',duration:5000});
-        throw error;
-      })
-    )
-    .subscribe();
-}
+//       }),
+//       catchError((error) => {
+//         this.toast.error({detail:"Error de Registro",summary:'Ocurrio un error, intente mas tarde.',duration:5000});
+//         throw error;
+//       })
+//     )
+//     .subscribe();
+// }
 
 moreDataHouse(numberHouse : number){
   console.log(numberHouse);
