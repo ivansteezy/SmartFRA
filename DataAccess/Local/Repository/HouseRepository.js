@@ -43,7 +43,14 @@ const HouseRepository =
         };
 
         return errorResponse;
-    }
+    },
+
+    GetHouseIDByResidentEmail: async function( email ) {
+        const result = await Adapter.Execute(Queries.Houses.GetHouseIDByResidentEmail(email));
+        const data = Adapter.EmptyOrRows(result);
+
+        return data;
+    },
 }
 
 

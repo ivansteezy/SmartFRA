@@ -19,5 +19,10 @@ export class GuestAccessManagerService {
     // call http requests service for a GET for the resident by id endpoint
     return this.http.Post<GuestAccess>(GuestAccessEndpoints.InsertGuestAccess, body);
   }
+
+  public UpdateExitTime(name: string) : Observable<Array<GuestAccess>> {
+    // call http requests service for a GET for the resident by id endpoint
+    return this.http.Get<GuestAccess>(GuestAccessEndpoints.UpdateExitTime);
+  }
   
 }

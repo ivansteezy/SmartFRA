@@ -43,5 +43,19 @@ router.post('/HouseRegistry', async function(request, response, next) {
     }
 });
 
+router.get('/HouseIDByResidentEmail/:email', async function (request, response, next) {
+    const repository = HouseRepository;
+    try {
+        console.log('Get house by resident at /HouseIDByResidentEmail/:email endpoint...');
+        const result = await repository.GetHouseIDByResidentEmail(request.params.email);
+        response.json(result);
+        console.log('Got idHouse by email successfully, number of elements: ' + result.length);
+    }
+    catch(error) {
+        console.error('Error while trying to get idHouse by email', error.message);
+        next(error);
+    }
+});
+
 
 module.exports = router;

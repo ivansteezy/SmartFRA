@@ -31,4 +31,17 @@ router.post('/ServiceRegistry', async function (request, response) {
     }
 });
 
+router.get('/AllServicesWAccess', async function (request, response, next) {
+    const repository = ServicesRepository;
+    try {
+        console.log('Get all services and access at /AllServicesWAccess endpoint...');
+        const result = await repository.GetAllServicesWAccess();
+        response.json(result);
+        console.log('Got all services and access successfully, number of elements: ' + result.length);
+    }
+    catch(error) {
+        console.error('Error while trying to get all services and access', error.message);
+        next(error);
+    }
+});
 module.exports = router;

@@ -19,5 +19,10 @@ export class ResidentServiceAccessManagerService {
     // call http requests service for a GET for the resident by id endpoint
     return this.http.Post<ResidentServiceAccess>(ResidentServiceAccessEndpoints.InsertResidentServiceAccess, body);
   }
+
+  public UpdateExitTime(name: string) : Observable<Array<ResidentServiceAccess>> {
+    // call http requests service for a GET for the resident by id endpoint
+    return this.http.Get<ResidentServiceAccess>(ResidentServiceAccessEndpoints.UpdateExitTime);
+  }
   
 }

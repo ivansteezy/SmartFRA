@@ -4,4 +4,5 @@ export abstract class HouseEndpoints {
     public static GetAllHouses: string = "http://localhost:3000/house/AllHouses";
     public static GetHouseByResident: string = "http://localhost:3000/house/HouseByResident/:idResidents";
     public static InsertHouse: string = "http://localhost:3000/house/HouseRegistry";
+    public static GetHouseIDByResidentEmail: string = "http://localhost:3000/house/HouseIDByResidentEmail/:email";
 }

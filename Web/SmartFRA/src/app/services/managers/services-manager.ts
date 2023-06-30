@@ -10,7 +10,7 @@ import { ServicesEndpoints } from '../../data-access/services.endpoints';
 export class ServicesManagerService {
   constructor(private http: HttpRequestsService) { }
 
-  public GetAllGeneralServiceAccess(name: string) : Observable<Array<Services>> {
+  public GetAllServices(name: string) : Observable<Array<Services>> {
     // call http requests service for a GET for the resident by id endpoint
     return this.http.Get<Services>(ServicesEndpoints.GetAllServices);
   }
@@ -18,6 +18,11 @@ export class ServicesManagerService {
   public InsertService(name: string, body: Services) : Observable<Services> {
     // call http requests service for a GET for the resident by id endpoint
     return this.http.Post<Services>(ServicesEndpoints.InsertService, body);
+  }
+
+  public GetAllServicesWAccess(name: string) : Observable<Array<Services>> {
+    // call http requests service for a GET for the resident by id endpoint
+    return this.http.Get<Services>(ServicesEndpoints.GetAllServicesWAccess);
   }
   
 }

@@ -31,4 +31,32 @@ router.post('/ResidentEventRegistry', async function (request,response,next) {
     }
 });
 
+router.put('/UpdateState/:state/:idEvent', async function (request, response, next) {
+    const repository = ResidentEventRepository;
+    try {
+        console.log('Update state at /UpdateState/:state/:idEvent endpoint...');
+        const result = await repository.UpdateState(request.params.state, request.params.idEvent);
+        response.json(result);
+        console.log('Updated state successfully');
+    }
+    catch(error) {
+        console.error('Error while trying to state exitTime', error.message);
+        next(error);
+    }
+});
+
+router.get('/EventByResidentId/:IdResident', async function (request, response, next) {
+    const repository = ResidentEventRepository;
+    try {
+        console.log('Get resident events by idResident at /EventByResidentId/:id endpoint...');
+        const result = await repository.GetEventByResidentId(request.params.IdResident);
+        response.json(result);
+        console.log('Got resident events by idResident successfully');
+    }
+    catch(error) {
+        console.error('Error while trying to get resident events by idResident', error.message);
+        next(error);
+    }
+});
+
 module.exports = router;

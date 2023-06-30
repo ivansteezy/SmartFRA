@@ -17,6 +17,14 @@ const GuestAccessRepository =
         return data;
 
     },
+
+    UpdateExitTime: async function( exitTime, idGuest ){
+        const result= await Adapter.Execute(Queries.GuestAccess.UpdateExitTime(exitTime, idGuest));
+        const data = Adapter.EmptyOrRows(result);
+
+        return data;
+
+    },
 }
 
 module.exports = GuestAccessRepository;

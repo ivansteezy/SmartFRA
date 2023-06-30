@@ -17,6 +17,14 @@ const ResidentServiceAccessRepository =
         return data;
 
     },
+
+    UpdateExitTime: async function( exitTime, ResidentId ){
+        const result= await Adapter.Execute(Queries.ResidentServiceAccess.UpdateExitTime(exitTime, ResidentId));
+        const data = Adapter.EmptyOrRows(result);
+
+        return data;
+
+    },
 }
 
 module.exports = ResidentServiceAccessRepository;

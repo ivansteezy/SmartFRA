@@ -21,6 +21,10 @@ const Queries = {
                           `VALUES('${guestaccess.idGuest}', '${guestaccess.accessTime}', '${guestaccess.exitTime}')`;
             return query;
         },
+        UpdateExitTime: (exitTime, idGuest) => {
+            const query = `UPDATE guestaccess SET exitTime = ${exitTime} WHERE idGuest = '${idGuest}'`;
+            return query;
+        },
     },
 
     Guests: {
@@ -66,6 +70,12 @@ const Queries = {
             const query = `INSERT INTO Houses(address, numberHouse) VALUES('${house.address}', ${house.numberHouse})`;
             return query;
         },
+
+        GetHouseIDByResidentEmail: (email) => {
+            const query = `SELECT idHouse from residents WHERE email = ${email}`
+            return query;
+            //h.idHouse, h.address, h.numberHouse, r.idResidents
+        },
     },
 
     ResidentAccess: {
@@ -89,6 +99,15 @@ const Queries = {
         InsertResidentEvent: (residentevents) => {
             const query = `INSERT INTO residentevents(IdResident, nameEvent, startTime, endTime, state, numberAccess) ` +
                           `VALUES('${residentevents.IdResident}', '${residentevents.nameEvent}', '${residentevents.startTime}', '${residentevents.endTime}', '${residentevents.state}', '${residentevents.numberAccess}')`;
+            return query;
+        },
+        UpdateState: (state, idEvent) => {
+            const query = `UPDATE residentevents SET state = ${state} WHERE idEvent = '${idEvent}'`;
+            return query;
+        },
+        GetEventByResidentId: (IdResident) => {
+            const query = `SELECT r.idResidents, r.residentName, r.lastName, r.motherLastName, e.idEvent, e.nameEvent, e.startTime, e.endTime, e.state, e.numberAccess 
+            FROM residents r, residentevents e WHERE r.idResidents = e.IdResident AND r.idResidents = ${IdResident} `;
             return query;
         },
     },
@@ -118,7 +137,7 @@ const Queries = {
         GetResidentByHouse: (idHouse) => {
             const query = `SELECT * FROM Residents WHERE idHouse = ${idHouse}`
             return query;
-        }
+        },
     },
 
     ResidentServiceAccess: {
@@ -129,6 +148,10 @@ const Queries = {
         InsertResidentServiceAccess: (residentserviceaccess) => {
             const query = `INSERT INTO residentserviceaccess(ResidentId, accessTime, exitTime, providerName, cellPhone, cicNumber) 
                            VALUES('${residentserviceaccess.ResidentId}', '${residentserviceaccess.accessTime}', '${residentserviceaccess.exitTime}', '${residentserviceaccess.providerName}', '${residentserviceaccess.cellPhone}', '${residentserviceaccess.cicNumber}')`;
+            return query;
+        },
+        UpdateExitTime: (exitTime, ResidentId) => {
+            const query = `UPDATE residentserviceaccess SET exitTime = ${exitTime} WHERE ResidentId = '${ResidentId}'`;
             return query;
         },
     },
@@ -147,7 +170,11 @@ const Queries = {
         DeleteService: (idService) => {
             const query = `DELETE FROM Services WHERE id = ${idService}`;
             return query;
-        }
+        },
+        GetAllServicesWAccess: () => {
+            const query = `SELECT * FROM services s, residentserviceaccess r WHERE r.ServicesId = s.idServices `;
+            return query;
+        },
     }
 }
 
