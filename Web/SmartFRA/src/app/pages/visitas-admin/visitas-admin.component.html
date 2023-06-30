@@ -1,48 +1,47 @@
-<main>
-    <h2>Visitas Registradas</h2>
-    <div class="information-square">
-        <span> Aqui encontraras todas las visitas registradas del recinto!</span>
+<main class="flex flex-col justify-center items-center h-full">
+    <h2  class="text-5xl">Visitas Registradas</h2>
+    <div class="">
+        <span class="text-xl text-secondary-blue mt-8 font-bold ml-16 mr-16 rounded-3xl"> Aqui encontraras todas las visitas registradas del recinto!</span>
 
-        <div class="houses-options">
-           <button class="add-house-button" (click)="openRegister()">Registrar Visita</button><br>
+        <div class="bg-secondary-blue-color w-full h-8 rounded-xl">
+           <button class="text-white-pure font-bold" (click)="openRegister()">Registrar Visita</button><br>
         </div>
 
-       <div  *ngIf="viewRegisterMenu == true">
-        <h3>Registrar entrada!</h3>
-        <div>
+       <div  class="flex text-center justify-center " *ngIf="viewRegisterMenu == true">
+        <div class="table-auto w-3/4 ml-16 mr-16 rounded-xl text-center">
             <h3>Registrar Nueva Visita:</h3>
             <form [formGroup]="formRegisterVisit" class="" id="RegisterVisitForm" role="form" (ngSubmit)="registerVisit()">
-                <span class="">Nombre de invitado*:</span>
-                <input class="" formControlName="name" id="name" type="text" name="name" placeholder="Nombre"><br>
-                <span class="">Apellidos*:</span>
-                <input class="" formControlName="lastName" id="lasName" type="text" name="lasName" placeholder="Apellido"><br>
-                <span class="">Placas*:</span>
-                <input class="" formControlName="plates" id="plates" type="text" name="plates" placeholder="XXXX"><br>
-                <span class=""># Telefono*:</span>
-                <input class="" formControlName="telephone" id="telephone" type="text" name="telephone" placeholder="numberGuest"><br>
-                <span class=""># Evento*:</span>
-                <input class="" formControlName="event" id="event" type="number" name="event" placeholder="Evento"><br>
-                <button type="submit">Registrar</button>
+                <span class="text-primary-orange font-bold">Nombre de invitado*:</span>
+                <input class="h-12 w-full rounded-xl p-2 bg-complementary-gray-light-color" formControlName="name" id="name" type="text" name="name" placeholder="Nombre"><br>
+                <span class="text-primary-orange font-bold">Apellidos*:</span>
+                <input class="h-12 w-full rounded-xl p-2 bg-complementary-gray-light-color" formControlName="lastName" id="lasName" type="text" name="lasName" placeholder="Apellido"><br>
+                <span class="text-primary-orange font-bold">Placas*:</span>
+                <input class="h-12 w-full rounded-xl p-2 bg-complementary-gray-light-color" formControlName="plates" id="plates" type="text" name="plates" placeholder="XXXX"><br>
+                <span class="text-primary-orange font-bold"># Telefono*:</span>
+                <input class="h-12 w-full rounded-xl p-2 bg-complementary-gray-light-color" formControlName="telephone" id="telephone" type="text" name="telephone" placeholder="numberGuest"><br>
+                <span class="text-primary-orange font-bold"># Evento*:</span>
+                <input class="h-12 w-full rounded-xl p-2 bg-complementary-gray-light-color" formControlName="event" id="event" type="number" name="event" placeholder="Evento"><br>
+                <button class="bg-secondary-blue-color text-primary-orange hover:bg-complementary-gray-light-color rounded-md" type="submit">Registrar</button>
             </form>
         </div>
        </div> 
     </div>
 
-    <div class="houses-content-option">
-        <div *ngIf="currentContentVisit == 'main-menu'">
-            <h3>Visitas Registradas</h3>
+    <div class="table-auto w-3/4 ml-16 mr-16 rounded-xl text-center">
+        <div class="mt-8" *ngIf="currentContentVisit == 'main-menu'">
+            <h3 class="text-xl text-primary-orange mt-5 font-bold ml-16 mr-16 rounded-3xl">Visitas Registradas</h3>
 
-            <table class="default">
-                <tr>
-                    <th>Nombre</th>
-                    <th>Apellido P</th>
-                    <th>Apellido M</th>
-                    <th>Evento</th>
-                    <th>Ingreso</th>
-                    <th>Salida</th>
-                    <th>Tel.</th>
-                    <th>Host</th>
-                    <th>Acciones</th>
+            <table class="default w-full bg-complementary-white-color">
+                <tr class="bg-primary-orange-color">
+                    <th class="text-white-pure">Nombre</th>
+                    <th class="text-white-pure">Apellido P</th>
+                    <th class="text-white-pure">Apellido M</th>
+                    <th class="text-white-pure">Evento</th>
+                    <th class="text-white-pure">Ingreso</th>
+                    <th class="text-white-pure">Salida</th>
+                    <th class="text-white-pure">Tel.</th>
+                    <th class="text-white-pure">Host</th>
+                    <th class="text-white-pure">Acciones</th>
                 </tr>
                 <tr *ngFor="let visit of visitsResult">
                     <td>{{ visit.name}}</td>
@@ -55,7 +54,7 @@
                         <ng-template #emptyExitTime>NE</ng-template>
                     <td>{{ visit.telephone}}</td>
                     <td>{{ visit.residentName }}</td>
-                    <td><button (click)="marcarSalidaVisita(visit.idGuest)">Marcar Salida</button></td>
+                    <td><button class="bg-red-alert text-secondary-blue rounded-md" (click)="marcarSalidaVisita(visit.idGuest)">Marcar Salida</button></td>
                 </tr>
                 
             </table>
