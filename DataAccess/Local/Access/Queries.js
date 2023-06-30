@@ -70,6 +70,12 @@ const Queries = {
             const query = `INSERT INTO Houses(address, numberHouse) VALUES('${house.address}', ${house.numberHouse})`;
             return query;
         },
+
+        GetHouseIDByResidentEmail: (email) => {
+            const query = `SELECT idHouse from residents WHERE email = ${email}`
+            return query;
+            //h.idHouse, h.address, h.numberHouse, r.idResidents
+        },
     },
 
     ResidentAccess: {
@@ -131,7 +137,7 @@ const Queries = {
         GetResidentByHouse: (idHouse) => {
             const query = `SELECT * FROM Residents WHERE idHouse = ${idHouse}`
             return query;
-        }
+        },
     },
 
     ResidentServiceAccess: {
